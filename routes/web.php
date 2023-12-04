@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+/*----------------------POSTS----------------------*/
+//show all the news
+Route::get('/news',[PostController::class,'index']);
