@@ -15,8 +15,9 @@ use App\Http\Controllers\UserController;
 |
 */
 
+//only to test, after must be deleted
 Route::get('/', function () {
-    return view('welcome');
+    return view('layout');
 });
 
 /*----------------------POSTS----------------------*/
