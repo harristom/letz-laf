@@ -30,3 +30,9 @@ Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 // Resource controller for events
 // https://laravel.com/docs/10.x/controllers#actions-handled-by-resource-controller
 Route::resource('events', EventController::class);
+
+
+//link to the terms and conditions
+Route:: get('/terms-and-conditions', function(){
+    return view ('/components/terms-and-conditions');
+});

@@ -1,4 +1,4 @@
-<body style="background-color: gray">
+<body style="background-color: lightgray">
 
 <h3>Terms and Conditions for LëtzLaf meetup website</h3>
 
@@ -42,6 +42,6 @@
 
 <p>These Terms and Conditions are governed by and construed in accordance with the laws of The Grand Duchy of Luxembourg. Any disputes arising under or in connection with these terms shall be subject to the exclusive jurisdiction of the courts in The Grand Duchy of Luxembourg.</p> 
 
-    By using the website, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions.
+    By using the LëtzLaf website, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions.
 
 </body>
