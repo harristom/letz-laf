@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -23,19 +24,16 @@
             <img src="{{ asset('images/letzlogo.png') }}" alt="" />
         </a>
         <ul>
+            <li>
+                <a href="/events">Events</a>
+            </li>
+            <li>
+                <a href="/news">News</a>
+            </li>
+            <li>
+                <a href="/about">About Us</a>
+            </li>
             @auth
-                <li>
-                    <span>
-                        Welcome {{ auth()->user()->first_name }} {{ auth()->user()->last_name }}
-                    </span>
-                </li>
-                {{-- needs to be a specific user
-                <li>
-                    <a href="/events/manage">
-                        <i class="fa-solid fa-gear"></i>Manage Events
-                    </a>
-                </li>
-                --}}
                 <li>
                     <form method="POST" action="/logout">
                         @csrf
@@ -46,11 +44,6 @@
                     </form>
                 </li>
             @else
-                <li>
-                    <a href="/news">News</a>
-                </li>
-                <li>
-                    <a href="/about">About Us</a></li>
                 <li>
                     <a href="/register">
                         <i class="fa-solid fa-user-plus"></i>
@@ -70,7 +63,7 @@
         @yield('content')
     </main>
 
-    {{--<x-flash-message />--}}
+    {{-- <x-flash-message /> --}}
 
     <footer>
         <p>Copyright &copy; 2023, All Rights reserved</p>

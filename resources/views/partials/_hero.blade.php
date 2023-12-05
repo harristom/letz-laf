@@ -1,6 +1,6 @@
 <!-- Hero -->
 <section>
-    <div style="background-image: url('images/runvideo.mp4')"></div>
+    <div style="background-image: url('images/parkrun.png')"></div>
 
     <div>
         <h1>
