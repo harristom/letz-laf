@@ -45,5 +45,8 @@ Route::post('/login', [UserController::class, 'authenticate'])->middleware('gues
 // https://laravel.com/docs/10.x/controllers#actions-handled-by-resource-controller
 Route::resource('events', EventController::class);
 
+//link to the terms and conditions
+Route::view('/terms', 'terms');
+
 //logout
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
