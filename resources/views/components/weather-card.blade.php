@@ -2,6 +2,7 @@
     @import url('https://fonts.googleapis.com/css?family=Lato');
 
     .weather-card {
+        box-sizing: border-box;
         font-family: 'Lato', sans-serif;
         display: flex;
         justify-content: space-between;
@@ -9,8 +10,8 @@
         margin: 15px;
         border-radius: 20px;
         padding: 20px;
-        height: 16em;
-        aspect-ratio: 1 / 1;
+        width: 400px;
+        height: 300px;
         color: #444444;
         background-color: white;
         box-shadow: 0px 0px 25px 1px rgba(50, 50, 50, 0.1);
@@ -41,7 +42,8 @@
 <script defer>
     const lat = {{ $event->latitude }};
     const long = {{ $event->longitude }};
-    const time = {{ Carbon::parse($event->date)->timestamp }};
+    // const time = {{ \Carbon\Carbon::parse($event->date)->timestamp }};
+    const time = 1701889706;
     const KEY = 'FanFIXEd9GYfroPCKADlttIyYnZ1UMH3';
     fetch(`https://api.pirateweather.net/forecast/${KEY}/${lat},${long},${time}?units=ca`)
         .then(res => res.json())
@@ -49,6 +51,6 @@
             const forecast = json.hourly.data[0];
             document.querySelector('.temperature').textContent = Math.round(forecast.temperature) + ' °C';
             document.querySelector('.conditions').textContent = forecast.summary;
-            document.querySelector('.weather-icon').src = '/public/images/weather-icons/' + forecast.icon + '.svg';
+            document.querySelector('.weather-icon').src = '/images/weather-icons/' + forecast.icon + '.svg';
         });
 </script>
