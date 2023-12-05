@@ -111,7 +111,7 @@
 
     </x-card>
     <div>
-        <p> By joining becoming a member, you agree to LëtzLaf's <a href="">Terms and Conditions</a></p>
+        <p> By becoming a member, you agree to LëtzLaf's <a href="/terms-and-conditions">Terms and Conditions</a></p>
     </div>
 
 
