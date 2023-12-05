@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\EventsController;
+use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
-// use App\Models\Event;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,13 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('index');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
+/*----------------------POSTS----------------------*/
+//show all the news
+Route::get('/news',[PostController::class,'index']);
 
-//All events
-Route::get('/', [EventsController::class, 'index']);
+//Show register form
+Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 
-//Single event fetched by id in the url
-Route::get('/events/{id}',[EventsController::class, 'show']);
+// Resource controller for events
+// https://laravel.com/docs/10.x/controllers#actions-handled-by-resource-controller
+Route::resource('events', EventController::class);

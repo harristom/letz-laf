@@ -18,7 +18,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'birthdate',
+        'gender',
+        'user_type',
         'email',
         'password',
     ];
@@ -42,4 +46,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    //uses the hasMany relationship to indicate that the class has multiple EventRegistration instances.
+    public function event_registrations(){
+        return $this->hasMany(EventRegistration::class);
+    }
+    //method called posts
+    //uses the hasMany relationship to indicate that the class has multiple Post instances.
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
+    //method called results
+    //uses the hasMany relationship to indicate that the class has multiple Result instances.
+    public function results(){
+        return $this->hasMany(Result::class);
+    }
 }
