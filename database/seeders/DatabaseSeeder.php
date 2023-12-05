@@ -37,5 +37,13 @@ class DatabaseSeeder extends Seeder
         
     /*---------------IMAGE---------------*/
 
+
+        // \App\Models\User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
+        $this->call([
+            EventSeeder::class
+        ]);
     }
 }
