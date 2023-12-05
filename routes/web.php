@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//only to test, after must be deleted
 Route::get('/', function () {
     return view('layout');
 });
