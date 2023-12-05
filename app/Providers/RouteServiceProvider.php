@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/'; //! changed from '/home' to '/' in for the logout redirect function
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
