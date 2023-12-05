@@ -3,7 +3,7 @@
     <h3>About us</h3>
 
     <div class="teamCardLeft AboutUsFlexbox">
-        <img class="teamPictureLeft" src="/images/charlesdeluvio-K4mSJ7kc0As-unsplash.jpg" alt="">
+        <img class="teamPictureLeft" src="" alt="">
 
         <div class="aboutUsDescriptionLeft aboutUsDescription">
             <p>Kammy A</p>
@@ -23,7 +23,7 @@
         <img class="teamPictureRight" src="" alt="">
         
     </div>
-    <div class="teamCard AboutUsFlexbox">
+    <div class="teamCardLeft AboutUsFlexbox">
         <img class="teamPictureLeft" src="" alt="">
 
         <div class="aboutUsDescriptionLeft aboutUsDescription">
@@ -35,7 +35,7 @@
         
         
     </div>
-    <div class="teamCard AboutUsFlexbox">
+    <div class="teamCardRight AboutUsFlexbox">
         
         <div class="aboutUsDescriptionRight aboutUsDescription">
             <p>Marcia SANTOS</p>
@@ -46,7 +46,7 @@
         <img class="teamPictureLeft" src="" alt=""></div>
         
     </div>
-    <div class="teamCard AboutUsFlexbox">
+    <div class="teamCardLeft AboutUsFlexbox">
         <img class="teamPictureLeft" src="" alt="">
 
         <div class="aboutUsDescriptionLeft aboutUsDescription">
