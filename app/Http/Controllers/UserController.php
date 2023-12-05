@@ -15,6 +15,11 @@ class UserController extends Controller
         return view('users.register');
     }
 
+    public function createAdmin()
+    {
+        return view('users.create');
+    }
+
     //Add user to database
     public function store(Request $request)
     {
@@ -85,8 +90,62 @@ class UserController extends Controller
     public function manage()
     {
         return view('users.manage',[
-            'users' => auth()->user()->users
+            //'users' => auth()->user()->users,
+            'users' => User::all()
         ]);
     }
+
+    public function destroy($id)
+    {
+        //Fetch the user to be deleted
+        $user= User::find($id);
+
+        //Delete the user
+        $user->delete();
+
+        //Redirect to the manage users
+        return redirect('/users/manage')->with('message', 'User deleted Successfully!');
+    }
+
+    public function edit($id)
+    {
+        $user = User::find($id);
+
+        return view('users.edit', [
+            'user' => $user
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        //Fetch the user to be updated
+        $user = User::find($id);      
+
+        //Validate the form fields
+        $formFields = $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'birthdate' => 'required',
+            'gender' => 'required',
+            'email' => ['required', 'email', Rule::unique('users', 'email')],
+            'password' => [
+                'required', Password::min(8)
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols()
+                    ->uncompromised(2),
+                'confirmed'
+            ],
+        ]);
+
+        $formFields['password'] = bcrypt($formFields['password']);
+
+        //Update the user
+        $user->update($formFields);
+
+        //Redirect to the manage users page
+        return redirect('/users/manage')->with('message', 'User updated Successfully!');
+    }
+
 
 }
