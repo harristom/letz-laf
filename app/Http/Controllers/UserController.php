@@ -41,9 +41,4 @@ class UserController extends Controller
 
         return redirect('/')->with('message', 'User created and logged in Successfully!');
     }
-
-    public function terms()
-    {
-        return view('components.terms-and-conditions');
-    }
 }

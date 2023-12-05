@@ -33,4 +33,4 @@ Route::resource('events', EventController::class);
 
 
 //link to the terms and conditions
-Route:: get('/terms-and-conditions',[UserController::class, 'terms']);
+Route::view('/terms', 'terms');

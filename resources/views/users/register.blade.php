@@ -1,7 +1,6 @@
 @extends('layout')
 
 @section('content')
-    <x-card>
         <header>
             <h2>
                 Register
@@ -109,7 +108,6 @@
             </div>
         </form>
 
-    </x-card>
     <div>
         <p> By becoming a member, you agree to LëtzLaf's <a href="/terms-and-conditions">Terms and Conditions</a></p>
     </div>
