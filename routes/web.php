@@ -25,6 +25,14 @@ Route::get('/', function () {
 //show all the news
 Route::get('/news', [PostController::class, 'index']);
 
+
+/*----------------------EVENTS----------------------*/
+// Resource controller for events
+// https://laravel.com/docs/10.x/controllers#actions-handled-by-resource-controller
+Route::resource('events', EventController::class);
+
+
+/*----------------------USERS----------------------*/
 //Show register form
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 
@@ -41,12 +49,10 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 //log user in
 Route::post('/login', [UserController::class, 'authenticate'])->middleware('guest');
 
-// Resource controller for events
-// https://laravel.com/docs/10.x/controllers#actions-handled-by-resource-controller
-Route::resource('events', EventController::class);
+//manage page for the Admin
+Route::get('/users/manage', [UserController::class, 'manage']);
 
+
+/*----------------------TERMS AND CONDITIONS----------------------*/
 //link to the terms and conditions
 Route::view('/terms', 'terms');
-
-//logout
-Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');

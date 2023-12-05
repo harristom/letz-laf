@@ -82,4 +82,14 @@ class UserController extends Controller
         return back()->withErrors(['login' => 'Invalid Credentials']);
 
     }
+
+    
+
+    public function manage()
+    {
+        return view('users.manage',[
+            'users' => auth()->user()->users
+        ]);
+    }
+
 }
