@@ -1,0 +1,1 @@
+<iframe src="http://maps.google.com/maps?q={{ $latitude }},{{ $longitude }}&z=10&output=embed" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
