@@ -78,5 +78,6 @@ class UserController extends Controller
 
         //If it doesn't find a match send error
         return back()->withErrors(['login' => 'Invalid Credentials']);
+
     }
 }
