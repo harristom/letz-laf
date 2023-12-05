@@ -29,9 +29,8 @@ class UserFactory extends Factory
             'birthdate' => fake()->date(),
             //gender
             'gender' => fake()->randomElement(['Male', 'Female', 'Prefer not to say']),
-            //user type
-            //'user_type'=> fake()->randomElement(['admin', 'member', 'organiser']),
-            //'user_type' => fake()->rand(1,3),
+            //user role
+            'role' => fake()->randomElement(['Admin', 'Member','Organiser']),
             //email
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),

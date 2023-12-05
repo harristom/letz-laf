@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         
     /*---------------USER---------------*/
         //fake users
-        User::factory(5)->create();
+        User::factory(2)->create();
 
         //vania
         User::factory()->create([
@@ -23,8 +23,7 @@ class DatabaseSeeder extends Seeder
         'last_name' => 'Barbosa',
         'birthdate' => '2001-04-24',
         'gender' => 'Female',
-        //'user_type' => 'admin',
-        //'user_type' => 2,
+        'role' => 'Member',
         'email' => 'vania@example.com',
         'password' => bcrypt('vania'),
         ]);

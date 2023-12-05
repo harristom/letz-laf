@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             //id
             $table->id();
-            //user type 
-            //$table->string('user_type');
-            //$table->integer('user_type');
+            //user role
+            $table->enum('role', ['Admin', 'Member','Organiser']);
             //first name
             $table->string('first_name');
             //last name
