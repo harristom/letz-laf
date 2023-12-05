@@ -15,7 +15,7 @@
         {{--loops through each post in the $posts array--}}
         @foreach ($posts as $post)
             {{--component called "post-card" passing the current post as a parameter--}}
-            <x-news-card :post="$post" />
+            <x-big-news-card :post="$post" />
         @endforeach
     </div>
     
