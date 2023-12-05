@@ -22,15 +22,30 @@ Route::get('/', function () {
 
 /*----------------------POSTS----------------------*/
 //show all the news
-Route::get('/news',[PostController::class,'index']);
+Route::get('/news', [PostController::class, 'index']);
 
 //Show register form
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
+
+//Add user to database
+Route::post('/users', [UserController::class, 'store'])->middleware('guest');
+
+//Logout from user session
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
+
+//Show login form
+//Added a name to the route so that we can use it through middleware
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
+
+//log user in
+Route::post('/login', [UserController::class, 'authenticate'])->middleware('guest');
 
 // Resource controller for events
 // https://laravel.com/docs/10.x/controllers#actions-handled-by-resource-controller
 Route::resource('events', EventController::class);
 
-
 //link to the terms and conditions
 Route::view('/terms', 'terms');
+
+//logout
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
