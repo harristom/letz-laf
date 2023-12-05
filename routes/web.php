@@ -29,3 +29,8 @@ Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 // Resource controller for events
 // https://laravel.com/docs/10.x/controllers#actions-handled-by-resource-controller
 Route::resource('events', EventController::class);
+
+
+Route::get('/about-us', function(){
+    return view ('/about-us');
+});
