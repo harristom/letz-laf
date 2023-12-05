@@ -125,7 +125,8 @@
     }
     
     .btn-manage {
-        background-color: orange;
+        background: rgb(252,121,69);
+        background: linear-gradient(310deg, rgba(252,121,69,0.8939950980392157) 45%, rgba(252,192,69,0.8715861344537815) 100%);
         color: white;
         border: none;
         padding: 10px;
