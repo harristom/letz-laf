@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\EventsController;
 use Illuminate\Support\Facades\Route;
+// use App\Models\Event;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
+
+
+//All events
+Route::get('/', [EventsController::class, 'index']);
+
+//Single event fetched by id in the url
+Route::get('/events/{id}',[EventsController::class, 'show']);
