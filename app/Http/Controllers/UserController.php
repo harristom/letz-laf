@@ -41,4 +41,21 @@ class UserController extends Controller
 
         return redirect('/')->with('message', 'User created and logged in Successfully!');
     }
+
+
+    public function logout(Request $request)
+    {
+        //Log user out
+        auth()->logout();
+
+        //This will remove the authenticated user's session data from the storage
+        //Additionally, it will regenerate the CSRF token
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        //redirect to home page after log out
+        return redirect('/')->with('message', 'User logged out Successfully!');
+        //! note that in order for this redirect to work, the default home address has been change in app>Providers>RouteServiceProviders from '/home' to '/'
+
+    }
 }
