@@ -35,16 +35,15 @@
     width: 60%;
 }
 
-img {
-    max-width: 100%; 
-    height: auto; 
-}
+    img {
+        max-width: 100%; 
+        height: auto; 
+    }
 
-h4 {
-    color: orange;
-    margin-top: 10px; 
-    font-size: 18px; 
-}
-
+    h4 {
+        color: orange;
+        margin-top: 10px; 
+        font-size: 18px; 
+    }
 
 </style>
