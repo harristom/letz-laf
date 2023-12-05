@@ -2,6 +2,8 @@
 
 @section('content')
 
+<link rel="stylesheet" href="{{assets('\public\css\event-listing.css')}}">
+
 
     {{-- event input type should be "file"
     from to create listing need to be told to process image enctype= --}}
