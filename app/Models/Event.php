@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Event extends Model
 {
@@ -16,6 +17,15 @@ class Event extends Model
         'date',
         'distance_metres',
         'latitude',
-        'longitude'
+        'longitude',
+        'organiser_id'
     ];
+
+    public function participants() {
+        return $this->belongsToMany(User::class, 'event_registrations');
+    }
+
+    public function organiser() {
+        return $this->belongsTo(User::class, 'organiser_id');
+    }
 }
