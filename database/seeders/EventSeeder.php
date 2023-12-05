@@ -98,7 +98,9 @@ class EventSeeder extends Seeder
         ];
 
         foreach ($runs as $run) {
-            Event::create($run);
+            $run['organiser_id'] = 1;
+            $event = Event::create($run);
+            $event->participants()->attach(1);
         }
     }
 }
