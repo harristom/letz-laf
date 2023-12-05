@@ -13,7 +13,7 @@ class PostController extends Controller{
         //returns the view from file index inside of the folder posts
         return view('posts.index',[
             //passes an array with a key 'posts' and a value of the latest posts retrieved from the database
-            'posts' => Post::lastest()->get(),
+            'posts' => Post::latest()->get(),
         ]);
     }
 
