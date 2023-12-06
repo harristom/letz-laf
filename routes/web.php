@@ -16,15 +16,11 @@ use App\Http\Controllers\EventController;
 |
 */
 
-//only to test, after must be deleted
-Route::get('/', function () {
-    return view('layout');
-});
-
 /*----------------------POSTS----------------------*/
 //show all the news
 Route::get('/news', [PostController::class, 'index']);
 
+/*----------------------USERS----------------------*/
 //Show register form
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 
@@ -41,22 +37,19 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 //log user in
 Route::post('/login', [UserController::class, 'authenticate'])->middleware('guest');
 
-// Resource controller for events
+/*----------------------EVENTS----------------------*/
 // https://laravel.com/docs/10.x/controllers#actions-handled-by-resource-controller
 Route::resource('events', EventController::class);
 
-//Show all events
-Route::get('/events', [EventController::class, 'index']);
+// Register for an event
+Route::post('/events/{event}/register', [EventController::class, 'register'])
+    ->middleware('auth')
+    ->name('events.register');
 
+/*-----------------------MISC-----------------------*/
 Route::get('/about-us', function(){
     return view ('/about-us');
 });
 
 //link to the terms and conditions
 Route::view('/terms', 'terms');
-
-
-// Register for an event
-Route::post('/events/{event}/register', [EventController::class, 'register'])
-    ->middleware('auth')
-    ->name('events.register');
