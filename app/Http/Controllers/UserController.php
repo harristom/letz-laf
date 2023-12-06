@@ -16,10 +16,15 @@ class UserController extends Controller
     }
 
     //Add user to database
+    //!modifications below to allow to store pictures
     public function store(Request $request)
     {
         $formFields = $request->validate([
-            'name' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'birthdate' => 'required',
+            'gender' => 'required',
+            'profile_picture' => ['image','mimes:png,jpg,jpeg','max:2048'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => [
                 'required', Password::min(8)
@@ -29,8 +34,15 @@ class UserController extends Controller
                     ->uncompromised(2),
                 'confirmed'
             ],
-            //'password' => ['required', 'min:8', 'confirmed'],
+            
+            
         ]);
+
+        //if request has a photo, store it to the public photo folder. Laravel will automatically create this folder if needed.
+        if($request->hasFile('profile_picture'))
+        {
+            $formFields['profile_picture'] = $request->file('profile_picture')->store('photos', 'public');
+        };
 
         $formFields['password'] = bcrypt($formFields['password']);
 

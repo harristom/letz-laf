@@ -5,18 +5,29 @@
 {{--defines a section called "content"--}}
 @section('content')
 
-    <div>
+    <div class="big-news">
         {{--checks if the $posts variable is empty--}}
         @if (count($posts) == 0)
             {{--displays a message--}}
             <p>No news found!</p>
         @endif
         
+       
         {{--loops through each post in the $posts array--}}
         @foreach ($posts as $post)
-            {{--component called "post-card" passing the current post as a parameter--}}
-            <x-post-card :post="$post" />
+            {{--component called "big-news-card" passing the current post as a parameter--}}
+                <x-big-news-card :post="$post" />
         @endforeach
     </div>
-    
+
 @endSection
+
+<style>
+    .big-news {
+        width: 70%;
+        margin: auto auto;
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+

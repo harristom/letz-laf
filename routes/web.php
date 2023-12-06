@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,5 +48,15 @@ Route::resource('events', EventController::class);
 //Show all events
 Route::get('/events', [EventController::class, 'index']);
 
-//logout
-Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
+Route::get('/about-us', function(){
+    return view ('/about-us');
+});
+
+//link to the terms and conditions
+Route::view('/terms', 'terms');
+
+
+// Register for an event
+Route::post('/events/{event}/register', [EventController::class, 'register'])
+    ->middleware('auth')
+    ->name('events.register');

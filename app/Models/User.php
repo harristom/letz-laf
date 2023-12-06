@@ -25,6 +25,7 @@ class User extends Authenticatable
         'user_type',
         'email',
         'password',
+        'profile_picture',
     ];
 
     /**
@@ -47,17 +48,18 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    //uses the hasMany relationship to indicate that the class has multiple EventRegistration instances.
-    public function event_registrations(){
-        return $this->hasMany(EventRegistration::class);
+    public function eventsRegistered(){
+        return $this->belongsToMany(Event::class, 'event_registrations');
     }
-    //method called posts
-    //uses the hasMany relationship to indicate that the class has multiple Post instances.
+
+    public function eventsOrganised() {
+        return $this->hasMany(Event::class, 'organiser_id');
+    }
+
     public function posts(){
         return $this->hasMany(Post::class);
     }
-    //method called results
-    //uses the hasMany relationship to indicate that the class has multiple Result instances.
+
     public function results(){
         return $this->hasMany(Result::class);
     }
