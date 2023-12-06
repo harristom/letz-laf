@@ -6,83 +6,92 @@
         <div class="profile-picture">
             <img src="{{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : asset('images/profilePicturePlaceholder.jpeg') }}" alt="">
             <h3>{{$user->first_name}} {{$user->last_name}}</h3>
+            <div>
+                <div class="{{ request()->is('profile/'.$user->id) ? 'active' : '' }}">
+                    <a href="/profile/{{$user->id}}">Account Details</a>
+                </div>
+                <div class="{{ request()->is('profile/'.$user->id.'/edit') ? 'active' : '' }}">
+                    <a href="/profile/{{$user->id}}/edit">Account Settings</a>
+                </div>
+                <div>
+                    <form method="POST" action="/logout">
+                        @csrf
+                        <button class="btn-logout-profile">
+                            <i class="fa-solid fa-door-closed"></i>
+                            Logout
+                        </button>
+                    </form>
+                </div>
+                
+            </div>
         </div>
 
         <div class="profile-info">
-            <div class="profile-info-item">
-                <div>
-                    <label for="first_name">First Name</label>
-                    <input type="text" id="first_name" name="first_name" value="{{$user->first_name}}">
-                </div>
-                <div>
-                    <label for="last_name">Last Name</label>
-                    <input type="text" id="last_name" name="last_name" value="{{$user->last_name}}">
-                    
-                </div>
-            </div>
-            <div class="profile-info-item">
-                <div>
-                    <label for="datebirth">Date Of Birth</label>
-                    <input type="date" id="datebirth" name="datebirth" value="{{$user->datebirth}}">
-                </div>
-                <div>
-                    <label for="gender">Gender</label>
-                    <div class="gender">
-                        <label>
-                            <input type="radio" name="gender" value="male" {{ $user->gender === 'Male' ? 'checked' : '' }}>
-                            Male
-                        </label>
-                        <label>
-                            <input type="radio" name="gender" value="female" {{ $user->gender === 'Female' ? 'checked' : '' }}>
-                            Female
-                        </label>
-                        <label>
-                            <input type="radio" name="gender" value="prefer_not_to_say" {{ $user->gender === 'Prefer not to say' ? 'checked' : '' }}>
-                            Prefer not to say
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="profile-info-item">
-                <div>
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" value="{{$user->email}}">
-                </div>
-                {{--
-                <div>
-                    <h4>Password</h4>
-                    <p>{{ str_repeat('*', strlen($user->password)) }}</p>
-                </div>
-                --}}
-            </div>
-
+            @yield('information')
         </div>
+
     </div>
 
 @endsection
 
 <style>
-    .profile {
+    .profile-picture h3{
+        font-size: 30px;
+    }
+
+    .profile-picture div{
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        width: 190px;
+        gap: 5px;
+        border-radius: 5px; 
+    }
+
+    .profile-picture div div{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 15px 0;
+        border: 1px solid orange;
+        cursor: pointer;
+    }
+
+    .profile-picture div div form{
+        margin-bottom: 0;
+    }
+
+    .profile-picture div div a{
+        text-decoration: none;
+        color: black;
+        font-size: 18px;
+    }
+
+    .profile {
+        width: 70%;
+        display: flex;
+        flex-direction: row;
         gap: 20px;
+        margin: 20px auto;
     }
 
     .profile-picture{
-        width: 70%;
+        width: 30%;
         padding-top: 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        border-radius: 20px; 
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
     }
 
     .profile-picture img{
         width: 150px;
         height: 150px;
         border-radius: 100%;
+        border: 2px outset orange;
     }
 
     .profile-info{
@@ -91,38 +100,22 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background-color: orange;
+        border-radius: 20px;
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+        padding-top: 30px;
     }
 
-    .profile-info-item{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
+    .btn-logout-profile{
+        background-color: transparent;
+        border: none;
+        font-size: 16px;
     }
 
-    .profile-info-item div{
-        display: flex;
-        flex-direction: column;
-        width: 350px;
-        padding: 20px 20px 20px 0;
+    .profile-picture div div.active {
+        background-color: orange;  
     }
 
-    .profile-info-item label{
-        font-weight: bold;
-        font-size: 20px;
+    .profile-picture div div.active a{
+        color: white;
     }
-
-    .profile-info-item input{
-        padding: 10px;
-        font-size: 15px;
-        border-radius: 10px;
-        border: 1px solid lightgray;
-    }
-    .gender{
-        display: flex;
-        flex-direction: column;
-    }
-
-
 </style>

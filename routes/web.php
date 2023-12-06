@@ -40,9 +40,19 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 
 //log user in
 Route::post('/login', [UserController::class, 'authenticate'])->middleware('guest');
-//Show profile page
-Route::get('/profile/{id}', [UserController::class, 'show'])
+
+/*-------------------------------PROFILE------------------------------- */
+//show profile page
+Route::get('/profile/{id}', [UserController::class, 'show']);
+
+//Show update profile page
+Route::get('/profile/{id}/edit', [UserController::class, 'edit'])
 ->where('id', '[0-9]+')->middleware('auth');
+//Update user info
+Route::put('/profile/{id}', [UserController::class, 'update'])
+->where('id', '[0-9]+')->middleware('auth');
+
+
 
 // Resource controller for events
 // https://laravel.com/docs/10.x/controllers#actions-handled-by-resource-controller
