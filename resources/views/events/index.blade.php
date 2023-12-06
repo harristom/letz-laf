@@ -35,5 +35,5 @@
 .seePast{
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
-}
+    }
 </style>

@@ -39,7 +39,6 @@
     height: 200px;
     width:300px ;
     position: relative;
-    /* position: relative; */
 }
 
 .container img {
