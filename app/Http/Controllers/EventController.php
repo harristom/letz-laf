@@ -15,7 +15,7 @@ class EventController extends Controller
         //
         return view('events.index',
         [
-            'events' => Event::all(),
+            'events' => Event::latest()->get(),
 
         ]);
     }

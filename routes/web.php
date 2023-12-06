@@ -44,5 +44,8 @@ Route::post('/login', [UserController::class, 'authenticate'])->middleware('gues
 // https://laravel.com/docs/10.x/controllers#actions-handled-by-resource-controller
 Route::resource('events', EventController::class);
 
+//Show all events
+Route::get('/events', [EventController::class, 'index']);
+
 //logout
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');

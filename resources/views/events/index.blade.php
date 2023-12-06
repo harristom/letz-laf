@@ -2,18 +2,19 @@
 
 @section('content')
 
+<a href="/past-events">See past events</a>
 <div>
-    @if (count($event) == 0)
-    <p>No listing found</p>
-@endif
+    @if (count($events) == 0)
+        <p>No listing found</p>
+    @endif
 
-@foreach ($events as $event)
-<h2><a href="/events/{{$event->id}}"> {{$event->title}} </a></h2>
+    @foreach ($events as $event)
 
+        <x-event-card :event="$event" />
 
-    
-@endforeach
+    @endforeach
 
 </div>
     
 @endsection
+
