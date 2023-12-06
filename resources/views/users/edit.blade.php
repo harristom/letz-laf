@@ -156,6 +156,7 @@
         font-size: 15px;
         border-radius: 10px;
         border: 1px solid lightgray;
+        cursor: pointer;
     }
 
     div.gender{
