@@ -49,7 +49,7 @@ Route::post('/events/{event}/register', [EventController::class, 'register'])
 /*-----------------------MISC-----------------------*/
 Route::get('/about-us', function(){
     return view ('/about-us');
-});
+})->name('about');
 
 //link to the terms and conditions
 Route::view('/terms', 'terms');
