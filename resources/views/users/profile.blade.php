@@ -7,12 +7,18 @@
             <img src="{{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : asset('images/profilePicturePlaceholder.jpeg') }}" alt="">
             <h3>{{$user->first_name}} {{$user->last_name}}</h3>
             <div>
+
+                <a class="{{ request()->is('profile/'.$user->id) ? 'active' : '' }}" href="/profile/{{$user->id}}">Account Details</a>
+
+                <a class="{{ request()->is('profile/'.$user->id.'/edit') ? 'active' : '' }}" href="/profile/{{$user->id}}/edit">Account Settings</a>
+{{--
                 <div class="{{ request()->is('profile/'.$user->id) ? 'active' : '' }}">
                     <a href="/profile/{{$user->id}}">Account Details</a>
                 </div>
                 <div class="{{ request()->is('profile/'.$user->id.'/edit') ? 'active' : '' }}">
                     <a href="/profile/{{$user->id}}/edit">Account Settings</a>
                 </div>
+                --}}
                 <div>
                     <form method="POST" action="/logout">
                         @csrf
@@ -22,7 +28,6 @@
                         </button>
                     </form>
                 </div>
-                
             </div>
         </div>
 
@@ -39,17 +44,19 @@
         font-size: 30px;
     }
 
-    .profile-picture div{
+    .profile-picture a, .profile-picture div{
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         width: 190px;
         gap: 5px;
-        border-radius: 5px; 
+        border-radius: 5px;
+        text-decoration: none;
+        color: black;
     }
 
-    .profile-picture div div{
+    .profile-picture div a, .profile-picture div div{
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -62,10 +69,9 @@
         margin-bottom: 0;
     }
 
-    .profile-picture div div a{
-        text-decoration: none;
-        color: black;
-        font-size: 18px;
+    .profile-picture div a.active {
+        background-color: orange;  
+        color: white;
     }
 
     .profile {
@@ -111,11 +117,4 @@
         font-size: 16px;
     }
 
-    .profile-picture div div.active {
-        background-color: orange;  
-    }
-
-    .profile-picture div div.active a{
-        color: white;
-    }
 </style>

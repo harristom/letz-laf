@@ -2,7 +2,7 @@
 
 @section('information')
 
-    <form action="/users/{{$user->id}}" method="post" enctype="multipart/form-data"></form>
+    <form action="/users/{{$user->id}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -115,7 +115,7 @@
     
     input::file-selector-button {
         font-weight: bold;
-        color: black;
+        color: white;
         background:orange;
         padding: 0.5em;
         border: thin solid orange;
@@ -194,17 +194,17 @@
         background-color: orange;
     }
 
-    .update-btn:hover {
+    .update-btn button:hover {
         transform: translateY(-3px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
 
-    .update-btn:active {
+    .update-btn button:active {
         transform: translateY(-1px);
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     }
 
-    .update-btn::after {
+    .update-btn button::after {
         display: inline-block;
         border-radius: 100px;
         position: absolute;
@@ -214,11 +214,11 @@
         transition: all .4s;
     }
 
-    .update-btn::after {
+    .update-btn button::after {
         background-color: #fff;
     }
 
-    .update-btn:hover::after {
+    .update-btn button:hover::after {
         transform: scaleX(1.4) scaleY(1.6);
         opacity: 0;
     }
