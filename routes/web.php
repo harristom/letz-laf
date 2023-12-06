@@ -40,6 +40,9 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 
 //log user in
 Route::post('/login', [UserController::class, 'authenticate'])->middleware('guest');
+//Show profile page
+Route::get('/profile/{id}', [UserController::class, 'show'])
+->where('id', '[0-9]+')->middleware('auth');
 
 // Resource controller for events
 // https://laravel.com/docs/10.x/controllers#actions-handled-by-resource-controller
@@ -49,7 +52,7 @@ Route::resource('events', EventController::class);
 Route::get('/events', [EventController::class, 'index']);
 
 Route::get('/about-us', function(){
-    return view ('/about-us');
+    return view ('about-us');
 });
 
 //link to the terms and conditions

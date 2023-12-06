@@ -92,4 +92,12 @@ class UserController extends Controller
         return back()->withErrors(['login' => 'Invalid Credentials']);
 
     }
+
+    //Show only the specific user profile
+    public function show($id){
+        return view('users.profile', [
+            'user' => User::find($id)
+        ]);
+    }
+
 }
