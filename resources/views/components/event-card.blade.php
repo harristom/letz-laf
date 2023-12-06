@@ -7,7 +7,7 @@
 
     {{-- event input type should be "file"
     from to create listing need to be told to process image enctype= --}}
-    
+
 <section class="container">
     <div class="imageContainer">
         <a href="{{$event->id}}">
@@ -28,6 +28,7 @@
         <!-- <h4 class="eventTitle">Title</h4> -->
     </div>
 </section>
+
 
 <style>
  

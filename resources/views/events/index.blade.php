@@ -7,6 +7,7 @@
 </div>
 
 <div id="container">
+
     @if (count($events) == 0)
         <p>No listing found</p>
     @endif
@@ -20,6 +21,7 @@
 </div>
     
 @endsection
+
 <style>
     #container {
         display: flex;
