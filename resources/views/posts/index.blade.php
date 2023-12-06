@@ -6,6 +6,11 @@
 @section('content')
 
     <div class="big-news">
+        <div class="header-news">
+            <h2>News</h2>
+            <a href="/news/create">Create a news post</a>
+        </div>
+
         {{--checks if the $posts variable is empty--}}
         @if (count($posts) == 0)
             {{--displays a message--}}
@@ -23,6 +28,17 @@
 @endSection
 
 <style>
+    .header-news {
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 0 20px 40px;
+
+    }
+
     .big-news {
         width: 70%;
         margin: auto auto;
