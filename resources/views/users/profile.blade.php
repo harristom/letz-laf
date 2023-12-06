@@ -105,8 +105,7 @@
         display: flex;
         flex-direction: column;
         width: 350px;
-        padding: 0 20px;
-        gap: 20px;
+        padding: 20px 20px 20px 0;
     }
 
     .profile-info-item label{
@@ -120,11 +119,10 @@
         border-radius: 10px;
         border: 1px solid lightgray;
     }
-
     .gender{
         display: flex;
-        flex-direction: row;
-        
+        flex-direction: column;
     }
+
 
 </style>
