@@ -79,12 +79,6 @@
             </p>
         </div>
     </form>
-    <div>
-        <p>
-            Already have an account?
-            <a href="/login">Login</a>
-        </p>
-    </div>
 
     <div>
         <p> By becoming a member, you agree to LëtzLaf's <a href="/terms-and-conditions">Terms and Conditions</a></p>

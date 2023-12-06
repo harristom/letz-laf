@@ -41,6 +41,8 @@ class UserController extends Controller
 
         $formFields['password'] = bcrypt($formFields['password']);
 
+        $formFields['role'] = 'Member';
+
         $user = User::create($formFields);
 
         auth()->login($user);
