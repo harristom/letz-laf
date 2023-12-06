@@ -19,6 +19,10 @@ use App\Http\Controllers\EventController;
 /*----------------------POSTS----------------------*/
 //show all the news
 Route::get('/news', [PostController::class, 'index']);
+//create a new post
+Route::get('/news/create', [PostController::class, 'create']);
+//store a new post
+Route::post('/news', [PostController::class, 'store']);
 
 /*----------------------USERS----------------------*/
 //Show register form

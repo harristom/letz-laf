@@ -5,7 +5,7 @@
         <h3>{{$post->title}}</h3>
         <div class="news-div">
             <div>
-                <img src="{{ asset( 'images/' . $post->image_path) }}" alt="">
+                <img src="{{ asset('storage/'. $post->image_path) }}" alt="">
             </div>
             <div>
                 <p>{{$post->content}}</p>

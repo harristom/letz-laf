@@ -12,7 +12,7 @@ class Post extends Model{
         'title',
         'content',
         'user_id',
-        'image_id',
+        'image_path',
     ];
 
     //method establishes a relationship between the current class and the User class
