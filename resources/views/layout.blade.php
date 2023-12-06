@@ -66,9 +66,11 @@
                     </form>
                 </li>
                 <li>
-                    <img class="profilePicture" src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : asset('images/profilePicturePlaceholder.jpeg') }}">
+                    <a href="/profile">
+                        {{ auth()->user()->first_name }} {{auth()->user()->last_name}}
+                        <img class="profilePicture" src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : asset('images/profilePicturePlaceholder.jpeg') }}">
+                    </a>
                 </li>
-                
             @else
                 <li>
                     <a href="/register">

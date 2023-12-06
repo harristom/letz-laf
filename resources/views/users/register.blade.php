@@ -74,7 +74,7 @@
         {{-- Adding section for profile picture image upload --}}
         <div>
             <label for="profile_picture" >Profile picture</label>
-            <input type="file" name="profile_picture"/>
+            <input type="file" id="profile_picture" name="profile_picture"/>
         </div>
         
         <div>
@@ -87,12 +87,6 @@
             </p>
         </div>
     </form>
-    <div>
-        <p>
-            Already have an account?
-            <a href="/login">Login</a>
-        </p>
-    </div>
 
     <div>
         <p> By becoming a member, you agree to LëtzLaf's <a href="/terms-and-conditions">Terms and Conditions</a></p>
