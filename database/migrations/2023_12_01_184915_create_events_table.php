@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('image_path')->nullable();
             $table->dateTime('date');
-            $table->integer('distance_metres');
+            $table->decimal('distance');
             $table->float('latitude', 10, 6);
             $table->float('longitude', 10, 6);
             $table->foreignIdFor(User::class, 'organiser_id')
