@@ -14,10 +14,12 @@ class EventController extends Controller
     public function index()
     {
         //
-        return view('events.index',
-        [
-            'events' => Event::all(),
-        ]);
+        return view(
+            'events.index',
+            [
+                'events' => Event::all(),
+            ]
+        );
     }
 
     /**
@@ -35,7 +37,6 @@ class EventController extends Controller
     public function store(Request $request)
     {
         //
-        // dd($request);
         $validated = $request->validate([
             'name' => 'required|string',
             'description' => 'required|string',
@@ -67,6 +68,9 @@ class EventController extends Controller
     public function edit(Event $event)
     {
         //
+        return view('events.edit', [
+            'event' => $event
+        ]);
     }
 
     /**
@@ -75,6 +79,18 @@ class EventController extends Controller
     public function update(Request $request, Event $event)
     {
         //
+        $validated = $request->validate([
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'date' => 'required|date',
+            'distance' => 'required|decimal:0,2|min:0.01',
+            'longitude' => 'required|numeric',
+            'latitude' => 'required|numeric',
+        ]);
+        // TODO: Change to use authenticated user
+        $validated['organiser_id'] = 1;
+        $event->update($validated);
+        return to_route('events.show', $event);
     }
 
     /**
@@ -85,7 +101,8 @@ class EventController extends Controller
         //
     }
 
-    public function register(Event $event) {
+    public function register(Event $event)
+    {
         $event->participants()->attach(auth()->user());
         return back();
     }
