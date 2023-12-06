@@ -53,7 +53,7 @@
                 <a href="/news">News</a>
             </li>
             <li>
-                <a href="/about">About Us</a>
+                <a href="{{Route('about')}}">About Us</a>
             </li>
             @auth
                 <li>
