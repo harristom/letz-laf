@@ -24,6 +24,10 @@ Route::get('/', function () {
 /*----------------------POSTS----------------------*/
 //show all the news
 Route::get('/news', [PostController::class, 'index']);
+//create a new post
+Route::get('/news/create', [PostController::class, 'create']);
+//store a new post
+Route::post('/news', [PostController::class, 'store']);
 
 //Show register form
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
