@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Event;
 use Illuminate\Http\Request;
 
@@ -68,5 +69,10 @@ class EventController extends Controller
     public function destroy(Event $event)
     {
         //
+    }
+
+    public function register(Event $event) {
+        $event->participants()->attach(auth()->user());
+        return back();
     }
 }

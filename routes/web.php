@@ -49,3 +49,8 @@ Route::view('/terms', 'terms');
 
 //logout
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
+
+// Register for an event
+Route::post('/events/{event}/register', [EventController::class, 'register'])
+    ->middleware('auth')
+    ->name('events.register');
