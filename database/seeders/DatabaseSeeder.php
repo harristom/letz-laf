@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             'role' => 'Member',
             'email' => 'vania@example.com',
             'password' => bcrypt('vania'),
+            
         ]);
         //Tom
         //Jaria

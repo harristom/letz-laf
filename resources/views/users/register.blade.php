@@ -6,7 +6,8 @@
         <h2>Register</h2>
         <p>Create an account to participate!</p>
     </header>
-    <form action="/users" method="post">
+    <form action="/users" method="post"  enctype="multipart/form-data">
+        {{-- ! added enctype to make sure the form can handle images --}}
         @csrf
         <div>
             <label for="first_name">First Name</label>
@@ -69,6 +70,13 @@
             <label for="password_confirmation">Confirm Password</label>
             <input type="password" id="password_confirmation" name="password_confirmation" />
         </div>
+
+        {{-- Adding section for profile picture image upload --}}
+        <div>
+            <label for="profile_picture" >Profile picture</label>
+            <input type="file" name="profile_picture"/>
+        </div>
+        
         <div>
             <button>Sign Up</button>
         </div>

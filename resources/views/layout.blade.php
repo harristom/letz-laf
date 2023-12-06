@@ -14,6 +14,28 @@
         footer {
             background-color: orange;
         }
+
+        nav{
+            display: flex;
+        }
+
+        ul{
+            list-style: none;
+            display: flex;
+
+            gap: 50px;
+        }
+
+        .profilePicture{
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+        }
+        .logo {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+        }
     </style>
     <title>LëtzLaf</title>
 </head>
@@ -21,7 +43,7 @@
 <body>
     <nav>
         <a href="/">
-            <img src="{{ asset('images/letzlogo.png') }}" alt="" />
+            <img class="logo" src="{{ asset('images/letzlogo.png') }}" alt="" />
         </a>
         <ul>
             <li>
@@ -43,6 +65,10 @@
                         </button>
                     </form>
                 </li>
+                <li>
+                    <img class="profilePicture" src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : asset('images/profilePicturePlaceholder.jpeg') }}">
+                </li>
+                
             @else
                 <li>
                     <a href="/register">

@@ -30,6 +30,7 @@ return new class extends Migration
             //password
             $table->string('password');
             $table->rememberToken();
+            $table->string('profile_picture')->nullable();//now it can accept pictures
             $table->timestamps();
         });
     }
