@@ -24,7 +24,7 @@
 
 <style>
     .big-news {
-        width: 80%;
+        width: 70%;
         margin: auto auto;
         display: flex;
         flex-direction: column;

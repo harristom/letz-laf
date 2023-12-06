@@ -3,9 +3,15 @@
 <div class="news-content-container">
     <div class="news-content news-div-content">
         <h3>{{$post->title}}</h3>
-        <img src="{{ asset( 'images/' . $post->image_path) }}" alt="">
-        <p>{{$post->content}}</p>
-    </div>
+        <div class="news-div">
+            <div>
+                <img src="{{ asset( 'images/' . $post->image_path) }}" alt="">
+            </div>
+            <div>
+                <p>{{$post->content}}</p>
+            </div>
+        </div>
+        </div>
     <div class="news-content news-div-date">
         <small>Created : {{$post->created_at}}</small>
     </div>
@@ -32,6 +38,15 @@
         display: flex;
         flex-direction: column;
     }
+
+    .news-div {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .news-div p {
+        margin: 0;
+    }
     
     .news-content h3 {
         text-align: center;
@@ -39,10 +54,11 @@
     }
 
     .news-content img {
-        width: 500px; 
+        width: 400px; 
         margin: auto;
         height: auto; 
         border-radius: 5px;
+        margin-right: 20px;
     }
 
     .news-content p {
@@ -59,7 +75,8 @@
     }
 
     .news-div-date small {
-        text-align: left
+        text-align: left;
+        padding: 20px 0 0 0;
     }
 
 
