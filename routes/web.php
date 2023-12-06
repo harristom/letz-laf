@@ -50,7 +50,7 @@ Route::get('/events', [EventController::class, 'index']);
 
 Route::get('/about-us', function(){
     return view ('/about-us');
-});
+})->name('about');
 
 //link to the terms and conditions
 Route::view('/terms', 'terms');
