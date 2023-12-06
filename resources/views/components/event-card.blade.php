@@ -7,32 +7,34 @@
 
     {{-- event input type should be "file"
     from to create listing need to be told to process image enctype= --}}
+
 <section class="container">
     <div class="imageContainer">
         <a href="{{$event->id}}">
-            <img src="{{$event->image_path}}" alt="">
+            <img src="{{asset('images/running-is-one-of-the-best-ways-to-stay-fit-royalty-free-image-1036780592-1553033495.jpg')}}" alt="">
         </a>
     </div>
     <div>
-        <h3>{{$event->name}}</h3>
+        <h3 class="locationTag">{{$event->name}}</h3>
+        {{-- <h3>{{$event->name}}</h3> --}}
     </div>
     <div class="eventDate">
-        <span>Month</span>
-        <span>Date</span>
-        <p>{{$event->date}}</p>
+        {{-- <span>Month</span>
+        <span>Date</span> --}}
+        <p class="date">{{$event->date}}</p>
     </div>
     <div>
-        <h3 class="locationTag">LOCATION</h3>
+        <h3 class="locationTag">{{$event->name}}</h3>
         <!-- <h4 class="eventTitle">Title</h4> -->
-        <i>{{$event->latitude}}N , {{$event->longitude}}E</i>
     </div>
 </section>
 
 
 <style>
  
-.container{
+ .container{
     margin: 20px;
+    position: relative;
 }
 .imageContainer{
     height: 200px;
@@ -62,13 +64,19 @@ h3{
 .eventDate{
     background-color: orange;
     border: solid orange;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 100%;
     position: absolute;
-    top: 35px;
-    left: 50px;
-    padding-top: 5px;  
+    top: 10px;
+    left: 10px;
+    padding: 5px;  
+    color: white
+}
+.date{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 11px;
+    font-weight: lighter;
 }
 
 span{
@@ -81,14 +89,15 @@ span{
 
 .locationTag{
     background-color: orange;
-    width: 150px;
+    width: 200px;
     color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bold;
     position: absolute;
     border-radius: 5px;
-    top: 25% ;
+    top: 60% ;
     margin-left: 9px ;
+    margin-top: 10px;
 }
 </style>
 
