@@ -45,6 +45,9 @@ Route::post('/login', [UserController::class, 'authenticate'])->middleware('gues
 // https://laravel.com/docs/10.x/controllers#actions-handled-by-resource-controller
 Route::resource('events', EventController::class);
 
+//Show all events
+Route::get('/events', [EventController::class, 'index']);
+
 Route::get('/about-us', function(){
     return view ('/about-us');
 });
@@ -52,8 +55,6 @@ Route::get('/about-us', function(){
 //link to the terms and conditions
 Route::view('/terms', 'terms');
 
-//logout
-Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 // Register for an event
 Route::post('/events/{event}/register', [EventController::class, 'register'])
