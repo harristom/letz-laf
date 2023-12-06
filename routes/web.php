@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\ResultController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +21,8 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('layout');
 });
-
+//testing kameron can delete
+Route::get('/results', [EventController::class, 'results']);
 /*----------------------POSTS----------------------*/
 //show all the news
 Route::get('/news', [PostController::class, 'index']);
@@ -49,3 +52,7 @@ Route::view('/terms', 'terms');
 
 //logout
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
+
+
+/*--------------Results------------*/
+Route::get('/results', [ResultController::class, 'index']);
