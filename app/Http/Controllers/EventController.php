@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Event;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -28,6 +29,7 @@ class EventController extends Controller
     public function create()
     {
         //
+        return view('events.create');
     }
 
     /**
@@ -36,6 +38,18 @@ class EventController extends Controller
     public function store(Request $request)
     {
         //
+        $validated = $request->validate([
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'date' => 'required|date',
+            'distance' => 'required|decimal:0,2|min:0.01',
+            'longitude' => 'required|numeric',
+            'latitude' => 'required|numeric',
+        ]);
+        // TODO: Change to use authenticated user
+        $validated['organiser_id'] = 1;
+        $event = Event::create($validated);
+        return to_route('events.show', $event);
     }
 
     /**
@@ -55,6 +69,9 @@ class EventController extends Controller
     public function edit(Event $event)
     {
         //
+        return view('events.edit', [
+            'event' => $event
+        ]);
     }
 
     /**
@@ -63,6 +80,18 @@ class EventController extends Controller
     public function update(Request $request, Event $event)
     {
         //
+        $validated = $request->validate([
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'date' => 'required|date',
+            'distance' => 'required|decimal:0,2|min:0.01',
+            'longitude' => 'required|numeric',
+            'latitude' => 'required|numeric',
+        ]);
+        // TODO: Change to use authenticated user
+        $validated['organiser_id'] = 1;
+        $event->update($validated);
+        return to_route('events.show', $event);
     }
 
     /**
@@ -71,5 +100,11 @@ class EventController extends Controller
     public function destroy(Event $event)
     {
         //
+    }
+
+    public function register(Event $event)
+    {
+        $event->participants()->attach(auth()->user());
+        return back();
     }
 }

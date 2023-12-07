@@ -13,7 +13,10 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DISK', 'local'),
+    'default' => env('FILESYSTEM_DISK', 'public'),
+    // ! change from 'local' to 'public' in order for our forms to be able to handle uploaded pictures by creating a link between storage and our public folder
+    //! command php artisan storage:link allows browser to read images and display them from our storage
+
 
     /*
     |--------------------------------------------------------------------------
