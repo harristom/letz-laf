@@ -7,7 +7,7 @@ use App\Models\Event;
 use App\Models\Result;
 use Illuminate\Database\Seeder;
 
-class ResultsSeeder extends Seeder
+class ResultSeeder extends Seeder
 {
     public function run()
     {
