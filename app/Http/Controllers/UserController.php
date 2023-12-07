@@ -9,6 +9,7 @@ use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
+    
     //Show register form
     public function create()
     {
@@ -129,6 +130,7 @@ class UserController extends Controller
             'last_name' => 'required',
             'birthdate' => 'required',
             'gender' => 'required',
+            'role' => 'required',
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => [
                 'required', Password::min(8)

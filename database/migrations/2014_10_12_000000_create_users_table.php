@@ -25,7 +25,7 @@ return new class extends Migration
             //gender
             $table->enum('gender', ['Male', 'Female', 'Prefer not to say']);
             //email
-            $table->string('email')->unique();
+            $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
             //password
             $table->string('password');
