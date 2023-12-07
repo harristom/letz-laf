@@ -15,7 +15,8 @@ return new class extends Migration
             //id
             $table->id();
             //user role
-            $table->enum('role', ['Admin', 'Member','Organiser']);
+            //needed to put member first (inserted admin in database for no reason)
+            $table->enum('role', ['Member', 'Organiser', 'Admin']);
             //first name
             $table->string('first_name');
             //last name

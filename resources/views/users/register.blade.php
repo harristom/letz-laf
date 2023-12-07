@@ -83,6 +83,9 @@
                 <div>
                     <label for="password_confirmation">Confirm Password</label>
                     <input type="password" id="password_confirmation" name="password_confirmation" />
+                    @error('password')
+                        <p>{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
 

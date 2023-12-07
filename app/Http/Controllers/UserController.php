@@ -35,7 +35,6 @@ class UserController extends Controller
                 'confirmed'
             ],
             
-            
         ]);
 
         //if request has a photo, store it to the public photo folder. Laravel will automatically create this folder if needed.
@@ -43,7 +42,12 @@ class UserController extends Controller
         {
             $formFields['profile_picture'] = $request->file('profile_picture')->store('photos', 'public');
         };
+        //remove _ from prefer not to say gender
+        $formFields['gender'] = str_replace('_', ' ', $formFields['gender']);
 
+        //store user role as member
+        $formFields['role'] = 'Member';
+        //hash password
         $formFields['password'] = bcrypt($formFields['password']);
 
         $user = User::create($formFields);
@@ -51,6 +55,7 @@ class UserController extends Controller
         auth()->login($user);
 
         return redirect('/')->with('message', 'User created and logged in Successfully!');
+
     }
 
     public function logout(Request $request)
