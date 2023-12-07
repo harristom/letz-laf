@@ -16,6 +16,8 @@ class ResultController extends Controller
             $query->select('id', 'name');
         }])
             ->select('user_id', 'finish_time', 'event_id')
+            //this converts the finish time into minutes and seconds
+            ->selectRaw('SEC_TO_TIME(finish_time) as converted_time')
             ->orderBy('finish_time')
             ->get();
 

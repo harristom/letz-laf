@@ -22,7 +22,7 @@
                     <td>{{ $result->user->first_name }}</td>
                     <td>{{ $result->user->last_name }}</td>
                     <td>{{ $result->event->name }}</td>
-                    <td>{{ $result->finish_time }}</td>
+                    <td>{{ $result->converted_time }}</td>
                 </tr>
             @endforeach
         </tbody>
@@ -30,6 +30,8 @@
 @endsection
 
 <style>
+    /*CSS below is a temporary copy only from Vania's manage users style*/
+
     * {
         margin: 0;
         padding: 0;

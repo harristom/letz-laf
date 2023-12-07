@@ -11,6 +11,6 @@ class ResultsSeeder extends Seeder
 {
     public function run()
     {
-        Result::factory(5)->create();
+        Result::factory(10)->create();
     }
 }
