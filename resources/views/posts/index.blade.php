@@ -1,10 +1,9 @@
-{{--showing the news on the website--}}
+{{-- showing the news on the website --}}
 
-{{--extends a layout file--}}
+{{-- extends a layout file --}}
 @extends('layout')
-{{--defines a section called "content"--}}
+{{-- defines a section called "content" --}}
 @section('content')
-
     <div class="big-news">
         <div class="header-news">
             <h2>News</h2>
@@ -13,10 +12,9 @@
 
         {{--checks if the $posts variable is empty--}}
         @if (count($posts) == 0)
-            {{--displays a message--}}
+            {{-- displays a message --}}
             <p>No news found!</p>
-        @endif
-        
+        @endif  
        
         {{--loops through each post in the $posts array--}}
         @foreach ($posts as $post)
@@ -46,4 +44,3 @@
         flex-direction: column;
     }
 </style>
-
