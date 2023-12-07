@@ -1,22 +1,20 @@
-{{--showing the news on the website--}}
+{{-- showing the news on the website --}}
 
-{{--extends a layout file--}}
+{{-- extends a layout file --}}
 @extends('layout')
-{{--defines a section called "content"--}}
+{{-- defines a section called "content" --}}
 @section('content')
-
     <div>
-        {{--checks if the $posts variable is empty--}}
+        {{-- checks if the $posts variable is empty --}}
         @if (count($posts) == 0)
-            {{--displays a message--}}
+            {{-- displays a message --}}
             <p>No news found!</p>
         @endif
-        
-        {{--loops through each post in the $posts array--}}
+
+        {{-- loops through each post in the $posts array --}}
         @foreach ($posts as $post)
-            {{--component called "post-card" passing the current post as a parameter--}}
-            <x-post-card :post="$post" />
+            {{-- component called "post-card" passing the current post as a parameter --}}
+            {{-- change to "<x-news-card" to view how it looks --}} <x-post-card :post="$post" />
         @endforeach
     </div>
-    
 @endSection
