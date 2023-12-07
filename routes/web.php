@@ -4,8 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EventController;
-use App\Http\Controllers\ResultController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -18,16 +16,15 @@ use App\Http\Controllers\ResultController;
 |
 */
 
-//only to test, after must be deleted
-Route::get('/', function () {
-    return view('layout');
-});
-//testing kameron can delete
-Route::get('/results', [EventController::class, 'results']);
 /*----------------------POSTS----------------------*/
 //show all the news
 Route::get('/news', [PostController::class, 'index']);
+//create a new post
+Route::get('/news/create', [PostController::class, 'create']);
+//store a new post
+Route::post('/news', [PostController::class, 'store']);
 
+/*----------------------USERS----------------------*/
 //Show register form
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 
@@ -44,16 +41,19 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 //log user in
 Route::post('/login', [UserController::class, 'authenticate'])->middleware('guest');
 
-// Resource controller for events
+/*----------------------EVENTS----------------------*/
 // https://laravel.com/docs/10.x/controllers#actions-handled-by-resource-controller
 Route::resource('events', EventController::class);
 
+// Register for an event
+Route::post('/events/{event}/register', [EventController::class, 'register'])
+    ->middleware('auth')
+    ->name('events.register');
+
+/*-----------------------MISC-----------------------*/
+Route::get('/about-us', function(){
+    return view ('/about-us');
+})->name('about');
+
 //link to the terms and conditions
 Route::view('/terms', 'terms');
-
-//logout
-Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
-
-
-/*--------------Results------------*/
-Route::get('/results', [ResultController::class, 'index']);

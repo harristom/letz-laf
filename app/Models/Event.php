@@ -15,7 +15,7 @@ class Event extends Model
         'description',
         'image_path',
         'date',
-        'distance_metres',
+        'distance',
         'latitude',
         'longitude',
         'organiser_id'
