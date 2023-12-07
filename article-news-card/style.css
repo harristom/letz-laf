@@ -1,0 +1,147 @@
+:root {
+    --primary-color: #ee5c35;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f7f4eb;
+    padding: 10px;
+}
+
+body p:first-child {
+    margin-bottom: 10px;
+}
+
+.news-card {
+    position: relative;
+    width: 300px;
+    height: 380px;
+    background-color: #fff;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.13);
+    overflow: hidden;
+}
+
+.photo {
+    position: relative;
+    height: 200px;
+}
+
+.photo time,
+.category {
+    background-color: var(--primary-color);
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.photo time {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    line-height: 0.9em;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 1;
+    font-weight: 600;
+}
+
+.photo .time .day {
+    font-size: 18px;
+}
+
+.photo .time .month {
+    font-size: 12px;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.category {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    position: absolute;
+    bottom: 100%;
+    left: 0px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.details {
+    padding: 10px;
+    background-color: #fff;
+    position: relative;
+}
+
+h2 {
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+h3 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.summary {
+    visibility: hidden;
+    opacity: 0;
+    margin-bottom: 10px;
+    line-height: 1.8em;
+    color: rgb(119, 119, 119);
+    -webkit-line-clamp: 4;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.time-and-comments {
+    display: flex;
+    color: rgb(182, 182, 182);
+    gap: 15px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.time-and-comments i {
+    margin-right: 5px;
+}
+
+/* Animations */
+
+.news-card:hover .photo img {
+    filter: brightness(0.5);
+    transform: scale(1.1);
+}
+
+.news-card:hover .details{
+    transform: translateY(-100px);
+}
+
+.news-card .photo img,
+.news-card .details {
+    transition: 0.3s;
+}
+
+.news-card:hover .summary {
+    visibility: visible;
+    opacity: 1;
+}
+
+.news-card .summary {
+    transition: opacity 0.3s 0.1s;
+}

@@ -8,7 +8,9 @@
     {{-- event input type should be "file"
     from to create listing need to be told to process image enctype= --}}
 
-<section class="container">
+    <article class="event-card__card--modify">
+        <section class="container">
+    <aside class="event-card__city--modify">{{$event->location}}</aside>
     <div class="imageContainer">
         <a href="{{$event->id}}">
             <img src="{{asset('images/running-is-one-of-the-best-ways-to-stay-fit-royalty-free-image-1036780592-1553033495.jpg')}}" alt="">
@@ -21,33 +23,59 @@
     <div class="eventDate">
         {{-- <span>Month</span>
         <span>Date</span> --}}
-        <p class="date">{{$event->date}}</p>
+        <p class="date"> {{ \Carbon\Carbon::parse($event->date)->format('d/m/Y') }}</p>
     </div>
     <div>
         <h3 class="locationTag">{{$event->name}}</h3>
         <!-- <h4 class="eventTitle">Title</h4> -->
     </div>
 </section>
+<aside class="event-card__title--modify">
+    <p class="event-card__distance--modify"><i class="fa-solid fa-person-running">{{ number_format($event->distance_metres / 1000, 1) }} km
+    </i></p>
+    <p class="event-card__participants--modify"><i class="fa-solid fa-user">{{ count($event->participants) }}</i></p>
+</aside>
+    </article>
+
 
 
 <style>
+:root {
+    --primary-color: #ee5c35;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fffbef;
+    padding: 10px;
+}
  
  .container{
-    margin: 20px;
+    /* margin: 10px;
+    position: relative; */
     position: relative;
+    width: 300px;
+    height: 280px;
+    background-color: #fff;
+    overflow: hidden;
+    margin: 40px;
 }
 .imageContainer{
     height: 200px;
-    width:300px ;
     position: relative;
 }
 
 .container img {
     height: 100%;
     width: 100%;
-    filter: grayscale(100%);
     transition: 0.5s ease;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     box-shadow: 0 1px 2px rgba(0,0,0,0.15);
 }
 
@@ -88,14 +116,14 @@ span{
 }
 
 .locationTag{
-    background-color: orange;
+
     width: 200px;
-    color: white;
+    color: var(--primary-color);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bold;
     position: absolute;
     border-radius: 5px;
-    top: 60% ;
+    /* top: 60% ; */
     margin-left: 9px ;
     margin-top: 10px;
 }
