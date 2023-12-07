@@ -36,6 +36,11 @@
             font-family: 'Lato', sans-serif;
         }
 
+        main {
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+
         a {
             text-decoration: none;
             color: var(--primary-color);
