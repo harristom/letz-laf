@@ -16,36 +16,92 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" ></script>
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     {{-- Leaflet Geosearch https://smeijer.github.io/leaflet-geosearch/ --}}
     <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.11.0/dist/geosearch.css" />
     <script src="https://unpkg.com/leaflet-geosearch@3.11.0/dist/geosearch.umd.js"></script>
+    {{-- Google Fonts --}}
+    <link
+        href="https://fonts.googleapis.com/css?family=Lato:100,100italic,300,300italic,regular,italic,700,700italic,900,900italic"
+        rel="stylesheet" />
     <style>
-        footer {
+        /* Base styles */
+        :root {
+            --page-bg: #f7f4eb;
+            --primary-color: #ee5c35;
+            --card-bg: white;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        button,
+        input[type="button"],
+        input[type="submit"],
+        .button {
+            border: none;
+            color: var(--card-bg);
+            padding: 10px 20px;
+            border-radius: 2px;
+            cursor: pointer;
+            text-transform: uppercase;
+            border-color: var(--primary-color);
+            border-style: solid;
+            border-width: 2px;
+            transition: background 200ms;
+            background: linear-gradient(var(--primary-color) 0 0) right / 100% 100% no-repeat;
+            transition: 175ms;
+        }
+
+        button:hover,
+        input[type="button"]:hover,
+        input[type="submit"]:hover,
+        button:hover {
+            background: linear-gradient(var(--primary-color) 0 0) right / 0% 100% no-repeat;
+            color: var(--primary-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- */
+
+        /* footer {
             background-color: orange;
         }
 
-        nav{
+        nav {
             display: flex;
         }
 
-        ul{
-            list-style: none;
+        ul {
             display: flex;
-
             gap: 50px;
         }
 
-        .profilePicture{
+        .profilePicture {
             height: 100px;
             width: 100px;
             border-radius: 50%;
         }
+
         .logo {
             height: 100px;
             width: 100px;
             border-radius: 50%;
-        }
+        } */
+
     </style>
     <title>LëtzLaf</title>
 </head>
@@ -63,7 +119,7 @@
                 <a href="/news">News</a>
             </li>
             <li>
-                <a href="{{Route('about')}}">About Us</a>
+                <a href="{{ Route('about') }}">About Us</a>
             </li>
             @auth
                 <li>
@@ -77,8 +133,9 @@
                 </li>
                 <li>
                     <a href="/profile">
-                        {{ auth()->user()->first_name }} {{auth()->user()->last_name}}
-                        <img class="profilePicture" src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : asset('images/profilePicturePlaceholder.jpeg') }}">
+                        {{ auth()->user()->first_name }} {{ auth()->user()->last_name }}
+                        <img class="profilePicture"
+                            src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : asset('images/profilePicturePlaceholder.jpeg') }}">
                     </a>
                 </li>
             @else
