@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.11.0/dist/geosearch.css" />
     <script src="https://unpkg.com/leaflet-geosearch@3.11.0/dist/geosearch.umd.js"></script>
     <style>
+    
         footer {
             background-color: orange;
         }
@@ -46,6 +47,44 @@
             width: 100px;
             border-radius: 50%;
         }
+        
+       
+        :root {
+            --page-bg: #f7f4eb;
+            --primary-color: #ee5c35;
+            --card-bg: white;
+        }
+
+        /*-------input fields------*/
+        input[type=text], input[type=email], input[type=password], input[type=date], input[type=file], input[type=textarea]{
+            padding: 10px;
+            border-radius: 3px;
+            border: 1px solid lightgray;
+        }
+
+        /*-------radio buttons------*/
+        input[type=radio]:checked{
+            accent-color: #ee5c35;
+        }
+
+        /*-------file upload------*/
+        input::file-selector-button {
+            font-weight: bold;
+            color: white;
+            background-color: var(--primary-color);
+            padding: 0.5em;
+            border: thin solid var(--primary-color);
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        /*-------select option------*/
+        select {
+            border: 1px solid lightgray;
+            padding: 10px;
+            border-radius: 3px;
+        }
+
     </style>
     <title>LëtzLaf</title>
 </head>
