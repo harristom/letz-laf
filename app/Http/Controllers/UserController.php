@@ -133,7 +133,7 @@ class UserController extends Controller
             'birthdate' => 'required',
             'gender' => 'required',
             'profile_picture' => ['image','mimes:png,jpg,jpeg','max:2048'],
-            'email' => ['required', 'email', Rule::unique('users', 'email')],
+            'email' => ['required', 'email'],
             'password' => [
                 'required', Password::min(8)
                     ->mixedCase()
@@ -147,14 +147,14 @@ class UserController extends Controller
         //upload the new picture
         if($request->hasFile('profile_picture'))
         {
-            //Replace the old logo with the new one. Delete the old logo from the storage.
+            //Replace the old picture with the new one. Delete the old picture from the storage.
             $formFields['profile_picture'] = $request->file('profile_picture')->store('photos', 'public');
         }
 
-        //Update the gig
+        //Update the user
         $user->update($formFields);
 
-        //Redirect to the gig detail page
+        //Redirect to the user detail page
         return redirect('profile/'. $user->id)->with('message', 'Profile updated Successfully!');
     }
 

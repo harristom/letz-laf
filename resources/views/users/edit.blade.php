@@ -2,7 +2,7 @@
 
 @section('information')
 
-    <form action="/users/{{$user->id}}" method="post" enctype="multipart/form-data">
+    <form action="/profile/{{$user->id}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -10,27 +10,27 @@
             <div>
                 <label for="first_name">First Name</label>
                 <input type="text" id="first_name" name="first_name" value="{{$user->first_name}}">
+                @error('first_name')
+                    <p>{{ $message }}</p>
+                @enderror
             </div>
-            @error('first_name')
-                <p>{{ $message }}</p>
-            @enderror
+            
             <div>
                 <label for="last_name">Last Name</label>
                 <input type="text" id="last_name" name="last_name" value="{{$user->last_name}}">
-                
+                @error('last_name')
+                    <p>{{ $message }}</p>
+                @enderror
             </div>
-            @error('last_name')
-                <p>{{ $message }}</p>
-            @enderror
         </div>
         <div class="profile-info-item">
             <div>
                 <label for="birthdate">Date Of Birth</label>
                 <input type="date" id="birthdate" name="birthdate" value="{{$user->datebirth}}">
+                @error('birthdate')
+                    <p>{{ $message }}</p>
+                @enderror
             </div>
-            @error('birthdate')
-                <p>{{ $message }}</p>
-            @enderror
             <div>
                 <label for="gender" id="gender">Gender</label>
                 <div class="gender">
@@ -47,33 +47,33 @@
                         Prefer not to say
                     </label>
                 </div>
+                @error('gender')
+                    <p>{{ $message }}</p>
+                @enderror
             </div>
-            @error('gender')
-                <p>{{ $message }}</p>
-            @enderror
             <div>
                 <label for="profile_picture">Picture</label>
                 <input type="file" id="profile_picture" name="profile_picture">
+                @error('profile_picture')
+                    <p>{{ $message }}</p>
+                @enderror
             </div>
-            @error('profile_picture')
-                <p>{{ $message }}</p>
-            @enderror
         </div>
         <div class="profile-info-item-address">
             <div>
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" value="{{$user->email}}">
+                @error('email')
+                    <p>{{ $message }}</p>
+                @enderror
             </div>
-            @error('email')
-                <p>{{ $message }}</p>
-            @enderror
             <div>
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password">
+                @error('password')
+                    <p>{{ $message }}</p>
+                @enderror
             </div>
-            @error('password')
-                <p>{{ $message }}</p>
-            @enderror
         </div>
         <div class="update-btn">
             <button>UPDATE</button>

@@ -1,9 +1,9 @@
 @extends('layout')
 
 @section('content')
-    <div class="profile">
+    <div class="profile-card">
 
-        <div class="profile-picture">
+        <div class="profile-card__picture">
             <img src="{{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : asset('images/profilePicturePlaceholder.jpeg') }}" alt="">
             <h3>{{$user->first_name}} {{$user->last_name}}</h3>
             <div>
@@ -22,7 +22,7 @@
                 <div>
                     <form method="POST" action="/logout">
                         @csrf
-                        <button class="btn-logout-profile">
+                        <button class="profile-card__picture__btn">
                             <i class="fa-solid fa-door-closed"></i>
                             Logout
                         </button>
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div class="profile-info">
+        <div class="profile-card__info">
             @yield('information')
         </div>
 
@@ -40,11 +40,12 @@
 @endsection
 
 <style>
-    .profile-picture h3{
+
+   .profile-card__picture h3{
         font-size: 30px;
     }
 
-    .profile-picture a, .profile-picture div{
+   .profile-card__picture a,.profile-card__picture div{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -56,25 +57,25 @@
         color: black;
     }
 
-    .profile-picture div a, .profile-picture div div{
+   .profile-card__picture div a,.profile-card__picture div div{
         display: flex;
         flex-direction: row;
         align-items: center;
         padding: 15px 0;
-        border: 1px solid orange;
+        border: 1px solid #f29500;
         cursor: pointer;
     }
 
-    .profile-picture div div form{
+   .profile-card__picture div div form{
         margin-bottom: 0;
     }
 
-    .profile-picture div a.active {
-        background-color: orange;  
+   .profile-card__picture div a.active {
+        background-color: #f29500;  
         color: white;
     }
 
-    .profile {
+   .profile-card {
         width: 70%;
         display: flex;
         flex-direction: row;
@@ -82,39 +83,38 @@
         margin: 20px auto;
     }
 
-    .profile-picture{
+   .profile-card__picture{
         width: 30%;
         padding-top: 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        border-radius: 20px; 
-        box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+        border-radius: 3px; 
     }
 
-    .profile-picture img{
+   .profile-card__picture img{
         width: 150px;
         height: 150px;
         border-radius: 100%;
-        border: 2px outset orange;
+        border: 2px outset #f29500;
     }
 
-    .profile-info{
+   .profile-card__info{
         width: 70%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        border-radius: 20px;
-        box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+        border-radius: 3px;
         padding-top: 30px;
     }
 
-    .btn-logout-profile{
+    .profile-card__picture__btn{
         background-color: transparent;
         border: none;
         font-size: 16px;
+        cursor: pointer;
     }
 
 </style>

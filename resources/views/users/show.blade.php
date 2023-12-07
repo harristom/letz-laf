@@ -2,7 +2,7 @@
 
 @section('information')
 
-    <div class="profile-info-item">
+    <div class="profile-card__info__item">
         <div>
             <h3>First Name</h3>
             <p>{{$user->first_name}}</p>
@@ -13,7 +13,7 @@
             
         </div>
     </div>
-    <div class="profile-info-item">
+    <div class="profile-card__info__item">
         <div>
             <h3>Date Of Birth</h3>
             <p>{{date("F j, Y", strtotime($user->birthdate)) }}</p>
@@ -23,7 +23,7 @@
             <p>{{$user->gender}}</p>
         </div>
     </div>
-    <div class="profile-info-item">
+    <div class="profile-card__info__item">
         <div>
             <h3>Email</h3>
             <p>{{$user->email}}</p>
@@ -38,7 +38,7 @@
 
 <style>
 
-    .profile-info-item{
+    .profile-card__info__item{
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -47,39 +47,27 @@
         padding: 0 20px 40px 20px;
     }
 
-    .profile-info-item div{
+    .profile-card__info__item div{
         display: flex;
         flex-direction: column;
         width: 300px;
     }
 
-    .profile-info-item h3{
+    .profile-card__info__item h3{
         font-weight: bold;
         font-size: 20px;
         margin-bottom: 20px;
     }
 
-    .profile-info-item #gender{
+    .profile-card__info__item #gender{
         padding-bottom: 20px;
         margin-bottom: 0;
     }
 
-    .profile-info-item p{
+    .profile-card__info__item p{
         padding: 10px;
         font-size: 15px;
         border-radius: 10px;
-        border: 1px solid lightgray;
-    }
-
-    div.gender{
-        display: flex;
-        flex-direction: row;
-        padding-bottom: 0;
-    }
-
-    div.gender h3{
-        margin-right: 20px;
-        align-items: center;
     }
 
 </style>
