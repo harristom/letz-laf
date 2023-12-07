@@ -92,31 +92,57 @@
         margin: 0 auto 0 auto;
     }
 
+    
     button,
-        input[type="button"],
-        input[type="submit"],
-        .button {
-            border: none;
-            color: var(--card-bg);
-            padding: 10px 20px;
-            border-radius: 2px;
-            cursor: pointer;
-            text-transform: uppercase;
-            border-color: var(--primary-color);
-            border-style: solid;
-            border-width: 2px;
-            transition: background 200ms;
-            background: linear-gradient(var(--primary-color) 0 0) right / 100% 100% no-repeat;
-            transition: 175ms;
-        }
+    input[type="button"],
+    input[type="submit"],
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        color: white;
+        border-radius: 2px;
+        text-transform: uppercase;
+        border: 2px solid var(--primary-color);
+        cursor: pointer;
+        position: relative;
+        background-color: var(--primary-color);
+        overflow: hidden;
+        z-index: 1;
+    }
 
-        button:hover,
-        input[type="button"]:hover,
-        input[type="submit"]:hover,
-        button:hover {
-            background: linear-gradient(var(--primary-color) 0 0) right / 0% 100% no-repeat;
-            color: var(--primary-color);
-        }
+    /*BUTTONS*/
+
+    button::before,
+    input[type="button"]::before,
+    input[type="submit"]::before,
+    .button::before{
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 101%;
+        height: 100%;
+        background-color: white;
+        transform: translateX(-100%);
+        transition: all .3s;
+        z-index: -1;
+    }
+
+    button:hover::before,
+    input[type="button"]:hover::before,
+    input[type="submit"]:hover::before,
+    .button:hover::before{
+        transform: translateX(0);
+        color: black;
+    }
+
+    button:hover,
+    input[type="button"]:hover,
+    input[type="submit"]:hover,
+    .button:hover {
+        color: black;
+        filter: contrast(200%);
+    }
 
 
 </style>
