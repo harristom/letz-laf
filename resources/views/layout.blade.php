@@ -56,7 +56,7 @@
         }
 
         /*-------input fields------*/
-        input[type=text], input[type=email], input[type=password], input[type=date], input[type=file], input[type=textarea]{
+        input[type=text], input[type=email], input[type=password], input[type=date], input[type=textarea]{
             padding: 10px;
             border-radius: 3px;
             border: 1px solid lightgray;
@@ -68,11 +68,16 @@
         }
 
         /*-------file upload------*/
+        input[type=file]{
+            padding: 10px 10px 8px 10px;
+            border-radius: 3px;
+            border: 1px solid lightgray;
+        }
+
         input::file-selector-button {
             font-weight: bold;
             color: white;
             background-color: var(--primary-color);
-            padding: 0.5em;
             border: thin solid var(--primary-color);
             border-radius: 3px;
             cursor: pointer;
@@ -84,6 +89,8 @@
             padding: 10px;
             border-radius: 3px;
         }
+        
+        
 
     </style>
     <title>LëtzLaf</title>

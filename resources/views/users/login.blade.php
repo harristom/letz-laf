@@ -91,7 +91,8 @@
     .login-container__form--div--p{
         margin: 0 auto 0 auto;
     }
-
+    
+    /*BUTTONS*/
     
     button,
     input[type="button"],
@@ -109,8 +110,6 @@
         overflow: hidden;
         z-index: 1;
     }
-
-    /*BUTTONS*/
 
     button::before,
     input[type="button"]::before,
