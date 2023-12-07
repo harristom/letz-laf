@@ -2,19 +2,15 @@
     @import url('https://fonts.googleapis.com/css?family=Lato');
 
     .weather-card {
-        box-sizing: border-box;
-        font-family: 'Lato', sans-serif;
         display: flex;
         justify-content: space-between;
         align-items: end;
-        margin: 15px;
-        border-radius: 20px;
+        margin: 10px 0px;
+        border-radius: 3px;
         padding: 20px;
-        width: 400px;
-        height: 300px;
+        aspect-ratio: 4 / 3;
         color: #444444;
         background-color: white;
-        box-shadow: 0px 0px 25px 1px rgba(50, 50, 50, 0.1);
     }
 
     .weather-icon {
@@ -23,11 +19,11 @@
     }
 
     .temperature {
-        font-size: 3.5em;
+        font-size: 2em;
     }
 
     .conditions {
-        font-size: 2.2em;
+        font-size: 1.2em;
     }
 </style>
 

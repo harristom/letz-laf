@@ -42,50 +42,7 @@
         </div>
         <div>
             <label for="location">Location: </label>
-            <div id="map"></div>
-            <script>
-                let map;
-                let marker;
-                if ({{ old('latitude') ?? 0 }} && {{ old('longitude') ?? 0 }}) {
-                    // If we already have a lat and long, use those for the marker
-                    map = L.map('map').setView([{{ old('latitude') }}, {{ old('longitude') }}], 17);
-                    // TODO: This marker cannot currently be dragged
-                    marker = L.marker([{{ old('latitude') }}, {{ old('longitude') }}]).addTo(map);
-                } else {
-                    map = L.map('map').setView([{{ $event->latitude }}, {{ $event->longitude }}], 17);
-                    // TODO: This marker cannot currently be dragged
-                    marker = L.marker([{{ $event->latitude }}, {{ $event->longitude }}]).addTo(map);
-                }
-
-                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                }).addTo(map);
-
-                const search = new GeoSearch.GeoSearchControl({
-                    provider: new GeoSearch.OpenStreetMapProvider(),
-                    style: 'bar',
-                    marker: {
-                        icon: new L.Icon.Default(),
-                        draggable: true
-                    },
-                    showPopup: false
-                });
-
-                map.addControl(search);
-
-                map.on('geosearch/showlocation', (result) => {
-                    // console.log(result);
-                    if (marker) marker.remove();
-                    document.querySelector('input[name="latitude"]').value = result.location.y;
-                    document.querySelector('input[name="longitude"]').value = result.location.x;
-                });
-
-                map.on('geosearch/marker/dragend', (result) => {
-                    // console.log(result);
-                    document.querySelector('input[name="latitude"]').value = result.location.lat;
-                    document.querySelector('input[name="longitude"]').value = result.location.lng;
-                });
-            </script>
+            <x-map-card-picker />
             <input type="hidden" name="latitude" required value="{{ old('latitude') ?? $event->latitude }}">
             @error('latitude')
                 {{ $message }}
