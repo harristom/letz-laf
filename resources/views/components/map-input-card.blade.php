@@ -32,6 +32,8 @@
 
     // Add search to map
     map.addControl(search);
+    // Redraw the map once it has a size
+    setInterval(() => map.invalidateSize(), 100);
 
     // When a search result is picked
     // remove any existing marker

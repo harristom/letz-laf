@@ -93,6 +93,11 @@
                         <button>Join</button>
                     </form>
                     <a href="{{ route('events.edit', $event) }}" class="button">Edit</a>
+                    <form action="{{ route('events.destroy', $event) }}" method="POST" class="event-details__form">
+                        @csrf
+                        @method('DELETE')
+                        <button>Delete</button>
+                    </form>
                 </div>
                 @if (count($event->results) > 0)
                     <x-event-results-table :event="$event" />

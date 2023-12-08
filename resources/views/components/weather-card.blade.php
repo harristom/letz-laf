@@ -40,9 +40,9 @@
 <script defer>
     const lat = {{ $event->latitude }};
     const long = {{ $event->longitude }};
-    // TODO: Change to use real even time (currently has a problem due to forecasts being too far ahead possibly)
-    // const time = {{ \Carbon\Carbon::parse($event->date)->timestamp }};
-    const time = 1701889706;
+    // TODO: Change to use real event time (currently has a problem due to forecasts being too far ahead possibly)
+    const time = {{ \Carbon\Carbon::parse($event->date)->timestamp }};
+    // const time = 1701889706;
     const KEY = 'FanFIXEd9GYfroPCKADlttIyYnZ1UMH3';
     fetch(`https://api.pirateweather.net/forecast/${KEY}/${lat},${long},${time}?units=ca`)
         .then(res => res.json())
