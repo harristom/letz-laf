@@ -25,7 +25,6 @@
         href="https://fonts.googleapis.com/css?family=Lato:100,100italic,300,300italic,regular,italic,700,700italic,900,900italic"
         rel="stylesheet" />
     <style>
-
         /* Base styles */
         :root {
             --page-bg: #f7f4eb;
@@ -103,19 +102,23 @@
             border-radius: 50%;
 
         /*-------input fields------*/
-        input[type=text], input[type=email], input[type=password], input[type=date], input[type=textarea]{
+        input[type=text],
+        input[type=email],
+        input[type=password],
+        input[type=date],
+        input[type=textarea] {
             padding: 10px;
             border-radius: 3px;
             border: 1px solid lightgray;
         }
 
         /*-------radio buttons------*/
-        input[type=radio]:checked{
+        input[type=radio]:checked {
             accent-color: #ee5c35;
         }
 
         /*-------file upload------*/
-        input[type=file]{
+        input[type=file] {
             padding: 10px 10px 8px 10px;
             border-radius: 3px;
             border: 1px solid lightgray;
@@ -136,8 +139,6 @@
             padding: 10px;
             border-radius: 3px;
         }
-        
-
     </style>
     <title>LëtzLaf</title>
 </head>
