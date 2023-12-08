@@ -114,7 +114,6 @@
 
     .user-edit-container__header-h2{
         margin: 0;
-        font-family: "Inter", sans-serif;
         font-size: 40px;
         font-weight: 700;
         color: var(--primary-color);

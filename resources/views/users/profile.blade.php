@@ -71,7 +71,7 @@
         flex-direction: row;
         align-items: center;
         padding: 15px 0;
-        border: 1px solid #f29500;
+        border: 1px solid var(--primary-color);
         cursor: pointer;
     }
 
@@ -80,7 +80,7 @@
     }
 
    .profile-card__picture div a.active {
-        background-color: #f29500;  
+        background-color: var(--primary-color);  
         color: white;
     }
 
@@ -106,7 +106,7 @@
         width: 150px;
         height: 150px;
         border-radius: 100%;
-        border: 2px outset #f29500;
+        border: 2px outset var(--primary-color);
     }
 
    .profile-card__info{
