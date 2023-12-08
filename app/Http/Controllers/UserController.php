@@ -25,16 +25,12 @@ class UserController extends Controller
             'birthdate' => 'required',
             'gender' => 'required',
             'profile_picture' => ['image','mimes:png,jpg,jpeg','max:2048'],
-            'email' => ['required', 'email', Rule::unique('users', 'email')],
+            'email' => ['required', 'email', 'unique:users'],
             'password' => [
-                'required', Password::min(8)
-                    ->mixedCase()
-                    ->numbers()
-                    ->symbols()
-                    ->uncompromised(2),
-                'confirmed'
+                'required',
+                'confirmed',
+                'min:8'
             ],
-            
             
         ]);
 
@@ -43,7 +39,12 @@ class UserController extends Controller
         {
             $formFields['profile_picture'] = $request->file('profile_picture')->store('photos', 'public');
         };
+        //remove _ from prefer not to say gender
+        $formFields['gender'] = str_replace('_', ' ', $formFields['gender']);
 
+        //store user role as member
+        $formFields['role'] = 'Member';
+        //hash password
         $formFields['password'] = bcrypt($formFields['password']);
 
         $user = User::create($formFields);
@@ -51,6 +52,7 @@ class UserController extends Controller
         auth()->login($user);
 
         return redirect('/')->with('message', 'User created and logged in Successfully!');
+
     }
 
     public function logout(Request $request)

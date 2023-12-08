@@ -90,13 +90,14 @@
             list-style: none;
         }
 
-        /* --- */
+    
 
-        /* footer {
-            background-color: orange;
+        footer {
+            background-color: #ee5c35;
+            padding: 10px;
         }
-
-        nav {
+        /* --- */
+      /*  nav {
             display: flex;
         }
 
@@ -115,8 +116,47 @@
             height: 100px;
             width: 100px;
             border-radius: 50%;
-        } */
+        }
+        */
 
+        /*-------input fields------*/
+        input[type=text],
+        input[type=email],
+        input[type=password],
+        input[type=date],
+        input[type=textarea] {
+            padding: 10px;
+            border-radius: 3px;
+            border: 1px solid lightgray;
+        }
+
+        /*-------radio buttons------*/
+        input[type=radio]:checked {
+            accent-color: var(--primary-color);
+        }
+
+        /*-------file upload------*/
+        input[type=file] {
+            padding: 10px 10px 8px 10px;
+            border-radius: 3px;
+            border: 1px solid lightgray;
+        }
+
+        input::file-selector-button {
+            font-weight: bold;
+            color: white;
+            background-color: var(--primary-color);
+            border: thin solid var(--primary-color);
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        /*-------select option------*/
+        select {
+            border: 1px solid lightgray;
+            padding: 10px;
+            border-radius: 3px;
+        }
     </style>
     <title>LëtzLaf</title>
 </head>
