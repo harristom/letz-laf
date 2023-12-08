@@ -16,7 +16,11 @@ use App\Http\Controllers\EventController;
 |
 */
 
+//link to homepage
+Route::view('/', 'index');
+
 /*----------------------POSTS----------------------*/
+
 //show all the news
 Route::get('/news', [PostController::class, 'index']);
 //create a new post
