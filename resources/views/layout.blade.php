@@ -90,13 +90,14 @@
             list-style: none;
         }
 
-        /* --- */
+    
 
-        /* footer {
-            background-color: orange;
+        footer {
+            background-color: #ee5c35;
+            padding: 10px;
         }
-
-        nav {
+        /* --- */
+      /*  nav {
             display: flex;
         }
 
