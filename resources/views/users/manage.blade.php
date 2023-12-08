@@ -68,17 +68,7 @@
 @endsection
 
 <style>
-    *{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body{
-        margin: 0;
-        padding: 0;
-        background-color: #f2f4f6;
-    }
+    
 
     .users-manage-container__header{
         width: 80%;
@@ -87,21 +77,6 @@
         flex-direction: row;
         justify-content: space-between;
     }
-
-    .users-manage-container__table{
-        width: 80%;
-        margin: 0 auto;
-    }
-
-    .users-manage-container__table td,
-    .users-manage-container__table th {
-        width: 100%;
-        padding: 15px 0;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
     
     /*select the second td and th*/
     .users-manage-container__table--title th:nth-child(2),
@@ -109,39 +84,9 @@
         width: 20%;
     }
     
-    .users-manage-container__table--tr--one {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        background-color: #fffefe;
-    }
-    
     .users-manage-container__table--title {
         display: flex;
         flex-direction: row;
-    }
-    
-    .users-manage-container__table--tr--two {
-        display: flex;
-        flex-direction: row;
-        background-color: #fffefe;
-    }
-
-    .users-manage-container__table--tr--two:nth-child(even) {
-        background-color: #f2f4f6;
-    }
-    /*.users-manage-container__table--tr--two:hover{
-        background-color: #f2f4f6;
-    }*/
-    
-    .users-manage-container__table--btn {
-        background: rgb(252,121,69);
-        background: linear-gradient(310deg, rgba(252,121,69,0.8939950980392157) 45%, rgba(252,192,69,0.8715861344537815) 100%);
-        color: white;
-        border: none;
-        padding: 10px;
-        border-radius: 5px;
-        cursor: pointer;
     }
 
     .users-manage-container__table--img{
