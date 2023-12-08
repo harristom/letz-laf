@@ -1,4 +1,6 @@
-<body>
+@extends('layout')
+
+@section('content')
 
     <h3>About us</h3>
 
@@ -56,8 +58,7 @@
         </div>
         
     </div>
-    
-</body>
+@endsection
 
 <style>
 

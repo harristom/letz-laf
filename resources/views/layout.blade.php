@@ -6,35 +6,156 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="images/favicon.ico" />
+    {{-- Font Awesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{-- AlpineJS --}}
     <script src="//unpkg.com/alpinejs" defer></script>
+    {{-- Leaflet --}}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    {{-- Leaflet Geosearch https://smeijer.github.io/leaflet-geosearch/ --}}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.11.0/dist/geosearch.css" />
+    <script src="https://unpkg.com/leaflet-geosearch@3.11.0/dist/geosearch.umd.js"></script>
+    {{-- Google Fonts --}}
+    <link
+        href="https://fonts.googleapis.com/css?family=Lato:100,100italic,300,300italic,regular,italic,700,700italic,900,900italic"
+        rel="stylesheet" />
     <style>
-        footer {
-            background-color: orange;
+        /* Base styles */
+        :root {
+            --page-bg: #f7f4eb;
+            --primary-color: #ee5c35;
+            --card-bg: white;
         }
 
-        nav{
-            display: flex;
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--page-bg)
         }
 
-        ul{
+        main {
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        button,
+        input[type="button"],
+        input[type="submit"],
+        .button {
+            font-family: inherit;
+            border: none;
+            color: var(--card-bg);
+            padding: 10px 20px;
+            border-radius: 2px;
+            cursor: pointer;
+            text-transform: uppercase;
+            border-color: var(--primary-color);
+            border-style: solid;
+            border-width: 2px;
+            /* I know this is crazy but it fixes the flicker */
+            /* The bg color is orange with a 0% width solid white "gradient" on top */
+            /* The gradient grows to 100% width on hover */
+            background-color: var(--primary-color);
+            background-image: linear-gradient(white 0 0);
+            background-size: 0% 100%;
+            background-repeat: no-repeat;
+            transition: 175ms;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+
+        button:hover,
+        input[type="button"]:hover,
+        input[type="submit"]:hover,
+        .button:hover {
+            background-size: 100% 100%;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        ul {
             list-style: none;
-            display: flex;
+        }
 
+    
+
+        footer {
+            background-color: #ee5c35;
+            padding: 10px;
+        }
+        /* --- */
+      /*  nav {
+            display: flex;
+        }
+
+        ul {
+            display: flex;
             gap: 50px;
         }
 
-        .profilePicture{
+        .profilePicture {
             height: 100px;
             width: 100px;
             border-radius: 50%;
         }
+
         .logo {
             height: 100px;
             width: 100px;
             border-radius: 50%;
+        }
+        */
+
+        /*-------input fields------*/
+        input[type=text],
+        input[type=email],
+        input[type=password],
+        input[type=date],
+        input[type=textarea] {
+            padding: 10px;
+            border-radius: 3px;
+            border: 1px solid lightgray;
+        }
+
+        /*-------radio buttons------*/
+        input[type=radio]:checked {
+            accent-color: var(--primary-color);
+        }
+
+        /*-------file upload------*/
+        input[type=file] {
+            padding: 10px 10px 8px 10px;
+            border-radius: 3px;
+            border: 1px solid lightgray;
+        }
+
+        input::file-selector-button {
+            font-weight: bold;
+            color: white;
+            background-color: var(--primary-color);
+            border: thin solid var(--primary-color);
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        /*-------select option------*/
+        select {
+            border: 1px solid lightgray;
+            padding: 10px;
+            border-radius: 3px;
         }
     </style>
     <title>LëtzLaf</title>
@@ -53,7 +174,7 @@
                 <a href="/news">News</a>
             </li>
             <li>
-                <a href="/about">About Us</a>
+                <a href="{{ Route('about') }}">About Us</a>
             </li>
             @auth
                 <li>

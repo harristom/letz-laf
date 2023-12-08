@@ -15,17 +15,24 @@ class Event extends Model
         'description',
         'image_path',
         'date',
-        'distance_metres',
+        'distance',
         'latitude',
         'longitude',
         'organiser_id'
     ];
 
-    public function participants() {
+    public function participants()
+    {
         return $this->belongsToMany(User::class, 'event_registrations');
     }
 
-    public function organiser() {
+    public function organiser()
+    {
         return $this->belongsTo(User::class, 'organiser_id');
+    }
+
+    public function results()
+    {
+        return $this->hasMany(Result::class)->orderBy('finish_time');
     }
 }

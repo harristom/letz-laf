@@ -16,15 +16,19 @@ use App\Http\Controllers\EventController;
 |
 */
 
-//only to test, after must be deleted
-Route::get('/', function () {
-    return view('layout');
-});
+//link to homepage
+Route::view('/', 'index');
 
 /*----------------------POSTS----------------------*/
+
 //show all the news
 Route::get('/news', [PostController::class, 'index']);
+//create a new post
+Route::get('/news/create', [PostController::class, 'create']);
+//store a new post
+Route::post('/news', [PostController::class, 'store']);
 
+/*----------------------USERS----------------------*/
 //Show register form
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 
@@ -52,24 +56,17 @@ Route::get('/profile/{id}/edit', [UserController::class, 'edit'])
 Route::put('/profile/{id}', [UserController::class, 'update'])
 ->where('id', '[0-9]+')->middleware('auth');
 
-
-
-// Resource controller for events
+/*----------------------EVENTS----------------------*/
 // https://laravel.com/docs/10.x/controllers#actions-handled-by-resource-controller
 Route::resource('events', EventController::class);
-
-//Show all events
-Route::get('/events', [EventController::class, 'index']);
-
-Route::get('/about-us', function(){
-    return view ('about-us');
-});
-
-//link to the terms and conditions
-Route::view('/terms', 'terms');
-
 
 // Register for an event
 Route::post('/events/{event}/register', [EventController::class, 'register'])
     ->middleware('auth')
     ->name('events.register');
+
+/*-----------------------MISC-----------------------*/
+Route::view('/about-us', 'about-us');
+
+//link to the terms and conditions
+Route::view('/terms', 'terms')->name('terms-and-cond');
