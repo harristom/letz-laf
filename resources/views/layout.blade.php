@@ -156,25 +156,75 @@
             padding: 10px;
             border-radius: 3px;
         }
+        /* --------Nav Bar------- */
+        .layout__nav-bar{
+            background-color: var(--card-bg);
+            width: 100%;
+            height: 5%;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            /* justify-content: space-between; */
+        }
+        .nav-bar__logo--design{
+            width: 100%;
+        }
+        .layout__nav-bar ul{
+            text-align: right;
+            display: flex;
+            margin-right: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .layout__nav-bar li {
+         margin-right: 15px; 
+        }
+
+        .nav-bar__left-links--access,
+        .nav-bar__right-side--login-register{
+            display: flex;
+        }
+
+        .nav-bar__right-side--login-register{
+            margin-left: 15px;
+        }
+
+        .nav-bar__left-links--access{
+            margin-right: 830px;
+        }
+
+        .layout__nav-bar a{
+            width: 50px;
+            height: 50px;
+        }
+
+
+
+
+        
+
     </style>
     <title>LëtzLaf</title>
 </head>
 
 <body>
-    <nav>
-        <a href="/">
-            <img class="logo" src="{{ asset('images/letzlogo.png') }}" alt="" />
-        </a>
+    <nav class="layout__nav-bar">
         <ul>
-            <li>
-                <a href="/events">Events</a>
-            </li>
-            <li>
-                <a href="/news">News</a>
-            </li>
-            <li>
-                <a href="{{ Route('about') }}">About Us</a>
-            </li>
+            <a href="/">
+                <img class="nav-bar__logo--design" src="{{ asset('images/Designer.png') }}" alt="" />
+            </a>
+            <div class="nav-bar__left-links--access">
+                <li>
+                    <a href="/events">Events</a>
+                </li>
+                <li>
+                    <a href="/news">News</a>
+                </li>
+                <li>
+                    <a href="{{ Route('about') }}">About Us</a>
+                </li>
+            </div>
             @auth
                 <li>
                     <form method="POST" action="/logout">
@@ -193,18 +243,21 @@
                     </a>
                 </li>
             @else
+            <div class="nav-bar__right-side--login-register">
                 <li>
-                    <a href="/register">
-                        <i class="fa-solid fa-user-plus"></i>
-                        Register
-                    </a>
-                </li>
-                <li>
-                    <a href="/login">
-                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                        Login
-                    </a>
-                </li>
+                <a href="/register">
+                    <i class="fa-solid fa-user-plus"></i>
+                    Register
+                </a>
+            </li>
+            <li>
+                <a href="/login">
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    Login
+                </a>
+            </li>  
+            </div>
+          
             @endauth
         </ul>
     </nav>
