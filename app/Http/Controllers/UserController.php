@@ -95,7 +95,6 @@ class UserController extends Controller
 
     }
 
-    
     //Show only the specific user profile
     public function show($id){
         return view('users.show', [

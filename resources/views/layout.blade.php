@@ -157,6 +157,37 @@
             padding: 10px;
             border-radius: 3px;
         }
+
+        /*-----------table-----------*/
+
+        table{
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        table th,
+        table td {
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        table tr{
+            background-color: transparent;
+        }
+
+        tr:nth-child(1) {
+            background-color: transparent;
+        }
+
+        tr:nth-child(2) {
+            background-color: white;
+        }
+        
+        td:nth-child(even){
+            background-color: transparent;
+        }
+
+
     </style>
     <title>LëtzLaf</title>
 </head>
