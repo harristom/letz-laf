@@ -5,7 +5,10 @@
 
         <div class="profile-card__picture">
             <img src="{{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : asset('images/profilePicturePlaceholder.jpeg') }}" alt="">
-            <h3>{{$user->first_name}} {{$user->last_name}}</h3>
+            <h3>
+                {{$user->first_name}} {{$user->last_name}} <br>
+                <small>{{$user->role}}</small>
+            </h3>
             <div>
 
                 <a class="{{ request()->is('profile/'.$user->id) ? 'active' : '' }}" href="/profile/{{$user->id}}">Account Details</a>

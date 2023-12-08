@@ -132,6 +132,7 @@ class UserController extends Controller
             'last_name' => 'required',
             'birthdate' => 'required',
             'gender' => 'required',
+            'role' => 'required',
             'profile_picture' => ['image','mimes:png,jpg,jpeg','max:2048'],
             'email' => ['required', 'email'],
             'password' => [
