@@ -100,6 +100,7 @@
             height: 100px;
             width: 100px;
             border-radius: 50%;
+        }
 
         /*-------input fields------*/
         input[type=text],
