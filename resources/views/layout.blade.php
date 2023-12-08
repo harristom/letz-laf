@@ -34,6 +34,12 @@
 
         body {
             font-family: 'Lato', sans-serif;
+            background-color: var(--page-bg)
+        }
+
+        main {
+            max-width: 1500px;
+            margin: 0 auto;
         }
 
         a {
@@ -49,6 +55,7 @@
         input[type="button"],
         input[type="submit"],
         .button {
+            font-family: inherit;
             border: none;
             color: var(--card-bg);
             padding: 10px 20px;
@@ -58,30 +65,39 @@
             border-color: var(--primary-color);
             border-style: solid;
             border-width: 2px;
-            transition: background 200ms;
-            background: linear-gradient(var(--primary-color) 0 0) right / 100% 100% no-repeat;
+            /* I know this is crazy but it fixes the flicker */
+            /* The bg color is orange with a 0% width solid white "gradient" on top */
+            /* The gradient grows to 100% width on hover */
+            background-color: var(--primary-color);
+            background-image: linear-gradient(white 0 0);
+            background-size: 0% 100%;
+            background-repeat: no-repeat;
             transition: 175ms;
+            font-size: 0.9rem;
+            text-decoration: none;
         }
 
         button:hover,
         input[type="button"]:hover,
         input[type="submit"]:hover,
-        button:hover {
-            background: linear-gradient(var(--primary-color) 0 0) right / 0% 100% no-repeat;
+        .button:hover {
+            background-size: 100% 100%;
             color: var(--primary-color);
+            text-decoration: none;
         }
 
         ul {
             list-style: none;
         }
 
-        /* --- */
+    
 
-        /* footer {
-            background-color: orange;
+        footer {
+            background-color: #ee5c35;
+            padding: 10px;
         }
-
-        nav {
+        /* --- */
+      /*  nav {
             display: flex;
         }
 
@@ -202,10 +218,9 @@
                     </form>
                 </li>
                 <li>
-                    <a href="/profile">
-                        {{ auth()->user()->first_name }} {{ auth()->user()->last_name }}
-                        <img class="profilePicture"
-                            src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : asset('images/profilePicturePlaceholder.jpeg') }}">
+                    <a href="/profile/{{auth()->user()->id}}">
+                        {{ auth()->user()->first_name }} {{auth()->user()->last_name}}
+                        <img class="profilePicture" src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : asset('images/profilePicturePlaceholder.jpeg') }}">
                     </a>
                 </li>
             @else
