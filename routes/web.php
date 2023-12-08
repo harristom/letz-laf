@@ -16,7 +16,11 @@ use App\Http\Controllers\EventController;
 |
 */
 
+//link to homepage
+Route::view('/', 'index');
+
 /*----------------------POSTS----------------------*/
+
 //show all the news
 Route::get('/news', [PostController::class, 'index']);
 //create a new post
@@ -56,4 +60,4 @@ Route::get('/about-us', function(){
 })->name('about');
 
 //link to the terms and conditions
-Route::view('/terms', 'terms');
+Route::view('/terms', 'terms')->name('terms-and-cond');
