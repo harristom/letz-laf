@@ -114,7 +114,7 @@
 
         /*-------radio buttons------*/
         input[type=radio]:checked {
-            accent-color: #ee5c35;
+            accent-color: var(--primary-color);
         }
 
         /*-------file upload------*/
