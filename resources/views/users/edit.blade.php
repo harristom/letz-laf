@@ -91,7 +91,7 @@
                 </div>
             </div>
 
-            <div class="user-edit-container__form--div--btn">
+            <div class="user-edit-container__form-div-btn">
                 <button>Update</button>
             </div>
         </form>
@@ -208,13 +208,13 @@
         filter: contrast(200%);
     }
 
-    .user-edit-container__form--div--btn{
+    .user-edit-container__form-div-btn{
         margin: 10px auto;
         text-align: center;
         width: 150px;
     }
 
-    .user-edit-container__form--div--p{
+    .user-edit-container__form-div-p{
         width: 30%;
         text-align: center;
         margin: 0 auto -20px auto;
