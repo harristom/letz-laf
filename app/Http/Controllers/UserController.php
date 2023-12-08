@@ -131,7 +131,7 @@ class UserController extends Controller
             'birthdate' => 'required',
             'gender' => 'required',
             'role' => 'required',
-            'email' => ['required', 'email', Rule::unique('users', 'email')],
+            'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($user->id)],
             'password' => [
                 'required', Password::min(8)
                     ->mixedCase()
