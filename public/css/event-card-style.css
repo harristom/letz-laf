@@ -1,3 +1,5 @@
+
+
 :root {
     --primary-color: #ee5c35;
 }
@@ -14,25 +16,22 @@ body {
     padding: 10px;
 }
 
-body p:first-child {
-    margin-bottom: 10px;
-}
-
-.news-card {
+.event-card__card--container {
     position: relative;
     width: 300px;
     height: 380px;
     background-color: #fff;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.13);
     overflow: hidden;
+    margin: 40px;
+    border-radius: 5px;
 }
 
-.photo {
+.event-card__photo--modify {
     position: relative;
     height: 200px;
 }
 
-.photo time,
+.event-card__photo--modify time,
 .category {
     background-color: var(--primary-color);
     color: white;
@@ -40,7 +39,7 @@ body p:first-child {
     text-align: center;
 }
 
-.photo time {
+.event-card__photo--modify time {
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -53,32 +52,21 @@ body p:first-child {
     font-weight: 600;
 }
 
-.photo .time .day {
+.event-card__photo--modify .event-card__time .event-card__day {
     font-size: 18px;
 }
 
-.photo .time .month {
+.event-card__photo--modify .event-card__time .event-card__month {
     font-size: 12px;
 }
 
-.photo img {
+.event-card__photo--modify img {
     width: 100%;
     height: 100%;
     display: block;
 }
 
-.category {
-    display: flex;
-    align-items: center;
-    padding: 5px 10px;
-    position: absolute;
-    bottom: 100%;
-    left: 0px;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.details {
+.event-card__details--modify {
     padding: 10px;
     background-color: #fff;
     position: relative;
@@ -95,7 +83,7 @@ h3 {
     font-weight: 500;
 }
 
-.summary {
+.event-card__summary-details {
     visibility: hidden;
     opacity: 0;
     margin-bottom: 10px;
@@ -108,7 +96,7 @@ h3 {
     text-overflow: ellipsis;
 }
 
-.time-and-comments {
+.event-card__distance-and-participants--details {
     display: flex;
     color: rgb(182, 182, 182);
     gap: 15px;
@@ -117,31 +105,31 @@ h3 {
     left: 10px;
 }
 
-.time-and-comments i {
+.event-card__distance-and-participants--details i {
     margin-right: 5px;
 }
 
 /* Animations */
 
-.news-card:hover .photo img {
+.event-card__card--container:hover .event-card__photo--modify img {
     filter: brightness(0.5);
     transform: scale(1.1);
 }
 
-.news-card:hover .details{
+.event-card__card--container:hover .event-card__details--modify{
     transform: translateY(-100px);
 }
 
-.news-card .photo img,
-.news-card .details {
+.event-card__card--container .event-card__photo--modify img,
+.event-card__card--container .event-card__details--modify {
     transition: 0.3s;
 }
 
-.news-card:hover .summary {
+.event-card__card--container:hover .event-card__summary-details {
     visibility: visible;
     opacity: 1;
 }
 
-.news-card .summary {
+.event-card__card--container .event-card__summary-details {
     transition: opacity 0.3s 0.1s;
 }
