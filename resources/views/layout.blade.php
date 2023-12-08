@@ -151,15 +151,11 @@
 
         table th,
         table td {
-            width: 100%;
             padding: 15px 0;
             text-align: center;
         }
 
         table tr{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
             background-color: transparent;
         }
 
