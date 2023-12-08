@@ -94,7 +94,8 @@ class UserController extends Controller
     {
         return view('users.manage',[
             //'users' => auth()->user()->users,
-            'users' => User::all()
+            'users' => User::latest()->filter(request(['search']))->get(),
+
         ]);
     }
 

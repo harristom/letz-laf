@@ -6,12 +6,13 @@
             <h2>Manage Users</h2>
             <a href="/users/create">Add User</a>
         </header>
+        
         <table class="users-manage-container__table">
             <thead>
                 <tr class="users-manage-container__table--tr--one">
                     <th>User List</th>
                     <th>
-                        {{--search bar--}}
+                        @include('partials._search')
                     </th>
                 <tr>
                 <tr class="users-manage-container__table--title">
