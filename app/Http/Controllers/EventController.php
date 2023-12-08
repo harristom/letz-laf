@@ -46,7 +46,11 @@ class EventController extends Controller
             'distance' => 'required|decimal:0,2|min:0.01',
             'longitude' => 'required|numeric',
             'latitude' => 'required|numeric',
+            'image_path' => ['image', 'mimes:png,jpg,jpeg', 'max:2048'],
         ]);
+        if ($request->hasFile('image_path')) {
+            $validated['image_path'] = $request->file('image_path')->store('events', 'public');
+        }
         // TODO: Change to use authenticated user
         $validated['organiser_id'] = 1;
         $event = Event::create($validated);
@@ -91,8 +95,7 @@ class EventController extends Controller
             'longitude' => 'required|numeric',
             'latitude' => 'required|numeric',
         ]);
-        // TODO: Change to use authenticated user
-        $validated['organiser_id'] = 1;
+        // TODO: allow changing owner
         $event->update($validated);
         return to_route('events.show', $event);
     }

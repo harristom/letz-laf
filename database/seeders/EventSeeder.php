@@ -20,8 +20,8 @@ class EventSeeder extends Seeder
                 'description' => 'Enjoy a refreshing morning jog in Parc de la Pétrusse in Luxembourg City.',
                 'date' => '2023-12-15 08:00:00',
                 'distance' => 5.000,
-                'latitude' => 49.6116,
-                'longitude' => 6.1314,
+                'latitude' => 49.606302,
+                'longitude' => 6.136250,
             ],
             [
                 'name' => 'Evening Run in Parc Merl',
@@ -38,6 +38,7 @@ class EventSeeder extends Seeder
                 'distance' => 10.000,
                 'latitude' => 49.7785,
                 'longitude' => 6.3533,
+                'image_path' => 'samples/mullerthal.jpg'
             ],
             [
                 'name' => 'Afternoon Run in Parc Central',

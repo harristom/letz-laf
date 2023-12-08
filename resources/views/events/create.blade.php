@@ -8,8 +8,11 @@
 </style>
 
 @section('content')
-    <form action="{{ route('events.store') }}" method="POST" novalidate>
+    <form action="{{ route('events.store') }}" method="POST" enctype="multipart/form-data" novalidate>
         @csrf
+        <div>
+            <input type="file" name="image_path">
+        </div>
         <div>
             <label for="name">Event name: </label>
             <input type="text" name="name" id="name" required value="{{ old('name') }}">
