@@ -3,7 +3,7 @@
 @section('content')
     <div class="edit-user">
         <header class="edit-user__header">
-            <h2>Edit User : {{$user->first_name}} {{$user->last_name}}</h2>
+            <h2 class="edit-user__header-h2">Edit User : {{$user->first_name}} {{$user->last_name}}</h2>
         </header>
         <form class="edit-user__form" action="/users/{{$user->id}}" method="post" enctype="multipart/form-data">
             @csrf
@@ -122,7 +122,6 @@
     }
 
     .edit-user__header-h2{
-        margin: 0;
         font-family: "Inter", sans-serif;
         font-size: 40px;
         font-weight: 700;
