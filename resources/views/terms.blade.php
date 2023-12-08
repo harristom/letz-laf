@@ -68,6 +68,7 @@
 .termspage{
     width: 700px ;
     background-color: white;
+    margin: 0 25%;
 }
 
 .termspage__top-section{
