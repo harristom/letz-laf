@@ -25,14 +25,11 @@ class UserController extends Controller
             'birthdate' => 'required',
             'gender' => 'required',
             'profile_picture' => ['image','mimes:png,jpg,jpeg','max:2048'],
-            'email' => ['required', 'email', Rule::unique('users', 'email')],
+            'email' => ['required', 'email', 'unique:users'],
             'password' => [
-                'required', Password::min(8)
-                    ->mixedCase()
-                    ->numbers()
-                    ->symbols()
-                    ->uncompromised(2),
-                'confirmed'
+                'required',
+                'confirmed',
+                'min:8'
             ],
             
         ]);
