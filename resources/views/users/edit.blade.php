@@ -157,57 +157,6 @@
         margin-bottom: 30px;
     }
 
-    /*BUTTONS*/
-    
-    button,
-    input[type="button"],
-    input[type="submit"],
-    .button {
-        display: inline-block;
-        padding: 10px 20px;
-        color: white;
-        border-radius: 2px;
-        text-transform: uppercase;
-        border: 2px solid var(--primary-color);
-        cursor: pointer;
-        position: relative;
-        background-color: var(--primary-color);
-        overflow: hidden;
-        z-index: 1;
-    }
-
-    button::before,
-    input[type="button"]::before,
-    input[type="submit"]::before,
-    .button::before{
-        content: "";
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 101%;
-        height: 100%;
-        background-color: white;
-        transform: translateX(-100%);
-        transition: all .3s;
-        z-index: -1;
-    }
-
-    button:hover::before,
-    input[type="button"]:hover::before,
-    input[type="submit"]:hover::before,
-    .button:hover::before{
-        transform: translateX(0);
-        color: black;
-    }
-
-    button:hover,
-    input[type="button"]:hover,
-    input[type="submit"]:hover,
-    .button:hover {
-        color: black;
-        filter: contrast(200%);
-    }
-
     .user-edit-container__form-div-btn{
         margin: 10px auto;
         text-align: center;
