@@ -135,11 +135,7 @@ class UserController extends Controller
             'profile_picture' => ['image','mimes:png,jpg,jpeg','max:2048'],
             'email' => ['required', 'email'],
             'password' => [
-                'required', Password::min(8)
-                    ->mixedCase()
-                    ->numbers()
-                    ->symbols()
-                    ->uncompromised(2),
+                'required', Password::min(8),
                 'confirmed'
             ],
         ]);
