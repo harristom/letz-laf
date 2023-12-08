@@ -87,7 +87,6 @@
                     @enderror
                 </div>
             </div>
-
             <div class="register-container__form-div-btn">
                 <button>Sign Up</button>
             </div>
@@ -98,10 +97,7 @@
                 </p>
             </div>
             <div class="register-container__form-div-p">
-                <p>
-                    By becoming a member, you agree to LëtzLaf's <a
-                        href="/terms-and-conditions">Terms&nbsp;and&nbsp;Conditions</a>
-                </p>
+                <p> By becoming a member, you agree to LëtzLaf's <a href="{{ Route('terms-and-cond') }}">Terms and Conditions</a></p>
             </div>
         </form>
     </div>
@@ -183,3 +179,4 @@
         margin: 0 auto -20px auto;
     }
 </style>
+

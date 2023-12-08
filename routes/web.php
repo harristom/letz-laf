@@ -60,4 +60,4 @@ Route::get('/about-us', function(){
 })->name('about');
 
 //link to the terms and conditions
-Route::view('/terms', 'terms');
+Route::view('/terms', 'terms')->name('terms-and-cond');
