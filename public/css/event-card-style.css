@@ -1,0 +1,135 @@
+
+
+:root {
+    --primary-color: #ee5c35;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f7f4eb;
+    padding: 10px;
+}
+
+.event-card__card--container {
+    position: relative;
+    width: 300px;
+    height: 320px;
+    background-color: #fff;
+    overflow: hidden;
+    margin: 40px;
+    border-radius: 5px;
+}
+
+.event-card__photo--modify {
+    position: relative;
+    height: 200px;
+}
+
+.event-card__photo--modify time,
+.category {
+    background-color: var(--primary-color);
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.event-card__photo--modify time {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    line-height: 0.9em;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 1;
+    font-weight: 600;
+}
+
+.event-card__photo--modify .event-card__time .event-card__day {
+    font-size: 18px;
+}
+
+.event-card__photo--modify .event-card__time .event-card__month {
+    font-size: 12px;
+}
+
+.event-card__photo--modify img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.event-card__details--modify {
+    padding: 10px;
+    background-color: #fff;
+    position: relative;
+}
+
+h2 {
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+h3 {
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.event-card__summary-details {
+    visibility: hidden;
+    opacity: 0;
+    margin-bottom: 10px;
+    line-height: 1.8em;
+    color: rgb(119, 119, 119);
+    -webkit-line-clamp: 4;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.event-card__distance-and-participants--details {
+    display: flex;
+    color: rgb(182, 182, 182);
+    gap: 15px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.event-card__distance-and-participants--details i {
+    margin-right: 5px;
+}
+
+/* Animations */
+
+.event-card__card--container:hover .event-card__photo--modify img {
+    filter: brightness(0.5);
+    transform: scale(1.1);
+}
+
+.event-card__card--container:hover .event-card__details--modify{
+    transform: translateY(-100px);
+}
+
+.event-card__card--container .event-card__photo--modify img,
+.event-card__card--container .event-card__details--modify {
+    transition: 0.3s;
+}
+
+.event-card__card--container:hover .event-card__summary-details {
+    visibility: visible;
+    opacity: 1;
+}
+
+.event-card__card--container .event-card__summary-details {
+    transition: opacity 0.3s 0.1s;
+}
