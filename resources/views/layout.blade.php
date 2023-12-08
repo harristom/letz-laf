@@ -205,7 +205,7 @@
                 <a href="/news">News</a>
             </li>
             <li>
-                <a href="{{ Route('about') }}">About Us</a>
+                <a href="{{ route('about') }}">About Us</a>
             </li>
             @auth
                 <li>

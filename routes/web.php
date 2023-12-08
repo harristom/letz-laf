@@ -66,7 +66,7 @@ Route::post('/events/{event}/register', [EventController::class, 'register'])
     ->name('events.register');
 
 /*-----------------------MISC-----------------------*/
-Route::view('/about-us', 'about-us');
+Route::view('/about-us', 'about-us')->name('about');
 
 //link to the terms and conditions
 Route::view('/terms', 'terms')->name('terms-and-cond');
