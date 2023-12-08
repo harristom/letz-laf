@@ -141,6 +141,28 @@
             padding: 10px;
             border-radius: 3px;
         }
+
+        /*-----------table-----------*/
+
+        table{
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        table th,
+        table td {
+            width: 100%;
+            padding: 15px 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        
+
+
+
     </style>
     <title>LëtzLaf</title>
 </head>
