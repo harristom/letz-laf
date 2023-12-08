@@ -6,6 +6,7 @@
         <div class="content one">
             <img src="{{ asset('storage/' . $post->image_path) }}" alt="">
         </div>
+        {{ $post->content }}
     @else
         {{-- Image does not exists, hide the div --}}
         <div style="display: none">
