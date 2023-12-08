@@ -54,6 +54,7 @@
         button,
         input[type="button"],
         input[type="submit"],
+        input::file-selector-button,
         .button {
             font-family: inherit;
             border: none;
@@ -80,6 +81,7 @@
         button:hover,
         input[type="button"]:hover,
         input[type="submit"]:hover,
+        input::file-selector-button:hover,
         .button:hover {
             background-size: 100% 100%;
             color: var(--primary-color);
@@ -90,11 +92,10 @@
             list-style: none;
         }
 
-    
+        /* Fix leaflet styles */
 
-        footer {
-            background-color: #ee5c35;
-            padding: 10px;
+        .leaflet-container a:hover {
+            text-decoration: none;
         }
         /* --- */
       /*  nav {
@@ -124,7 +125,11 @@
         input[type=email],
         input[type=password],
         input[type=date],
-        input[type=textarea] {
+        input[type=textarea],
+        input[type=number],
+        input[type="datetime-local"],
+        textarea {
+            font-family: inherit;
             padding: 10px;
             border-radius: 3px;
             border: 1px solid lightgray;
@@ -143,12 +148,10 @@
         }
 
         input::file-selector-button {
-            font-weight: bold;
-            color: white;
-            background-color: var(--primary-color);
             border: thin solid var(--primary-color);
-            border-radius: 3px;
-            cursor: pointer;
+            padding: 5px 10px;
+            text-transform: none;
+            margin-right: 10px;
         }
 
         /*-------select option------*/
