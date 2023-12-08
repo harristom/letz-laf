@@ -1,13 +1,6 @@
-
-
-:root {
-    --primary-color: #ee5c35;
-}
-
-* {
+.event-card * {
     margin: 0;
     padding: 0;
-    font-family: 'Lato', sans-serif;
     box-sizing: border-box;
 }
 
@@ -16,30 +9,26 @@ body {
     padding: 10px;
 }
 
-.event-card__card--container {
+.event-card {
     position: relative;
     width: 300px;
     height: 320px;
     background-color: #fff;
     overflow: hidden;
-    margin: 40px;
-    border-radius: 5px;
+    border-radius: 3px;
 }
 
-.event-card__photo--modify {
+.event-card__photo {
     position: relative;
     height: 200px;
+    background-color: var(--primary-color);
 }
 
-.event-card__photo--modify time,
-.category {
+.event-card__time {
     background-color: var(--primary-color);
     color: white;
     text-transform: uppercase;
     text-align: center;
-}
-
-.event-card__photo--modify time {
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -52,51 +41,45 @@ body {
     font-weight: 600;
 }
 
-.event-card__photo--modify .event-card__time .event-card__day {
+.event-card__day {
     font-size: 18px;
 }
 
-.event-card__photo--modify .event-card__time .event-card__month {
+.event-card__month {
     font-size: 12px;
 }
 
-.event-card__photo--modify img {
+.event-card__img {
     width: 100%;
     height: 100%;
     display: block;
 }
 
-.event-card__details--modify {
+.event-card__details {
     padding: 10px;
     background-color: #fff;
     position: relative;
 }
 
-h2 {
+.event-card__title {
     margin-bottom: 10px;
     font-weight: 800;
 }
 
-h3 {
-    margin-bottom: 15px;
-    color: var(--primary-color);
-    font-weight: 500;
-}
-
-.event-card__summary-details {
+.event-card__summary {
     visibility: hidden;
     opacity: 0;
     margin-bottom: 10px;
     line-height: 1.8em;
     color: rgb(119, 119, 119);
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 2;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    overflow: hidden;
+    overflow: hidden;   
     text-overflow: ellipsis;
 }
 
-.event-card__distance-and-participants--details {
+.event-card__distance-and-participants {
     display: flex;
     color: rgb(182, 182, 182);
     gap: 15px;
@@ -105,31 +88,39 @@ h3 {
     left: 10px;
 }
 
-.event-card__distance-and-participants--details i {
+.event-card__icon {
     margin-right: 5px;
+}
+
+.event-card__link {
+    color: inherit;
+}
+
+.event-card__link:hover {
+    text-decoration: none;
 }
 
 /* Animations */
 
-.event-card__card--container:hover .event-card__photo--modify img {
+.event-card:hover .event-card__img {
     filter: brightness(0.5);
     transform: scale(1.1);
 }
 
-.event-card__card--container:hover .event-card__details--modify{
+.event-card:hover .event-card__details {
     transform: translateY(-100px);
 }
 
-.event-card__card--container .event-card__photo--modify img,
-.event-card__card--container .event-card__details--modify {
+.event-card__img,
+.event-card__details {
     transition: 0.3s;
 }
 
-.event-card__card--container:hover .event-card__summary-details {
+.event-card:hover .event-card__summary {
     visibility: visible;
     opacity: 1;
 }
 
-.event-card__card--container .event-card__summary-details {
+.event-card__summary {
     transition: opacity 0.3s 0.1s;
 }
