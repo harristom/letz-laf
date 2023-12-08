@@ -4,8 +4,10 @@
     .event-details {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-between;
+        margin: 0 auto;
         gap: 20px;
+        width: 900px;
     }
 
     .event-details__title {
@@ -26,6 +28,7 @@
         display: flex;
         gap: 10px;
         align-items: center;
+        margin-bottom: 30px;
     }
 
     .event-details__form {
@@ -48,8 +51,11 @@
                     @csrf
                     <button>Join</button>
                 </form>
-                <a href="" class="button">Edit</a>
+                <a href="{{ route('events.edit', $event) }}" class="button">Edit</a>
             </div>
+            @if (count($event->results) > 0)
+                <x-event-results-table :event="$event" />
+            @endif
         </div>
         <div class="event-details__right">
             <x-map-card :latitude="$event->latitude" :longitude="$event->longitude" />

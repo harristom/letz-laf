@@ -192,7 +192,6 @@
 
 
     </style>
-    <link rel="stylesheet" href="/css/map.css">
     <title>LëtzLaf</title>
 </head>
 

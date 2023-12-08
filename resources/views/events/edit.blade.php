@@ -42,18 +42,10 @@
         </div>
         <div>
             <label for="location">Location: </label>
-            <x-map-card-picker />
-            <input type="hidden" name="latitude" required value="{{ old('latitude') ?? $event->latitude }}">
-            @error('latitude')
-                {{ $message }}
-            @enderror
-            <input type="hidden" name="longitude" required value="{{ old('longitude') ?? $event->longitude }}">
-
-            @error('longitude')
-                {{ $message }}
-            @enderror
+            <x-map-input-card :event="$event"/>
         </div>
 
         <button>Save</button>
+
     </form>
 @endsection
