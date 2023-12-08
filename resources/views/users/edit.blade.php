@@ -10,8 +10,6 @@
             @csrf
             @method('PUT')
             <div class="user-edit-container__form-div-name">
-                {{--without this the role can't be stored--}}
-                <input type="hidden" name="role" value="{{$user->role}}">
 
                 <div>
                     <label for="first_name">First Name</label>
