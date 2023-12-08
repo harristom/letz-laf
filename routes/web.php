@@ -45,6 +45,17 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 //log user in
 Route::post('/login', [UserController::class, 'authenticate'])->middleware('guest');
 
+/*-------------------------------PROFILE------------------------------- */
+//show profile page
+Route::get('/profile/{id}', [UserController::class, 'show']);
+
+//Show update profile page
+Route::get('/profile/{id}/edit', [UserController::class, 'edit'])
+->where('id', '[0-9]+')->middleware('auth');
+//Update user info
+Route::put('/profile/{id}', [UserController::class, 'update'])
+->where('id', '[0-9]+')->middleware('auth');
+
 /*----------------------EVENTS----------------------*/
 // https://laravel.com/docs/10.x/controllers#actions-handled-by-resource-controller
 Route::resource('events', EventController::class);
@@ -55,9 +66,7 @@ Route::post('/events/{event}/register', [EventController::class, 'register'])
     ->name('events.register');
 
 /*-----------------------MISC-----------------------*/
-Route::get('/about-us', function(){
-    return view ('/about-us');
-})->name('about');
+Route::view('/about-us', 'about-us');
 
 //link to the terms and conditions
 Route::view('/terms', 'terms')->name('terms-and-cond');
