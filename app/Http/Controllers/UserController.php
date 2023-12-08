@@ -94,7 +94,6 @@ class UserController extends Controller
     }
 
     
-
     //Show only the specific user profile
     public function show($id){
         return view('users.show', [
@@ -151,6 +150,9 @@ class UserController extends Controller
             //Replace the old picture with the new one. Delete the old picture from the storage.
             $formFields['profile_picture'] = $request->file('profile_picture')->store('photos', 'public');
         }
+
+        //remove _ from prefer not to say gender
+        $formFields['gender'] = str_replace('_', ' ', $formFields['gender']);
 
         //Update the user
         $user->update($formFields);

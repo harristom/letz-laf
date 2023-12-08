@@ -46,6 +46,12 @@
 
    .profile-card__picture h3{
         font-size: 30px;
+        text-align: center;
+    }
+
+   .profile-card__picture h3 small{
+        font-size: 18px;
+        font-weight: 100;
     }
 
    .profile-card__picture a,.profile-card__picture div{
