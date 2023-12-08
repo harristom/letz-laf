@@ -154,13 +154,26 @@
             width: 100%;
             padding: 15px 0;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
 
-        
+        table tr{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            background-color: transparent;
+        }
 
+        tr:nth-child(1) {
+            background-color: transparent;
+        }
+
+        tr:nth-child(2) {
+            background-color: white;
+        }
+        
+        td:nth-child(even){
+            background-color: transparent;
+        }
 
 
     </style>

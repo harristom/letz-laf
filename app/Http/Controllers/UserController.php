@@ -94,4 +94,5 @@ class UserController extends Controller
         return back()->withErrors(['login' => 'Invalid Credentials']);
 
     }
+
 }
