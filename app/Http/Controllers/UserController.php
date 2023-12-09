@@ -97,7 +97,10 @@ class UserController extends Controller
         }
 
         //If it doesn't find a match send error
-        return back()->withErrors(['login' => 'Invalid Credentials']);
+        //return back()->withErrors(['login' => 'Invalid Credentials']);
+     
+        return back()->withErrors(['email' => 'Invalid email or password', 'password' => 'Invalid email or password'])
+        ->withInput($request->except('password'));
 
     }
 
