@@ -126,7 +126,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
-        return view('users.edit', [
+        return view('users.editAdmin', [
             'user' => $user
         ]);
     }
@@ -166,16 +166,22 @@ class UserController extends Controller
             'role' => 'required',
             'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($user->id)],
             'password' => [
-                'required', Password::min(8)
-                    ->mixedCase()
-                    ->numbers()
-                    ->symbols()
-                    ->uncompromised(2),
+                'required', Password::min(8),
                 'confirmed'
             ],
         ]);
 
+        //upload the new picture
+        if($request->hasFile('profile_picture'))
+        {
+            //Replace the old picture with the new one. Delete the old picture from the storage.
+            $formFields['profile_picture'] = $request->file('profile_picture')->store('photos', 'public');
+        }
+
         $formFields['password'] = bcrypt($formFields['password']);
+
+        //remove _ from prefer not to say gender
+        $formFields['gender'] = str_replace('_', ' ', $formFields['gender']);
 
         //Update the user
         $user->update($formFields);
