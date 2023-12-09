@@ -46,7 +46,7 @@
         background-color: var(--primary-color);
         background-image: url('{{ asset('storage/' . $event->image_path) }}');
         background-size: cover;
-        background-position: center;
+        background-position: 50% 25%;
         background-repeat: no-repeat;
         height: 400px;
         width: 100%;
