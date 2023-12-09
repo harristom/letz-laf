@@ -96,12 +96,16 @@ class UserController extends Controller
             return redirect('/')->with('message', 'User logged in Successfully!');
         }
 
-        //If it doesn't find a match send error
-        //return back()->withErrors(['login' => 'Invalid Credentials']);
-     
-        return back()->withErrors(['email' => 'Invalid email or password', 'password' => 'Invalid email or password'])
-        ->withInput($request->except('password'));
+        // Check if the email is incorrect
+        $userExists = User::where('email', $formFields['email'])->exists();
 
+        if (!$userExists) {
+            // Invalid email
+            return back()->withErrors(['email' => 'Invalid email'])->withInput($request->except('password'));
+        }
+
+        // If reached here, the password is incorrect
+        return back()->withErrors(['password' => 'Invalid password'])->withInput($request->except('password'));
     }
 
     public function manage()
