@@ -22,6 +22,7 @@ class UserController extends Controller
     }
 
     //Add user to database
+    //!modifications below to allow to store pictures
     public function store(Request $request)
     {
         $formFields = $request->validate([
@@ -29,26 +30,35 @@ class UserController extends Controller
             'last_name' => 'required',
             'birthdate' => 'required',
             'gender' => 'required',
-            'email' => ['required', 'email', Rule::unique('users', 'email')],
+            'profile_picture' => ['image','mimes:png,jpg,jpeg','max:2048'],
+            'email' => ['required', 'email', 'unique:users'],
             'password' => [
-                'required', Password::min(8)
-                    ->mixedCase()
-                    ->numbers()
-                    ->symbols()
-                    ->uncompromised(2),
-                'confirmed'
+                'required',
+                'confirmed',
+                'min:8'
             ],
+            
         ]);
 
-        $formFields['password'] = bcrypt($formFields['password']);
+        //if request has a photo, store it to the public photo folder. Laravel will automatically create this folder if needed.
+        if($request->hasFile('profile_picture'))
+        {
+            $formFields['profile_picture'] = $request->file('profile_picture')->store('photos', 'public');
+        };
+        //remove _ from prefer not to say gender
+        $formFields['gender'] = str_replace('_', ' ', $formFields['gender']);
 
+        //store user role as member
         $formFields['role'] = 'Member';
+        //hash password
+        $formFields['password'] = bcrypt($formFields['password']);
 
         $user = User::create($formFields);
 
         auth()->login($user);
 
         return redirect('/')->with('message', 'User created and logged in Successfully!');
+
     }
 
     public function logout(Request $request)
@@ -90,6 +100,7 @@ class UserController extends Controller
         return back()->withErrors(['login' => 'Invalid Credentials']);
 
     }
+
     public function manage()
     {
         return view('users.manage',[
@@ -111,7 +122,7 @@ class UserController extends Controller
         return redirect('/users/manage')->with('message', 'User deleted Successfully!');
     }
 
-    public function edit($id)
+    public function editAdmin($id)
     {
         $user = User::find($id);
 
@@ -120,7 +131,28 @@ class UserController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    //Show only the specific user profile
+    public function show($id){
+        return view('users.show', [
+            'user' => User::find($id)
+        ]);
+    }
+
+    //show edit page
+    public function edit($id)
+    {
+        $user = User::find($id);
+        //Make sure logged in user is the user
+        if($user->id!= auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        return view('users.edit', [
+            'user' => $user
+        ]);
+    }
+
+    public function updateAdmin(Request $request, $id)
     {
         //Fetch the user to be updated
         $user = User::find($id);      
@@ -150,7 +182,49 @@ class UserController extends Controller
 
         //Redirect to the manage users page
         return redirect('/users/manage')->with('message', 'User updated Successfully!');
+    }     
+
+    //update the user information
+    public function update(Request $request,$id)
+    {
+         //Fetch the user to be updated
+        $user = User::find($id);
+
+        //Make sure logged in user is the user
+        if($user->id != auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }        
+
+        //Validate the form fields
+        $formFields = $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'birthdate' => 'required',
+            'gender' => 'required',
+            'profile_picture' => ['image','mimes:png,jpg,jpeg','max:2048'],
+            'email' => ['required', 'email'],
+            'password' => [
+                'required', Password::min(8),
+                'confirmed'
+            ],
+        ]);
+      
+        $formFields['password'] = bcrypt($formFields['password']);
+
+        //upload the new picture
+        if($request->hasFile('profile_picture'))
+        {
+            //Replace the old picture with the new one. Delete the old picture from the storage.
+            $formFields['profile_picture'] = $request->file('profile_picture')->store('photos', 'public');
+        }
+
+        //remove _ from prefer not to say gender
+        $formFields['gender'] = str_replace('_', ' ', $formFields['gender']);
+
+        //Update the user
+        $user->update($formFields);
+
+        //Redirect to the user detail page
+        return redirect('profile/'. $user->id)->with('message', 'Profile updated Successfully!');
     }
-
-
 }

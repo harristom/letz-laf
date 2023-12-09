@@ -24,6 +24,8 @@ return new class extends Migration
             $table->date('birthdate');
             //gender
             $table->enum('gender', ['Male', 'Female', 'Prefer not to say']);
+            //user picture
+            $table->string('profile_picture')->nullable();//now it can accept pictures
             //email
             $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
