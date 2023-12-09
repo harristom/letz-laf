@@ -32,9 +32,18 @@
             --card-bg: white;
         }
 
+        /* Leaving commented until we've discussed */
+        /* * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        } */
+
         body {
             font-family: 'Lato', sans-serif;
-            background-color: var(--page-bg)
+            background-color: var(--page-bg);
+            /* TODO: Delete me if set in reset */
+            margin: 0;
         }
 
         main {
@@ -167,58 +176,104 @@
         tr:nth-child(even) {
             background-color: white;
         }
+
+        /* Header styles */
+
+        /* TODO: Delete me if we set this in reset */
+        :where(header) * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            background: var(--card-bg);
+            padding: 5px 10px;
+        }
+
+        .main-nav__logo {
+            border-radius: 50%;
+        }
+
+        .main-nav__link-list {
+            display: flex;
+            gap: 20px;
+            font-size: 1.3rem;
+            align-items: center;
+            margin-left: auto;
+            padding: 0;
+        }
+
+        .main-nav__button-list {
+            margin-left: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .main-nav__form {
+            margin-bottom: 0px;
+        }
+
+        .main-nav__avatar {
+            border-radius: 50%;
+        }
+
+        .main-nav__a:hover {
+            text-decoration: none;
+        }
     </style>
     <title>LëtzLaf</title>
 </head>
 
 <body>
-    <nav>
-        <a href="/">
-            <img class="logo" src="{{ asset('images/letzlogo.png') }}" alt="" />
-        </a>
-        <ul>
-            <li>
-                <a href="/events">Events</a>
-            </li>
-            <li>
-                <a href="/news">News</a>
-            </li>
-            <li>
-                <a href="{{ route('about') }}">About Us</a>
-            </li>
+    <header class="header">
+        <nav class="main-nav">
+            <a href="/">
+                <img class="main-nav__logo" src="{{ asset('images/letzlogo.png') }}" alt="LetzLaf" height="100">
+            </a>
+            <ul class="main-nav__link-list">
+                <li>
+                    <a href="/events" class="main-nav__a main-na">Events</a>
+                </li>
+                <li>
+                    <a href="/news" class="main-nav__a">News</a>
+                </li>
+                <li>
+                    <a href="{{ route('about') }}" class="main-nav__a">About Us</a>
+                </li>
+            </ul>
+            <ul class="main-nav__button-list">
+                @auth
+                    <li>
+                        <form method="POST" action="/logout" class="main-nav__form">
+                            @csrf
+                            <button>
+                                <i class="fa-solid fa-door-closed"></i>
+                                Logout
+                            </button>
+                        </form>
+                    </li>
+                @else
+                    <li>
+                        <a href="/register" class="main-nav__a button"><i class="fa-solid fa-user-plus"></i> Register</a>
+                    </li>
+                    <li>
+                        <a href="/login" class="main-nav__a button"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>
+                    </li>
+                @endauth
+            </ul>
             @auth
-                <li>
-                    <form method="POST" action="/logout">
-                        @csrf
-                        <button>
-                            <i class="fa-solid fa-door-closed"></i>
-                            Logout
-                        </button>
-                    </form>
-                </li>
-                <li>
-                    <a href="/profile/{{ auth()->user()->id }}">
-                        {{ auth()->user()->first_name }} {{ auth()->user()->last_name }}
-                        <img class="profilePicture"
-                            src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : asset('images/profilePicturePlaceholder.jpeg') }}">
-                    </a>
-                </li>
-            @else
-                <li>
-                    <a href="/register">
-                        <i class="fa-solid fa-user-plus"></i>
-                        Register
-                    </a>
-                </li>
-                <li>
-                    <a href="/login">
-                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                        Login
-                    </a>
-                </li>
+            <a href="/profile/{{ auth()->user()->id }}" class="main-nav__a">
+                <img class="main-nav__avatar"
+                    src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : asset('images/profilePicturePlaceholder.jpeg') }}"
+                    alt="The user's profile picture" height="50">
+            </a>
             @endauth
-        </ul>
-    </nav>
+        </nav>
+    </header>
     <main>
         @yield('content')
     </main>
