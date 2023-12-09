@@ -18,7 +18,7 @@ class UserController extends Controller
 
     public function createAdmin()
     {
-        return view('users.create');
+        return view('users.createAdmin');
     }
 
     //Add user to database
