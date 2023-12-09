@@ -3,15 +3,21 @@
 <div class="news-content-container">
     <div class="news-content news-div-content">
         <h3>{{$post->title}}</h3>
-        <div class="news-div">
-            <div>
-                <img src="{{ asset('storage/'. $post->image_path) }}" alt="">
+        {{-- Check if image file exists  --}}
+        @if (file_exists(public_path($post->image_path)))
+            {{-- Image exists, show the div with the image --}}
+            <div class="news-component-container__content one">
+                <img class="news-component-container__content-img" src="{{ asset('storage/' . $post->image_path) }}" alt="">
             </div>
-            <div>
-                <p>{{$post->content}}</p>
+        @else
+            {{-- Image does not exists, hide the div --}}
+            <div style="display: none">
             </div>
+        @endif
+        <div class="news-component-container__content two">
+            <p>{{ $post->content }}</p>
         </div>
-        </div>
+    </div>
     <div class="news-content news-div-date">
         <small>Created : {{$post->created_at}}</small>
     </div>
