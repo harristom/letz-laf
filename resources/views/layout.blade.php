@@ -88,6 +88,11 @@
             text-decoration: none;
         }
 
+        .button--secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+
         ul {
             list-style: none;
         }
