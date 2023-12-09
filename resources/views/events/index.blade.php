@@ -2,14 +2,12 @@
 
 @section('content')
 
-<div class="seePast">
-    <a href="/past-events">See past events</a>
-</div>
+<button class="past-events-btn" type="button">Previous</button>
 
-<div id="container">
+<div class="events-page-list">
 
     @if (count($events) == 0)
-        <p>No listing found</p>
+        <p>No events found</p>
     @endif
 
     @foreach ($events as $event)
@@ -23,19 +21,20 @@
 @endsection
 
 <style>
-    #container {
+    .events-page-list {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
         width: 80%;
-        padding: 20px;
         align-items: center;
-        margin: 0 auto;
+        margin: 30px auto;
+        gap: 30px;
       }
 
-.seePast{
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    }
+      .past-events-btn {
+        margin: 0 auto;
+        display: block;
+      }
+
 </style>
