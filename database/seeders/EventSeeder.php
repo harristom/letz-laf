@@ -30,8 +30,8 @@ class EventSeeder extends Seeder
                 'description' => 'Experience a peaceful evening run in Parc Merl, Luxembourg City.',
                 'date' => '2023-12-10 08:30:00',
                 'distance' => 8.000,
-                'latitude' => 49.6107,
-                'longitude' => 6.1228,
+                'latitude' => 49.606267,
+                'longitude' => 6.112567,
                 'image_path' => 'samples/runners.jpg'
             ],
             [
@@ -39,25 +39,17 @@ class EventSeeder extends Seeder
                 'description' => 'Discover the beautiful trails of Mullerthal, also known as Little Switzerland.',
                 'date' => '2024-01-10 10:00:00',
                 'distance' => 10.000,
-                'latitude' => 49.7785,
-                'longitude' => 6.3533,
+                'latitude' => 49.784918,
+                'longitude' => 6.299592,
                 'image_path' => 'samples/mullerthal.jpg'
-            ],
-            [
-                'name' => 'Afternoon Run in Parc Central',
-                'description' => 'Take an afternoon run in Parc Central, Dudelange.',
-                'date' => '2024-01-15 15:45:00',
-                'distance' => 6.000,
-                'latitude' => 49.4804,
-                'longitude' => 6.0837,
             ],
             [
                 'name' => 'Belval Night Run',
                 'description' => 'Let\'s go for a late-night jog around Belval with its stunning mix of modern architecture and the old steelworks. Please make sure to wear reflecting clothin and dress warm!',
                 'date' => '2024-02-01 21:00:00',
                 'distance' => 7.000,
-                'latitude' => 49.4971,
-                'longitude' => 5.9829,
+                'latitude' => 49.500639,
+                'longitude' => 5.947101,
                 'image_path' => 'samples/belval.jpg'
             ],
             [
@@ -65,8 +57,8 @@ class EventSeeder extends Seeder
                 'description' => 'Ok, you don\'t actually have to sprint ;) Join us for meander round the beautiful Lac de la Haute-Sûre. We will meet at 10 at the dam.',
                 'date' => '2024-02-05 10:00:00',
                 'distance' => 7.500,
-                'latitude' => 49.5545,
-                'longitude' => 6.3742,
+                'latitude' => 49.910445,
+                'longitude' => 5.921223,
                 'image_path' => 'samples/stausei.jpg'
             ],
             [
@@ -74,8 +66,8 @@ class EventSeeder extends Seeder
                 'description' => 'Challenge yourself with a set of repeats up and down the big hill to the old city gate in Grund.',
                 'date' => '2024-03-01 08:30:00',
                 'distance' => 9.000,
-                'latitude' => 49.9746,
-                'longitude' => 6.4124,
+                'latitude' => 49.608353,
+                'longitude' => 6.135140,
                 'image_path' => 'samples/grund.jpg'
             ],
             [
