@@ -9,10 +9,6 @@
             <div class="news-component-container__content one">
                 <img class="news-component-container__content-img" src="{{ asset('storage/' . $post->image_path) }}" alt="">
             </div>
-        @else
-            {{-- Image does not exists, hide the div --}}
-            <div style="display: none">
-            </div>
         @endif
         <div class="news-component-container__content two">
             <p>{{ $post->content }}</p>
