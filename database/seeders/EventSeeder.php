@@ -17,12 +17,13 @@ class EventSeeder extends Seeder
         $runs = [
             // TODO: Add images
             [
-                'name' => 'Morning Jog in Parc de la Pétrusse',
-                'description' => 'Enjoy a refreshing morning jog in Parc de la Pétrusse in Luxembourg City.',
+                'name' => 'Morning Jog',
+                'description' => 'Enjoy a refreshing morning run along the Pétrusse valley in Luxembourg City. Let\'s meet in the car park at the Grund end of the valley. See you there!',
                 'date' => '2023-12-16 08:00:00',
                 'distance' => 5.000,
                 'latitude' => 49.606302,
                 'longitude' => 6.136250,
+                'image_path' => 'samples/peitruss.jpg'
             ],
             [
                 'name' => 'Evening Run in Parc Merl',
@@ -31,6 +32,7 @@ class EventSeeder extends Seeder
                 'distance' => 8.000,
                 'latitude' => 49.6107,
                 'longitude' => 6.1228,
+                'image_path' => 'samples/runners.jpg'
             ],
             [
                 'name' => 'Trail Run in Mullerthal',
@@ -50,28 +52,31 @@ class EventSeeder extends Seeder
                 'longitude' => 6.0837,
             ],
             [
-                'name' => 'City Run in Esch-sur-Alzette',
-                'description' => 'Run through the city streets of Esch-sur-Alzette.',
-                'date' => '2024-02-01 17:00:00',
+                'name' => 'Belval Night Run',
+                'description' => 'Let\'s go for a late-night jog around Belval with its stunning mix of modern architecture and the old steelworks. Please make sure to wear reflecting clothin and dress warm!',
+                'date' => '2024-02-01 21:00:00',
                 'distance' => 7.000,
                 'latitude' => 49.4971,
                 'longitude' => 5.9829,
+                'image_path' => 'samples/belval.jpg'
             ],
             [
-                'name' => 'Lakeview Run in Remerschen',
-                'description' => 'Enjoy a scenic run with a view of the lake in Remerschen.',
-                'date' => '2024-02-05 19:15:00',
+                'name' => 'Stauséi Sprint',
+                'description' => 'Ok, you don\'t actually have to sprint ;) Join us for meander round the beautiful Lac de la Haute-Sûre. We will meet at 10 at the dam.',
+                'date' => '2024-02-05 10:00:00',
                 'distance' => 7.500,
                 'latitude' => 49.5545,
                 'longitude' => 6.3742,
+                'image_path' => 'samples/stausei.jpg'
             ],
             [
-                'name' => 'Hilly Run in Echternach',
-                'description' => 'Challenge yourself with a hilly run in Echternach.',
-                'date' => '2024-03-01 12:30:00',
+                'name' => 'Gruelling Grund Hill Sprints',
+                'description' => 'Challenge yourself with a set of repeats up and down the big hill to the old city gate in Grund.',
+                'date' => '2024-03-01 08:30:00',
                 'distance' => 9.000,
                 'latitude' => 49.9746,
                 'longitude' => 6.4124,
+                'image_path' => 'samples/grund.jpg'
             ],
             [
                 'name' => 'Sunset Run in Mondorf-les-Bains',
