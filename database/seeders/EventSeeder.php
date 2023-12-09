@@ -15,18 +15,19 @@ class EventSeeder extends Seeder
     {
         //
         $runs = [
+            // TODO: Add images
             [
                 'name' => 'Morning Jog in Parc de la Pétrusse',
                 'description' => 'Enjoy a refreshing morning jog in Parc de la Pétrusse in Luxembourg City.',
-                'date' => '2023-12-15 08:00:00',
+                'date' => '2023-12-16 08:00:00',
                 'distance' => 5.000,
-                'latitude' => 49.6116,
-                'longitude' => 6.1314,
+                'latitude' => 49.606302,
+                'longitude' => 6.136250,
             ],
             [
                 'name' => 'Evening Run in Parc Merl',
                 'description' => 'Experience a peaceful evening run in Parc Merl, Luxembourg City.',
-                'date' => '2023-12-20 18:30:00',
+                'date' => '2023-12-10 08:30:00',
                 'distance' => 8.000,
                 'latitude' => 49.6107,
                 'longitude' => 6.1228,
@@ -38,6 +39,7 @@ class EventSeeder extends Seeder
                 'distance' => 10.000,
                 'latitude' => 49.7785,
                 'longitude' => 6.3533,
+                'image_path' => 'samples/mullerthal.jpg'
             ],
             [
                 'name' => 'Afternoon Run in Parc Central',

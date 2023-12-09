@@ -46,9 +46,12 @@ class EventController extends Controller
             'distance' => 'required|decimal:0,2|min:0.01',
             'longitude' => 'required|numeric',
             'latitude' => 'required|numeric',
+            'image_path' => 'image|mimes:png,jpg,jpeg|max:2048',
         ]);
-        // TODO: Change to use authenticated user
-        $validated['organiser_id'] = 1;
+        if ($request->hasFile('image_path')) {
+            $validated['image_path'] = $request->file('image_path')->store('events', 'public');
+        }
+        $validated['organiser_id'] = auth()->user();
         $event = Event::create($validated);
         return to_route('events.show', $event);
     }
@@ -90,9 +93,12 @@ class EventController extends Controller
             'distance' => 'required|decimal:0,2|min:0.01',
             'longitude' => 'required|numeric',
             'latitude' => 'required|numeric',
+            'image_path' => 'image|mimes:png,jpg,jpeg|max:2048',
         ]);
-        // TODO: Change to use authenticated user
-        $validated['organiser_id'] = 1;
+        // TODO: allow changing owner
+        if ($request->hasFile('image_path')) {
+            $validated['image_path'] = $request->file('image_path')->store('events', 'public');
+        }
         $event->update($validated);
         return to_route('events.show', $event);
     }
@@ -103,6 +109,8 @@ class EventController extends Controller
     public function destroy(Event $event)
     {
         //
+        $event->delete();
+        return redirect()->route('events.index')->with('message', 'Event deleted!');
     }
 
     public function register(Event $event)

@@ -2,99 +2,92 @@
 
 <style>
     #map {
-        height: 300px;
-        width: 400px;
+        min-height: 350px;
+        flex-grow: 1;
+    }
+
+    .event-create-form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .event-create-form__left {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        flex-grow: 1;
+    }
+
+    .event-create-form__right {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .event-create-form__input {
+        margin-top: 5px;
+        display: block;
+        min-width: 300px;
+        width: 100%;
+    }
+
+    .event-create-form__submit {
+        width: 100%;
     }
 </style>
 
 @section('content')
-    <form action="{{ route('events.store') }}" method="POST" novalidate>
+    <form action="{{ route('events.store') }}" method="POST" enctype="multipart/form-data" class="event-create-form"
+        novalidate>
         @csrf
-        <div>
-            <label for="name">Event name: </label>
-            <input type="text" name="name" id="name" required value="{{ old('name') }}">
-            @error('name')
-                {{ $message }}
-            @enderror
+        <div class="event-create-form__left">
+            <div class="event-create-form__item">
+                <label for="name">Event name:
+                    <input type="text" name="name" id="name" required value="{{ old('name') }}"
+                        class="event-create-form__input">
+                </label>
+                @error('name')
+                    {{ $message }}
+                @enderror
+            </div>
+            <div class="event-create-form__item">
+                <label for="description">Description:
+                    <textarea name="description" id="description" class="event-create-form__input" cols="30" rows="10" required>{{ old('description') }}</textarea>
+                </label>
+                @error('description')
+                    {{ $message }}
+                @enderror
+            </div>
+            <div class="event-create-form__item">
+                <label for="distance">Distance (km)
+                    <input type="number" name="distance" id="distance" class="event-create-form__input" min="0.01"
+                        step="0.01" required value="{{ old('distance') }}">
+                </label>
+                @error('distance')
+                    {{ $message }}
+                @enderror
+            </div>
+            <div class="event-create-form__item">
+                <label for="date">Date: </label>
+                <input type="datetime-local" name="date" id="date" class="event-create-form__input" required
+                    value="{{ old('date') }}">
+                @error('date')
+                    {{ $message }}
+                @enderror
+            </div>
+            <div class="event-create-form__item">
+                <label for="name">
+                    Image:
+                    <input type="file" name="image_path" class="event-create-form__input">
+                </label>
+            </div>
         </div>
-        <div>
-            <label for="description">Description</label>
-            <textarea name="description" id="description" cols="30" rows="10" style="display: block;" required>{{ old('description') }}</textarea>
-            @error('description')
-                {{ $message }}
-            @enderror
-        </div>
-        <div>
-            <label for="distance">Distance (km) </label>
-            <input type="number" name="distance" id="distance" min="0.01" step="0.01" required
-                value="{{ old('distance') }}">
-            @error('distance')
-                {{ $message }}
-            @enderror
-        </div>
-        <div>
-            <label for="date">Date: </label>
-            <input type="datetime-local" name="date" id="date" required value="{{ old('date') }}">
-            @error('date')
-                {{ $message }}
-            @enderror
-        </div>
-        <div>
+        <div class="event-create-form__right">
             <label for="location">Location: </label>
-            <div id="map"></div>
-            <script>
-                let map;
-                let marker;
-                if ({{ old('latitude') ?? 0 }} && {{ old('longitude') ?? 0 }}) {
-                    // If we already have a lat and long, use those for the marker
-                    map = L.map('map').setView([{{ old('latitude') }}, {{ old('longitude') }}], 17);
-                    // TODO: This marker cannot currently be dragged
-                    marker = L.marker([{{ old('latitude') }}, {{ old('longitude') }}]).addTo(map);
-                } else {
-                    // Show all of Luxembourg
-                    map = L.map('map').setView([49.85, 6.1], 8);
-                }
-
-                L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                }).addTo(map);
-
-                const search = new GeoSearch.GeoSearchControl({
-                    provider: new GeoSearch.OpenStreetMapProvider(),
-                    style: 'bar',
-                    marker: {
-                        icon: new L.Icon.Default(),
-                        draggable: true
-                    },
-                    showPopup: false
-                });
-
-                map.addControl(search);
-
-                map.on('geosearch/showlocation', (result) => {
-                    // console.log(result);
-                    if (marker) marker.remove();
-                    document.querySelector('input[name="latitude"]').value = result.location.y;
-                    document.querySelector('input[name="longitude"]').value = result.location.x;
-                });
-
-                map.on('geosearch/marker/dragend', (result) => {
-                    // console.log(result);
-                    document.querySelector('input[name="latitude"]').value = result.location.lat;
-                    document.querySelector('input[name="longitude"]').value = result.location.lng;
-                });
-            </script>
-            <input type="hidden" name="latitude" required value="{{ old('latitude') }}">
-            @error('latitude')
-                {{ $message }}
-            @enderror
-            <input type="hidden" name="longitude" required value="{{ old('longitude') }}">
-
-            @error('longitude')
-                {{ $message }}
-            @enderror
+            <x-map-input-card />
         </div>
-
-        <button>Add</button>
+        <div class="event-create-form__submit"><button>Add</button></div>
     </form>
 @endsection
