@@ -31,7 +31,6 @@ Route::post('/news', [PostController::class, 'store']);
 /*----------------------USERS----------------------*/
 //Show register form
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
-
 //Add user to database
 Route::post('/users', [UserController::class, 'store'])->middleware('guest');
 
@@ -41,9 +40,20 @@ Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 //Show login form
 //Added a name to the route so that we can use it through middleware
 Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
-
 //log user in
 Route::post('/login', [UserController::class, 'authenticate'])->middleware('guest');
+
+//manage page for the Admin
+//show manage
+Route::get('/users/manage', [UserController::class, 'manage']);
+//delete user
+Route::delete('/users/{id}', [UserController::class, 'destroy'])->where('id', '[0-9]+');
+//edit user
+Route::get('/users/{id}/edit', [UserController::class, 'editAdmin'])->where('id', '[0-9]+');
+//update user
+Route::put('/users/{id}', [UserController::class, 'updateAdmin'])->where('id', '[0-9]+');
+//add new user
+Route::get('/users/create', [UserController::class, 'createAdmin']);
 
 /*-------------------------------PROFILE------------------------------- */
 //show profile page

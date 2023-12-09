@@ -27,7 +27,7 @@ return new class extends Migration
             //user picture
             $table->string('profile_picture')->nullable();//now it can accept pictures
             //email
-            $table->string('email')->unique();
+            $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
             //password
             $table->string('password');

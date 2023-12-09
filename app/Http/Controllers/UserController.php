@@ -9,10 +9,16 @@ use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
+    
     //Show register form
     public function create()
     {
         return view('users.register');
+    }
+
+    public function createAdmin()
+    {
+        return view('users.createAdmin');
     }
 
     //Add user to database
@@ -95,6 +101,36 @@ class UserController extends Controller
 
     }
 
+    public function manage()
+    {
+        return view('users.manage',[
+            //'users' => auth()->user()->users,
+            'users' => User::latest()->filter(request(['search']))->get(),
+
+        ]);
+    }
+
+    public function destroy($id)
+    {
+        //Fetch the user to be deleted
+        $user= User::find($id);
+
+        //Delete the user
+        $user->delete();
+
+        //Redirect to the manage users
+        return redirect('/users/manage')->with('message', 'User deleted Successfully!');
+    }
+
+    public function editAdmin($id)
+    {
+        $user = User::find($id);
+
+        return view('users.edit', [
+            'user' => $user
+        ]);
+    }
+
     //Show only the specific user profile
     public function show($id){
         return view('users.show', [
@@ -115,10 +151,43 @@ class UserController extends Controller
             'user' => $user
         ]);
     }
+
+    public function updateAdmin(Request $request, $id)
+    {
+        //Fetch the user to be updated
+        $user = User::find($id);      
+
+        //Validate the form fields
+        $formFields = $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'birthdate' => 'required',
+            'gender' => 'required',
+            'role' => 'required',
+            'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($user->id)],
+            'password' => [
+                'required', Password::min(8)
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols()
+                    ->uncompromised(2),
+                'confirmed'
+            ],
+        ]);
+
+        $formFields['password'] = bcrypt($formFields['password']);
+
+        //Update the user
+        $user->update($formFields);
+
+        //Redirect to the manage users page
+        return redirect('/users/manage')->with('message', 'User updated Successfully!');
+    }     
+
     //update the user information
     public function update(Request $request,$id)
     {
-        //Fetch the user to be updated
+         //Fetch the user to be updated
         $user = User::find($id);
 
         //Make sure logged in user is the user
@@ -139,6 +208,8 @@ class UserController extends Controller
                 'confirmed'
             ],
         ]);
+      
+        $formFields['password'] = bcrypt($formFields['password']);
 
         //upload the new picture
         if($request->hasFile('profile_picture'))
@@ -156,5 +227,4 @@ class UserController extends Controller
         //Redirect to the user detail page
         return redirect('profile/'. $user->id)->with('message', 'Profile updated Successfully!');
     }
-
 }

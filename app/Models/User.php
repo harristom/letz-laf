@@ -22,11 +22,25 @@ class User extends Authenticatable
         'last_name',
         'birthdate',
         'gender',
+        'role',
+        'profile_picture',
         'email',
         'password',
-        'profile_picture',
-        'role'
     ];
+
+    public function scopeFilter($query, array $filters){
+        
+        if($filters['search'] ?? false){
+            
+            $keywords = explode(' ', $filters['search']);
+
+            foreach($keywords as $keyword)
+            {
+                $query->orWhere('first_name', 'like', '%' . $keyword . '%')
+                ->orWhere('last_name', 'like', '%' . $keyword . '%');
+            }
+        }
+    }
 
     /**
      * The attributes that should be hidden for serialization.

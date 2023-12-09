@@ -1,15 +1,14 @@
 @extends('layout')
 
 @section('content')
-    <div class="register-container">
-        <header class="register-container__header">
-            <h2 class="register-container__header-h2">Register</h2>
-            <p class="register-container__header-p">Create an account to participate!</p>
+   <div class="add-user">
+        <header class="add-user__header">
+            <h2 class="add-user__header-h2">Add a New User</h2>
+            <p class="add-user__header-p">Create an account for an User!</p>
         </header>
-        <form action="/users" method="post" enctype="multipart/form-data" class="register-container__form">
-            {{-- ! added enctype to make sure the form can handle images --}}
+        <form class="add-user__form" action="/users" method="post" enctype="multipart/form-data">
             @csrf
-            <div class="register-container__form-div-name">
+            <div class="add-user__form-div-name">
                 <div>
                     <label for="first_name">First Name</label>
                     <input type="text" name="first_name" id="first_name" value="{{ old('first_name') }}" />
@@ -25,7 +24,7 @@
                     @enderror
                 </div>
             </div>
-            <div class="register-container__form-div-info">
+            <div class="add-user__form-div-info">
                 <div>
                     <label for="birthdate">Date of birth</label>
                     <input type="date" name="birthdate" id="birthdate" value="{{ old('birthdate') }}" />
@@ -41,7 +40,7 @@
                     @enderror
                 </div>
             </div>
-            <div class="register-container__form-div">
+            <div class="add-user__form-div">
                 <label>Gender</label>
                 <div>
                     <label>
@@ -63,14 +62,14 @@
                     <p>{{ $message }}</p>
                 @enderror
             </div>
-            <div class="register-container__form-div">
+            <div class="add-user__form-div">
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" value="{{ old('email') }}" />
                 @error('email')
                     <p>{{ $message }}</p>
                 @enderror
             </div>
-            <div class="register-container__form-div-password">
+            <div class="add-user__form-div-password">
                 <div>
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" value="{{ old('password') }}" />
@@ -81,49 +80,40 @@
                 <div>
                     <label for="password_confirmation">Confirm Password</label>
                     <input type="password" id="password_confirmation" name="password_confirmation" />
-                    @error('password')
-                        <p>{{ $message }}</p>
-                    @enderror
                 </div>
             </div>
-            <div class="register-container__form-div-btn">
-                <button>Sign Up</button>
-            </div>
-            <div class="register-container__form-div-p">
-                <p>
-                    Already have an account?
-                    <a href="/login">Login</a>
-                </p>
-            </div>
-            <div class="register-container__form-div-p">
-                <p> By becoming a member, you agree to LëtzLaf's <a href="{{ Route('terms-and-cond') }}">Terms and Conditions</a></p>
+            
+            <div class="add-user__form-div-btn">
+                <button>Create</button>
+                <a href="/users/manage">Back</a>
             </div>
         </form>
-    </div>
+   </div>
 @endsection
 
 <style>
-    .register-container {
+
+    .add-user{
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .register-container__header {
+    .add-user__header{
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .register-container__header-h2 {
+    .add-user__header-h2{
         margin: 0;
         font-size: 40px;
         font-weight: 700;
         color: var(--primary-color);
     }
 
-    .register-container__header-p {
+    .add-user__header-p{
         font-size: 15px;
         max-width: 85%;
         text-align: center;
@@ -131,7 +121,7 @@
         padding: 10px 0 20px 0;
     }
 
-    .register-container__form {
+    .add-user__form{
         width: 70%;
         margin: 20px auto;
         display: flex;
@@ -139,7 +129,7 @@
         align-items: center;
     }
 
-    .register-container__form-div {
+    .add-user__form-div{
         display: flex;
         flex-direction: column;
         gap: 20px;
@@ -147,18 +137,18 @@
         width: 500px;
     }
 
-    .register-container__form-div-name,
-    .register-container__form-div-info,
-    .register-container__form-div-password {
+    .add-user__form-div-name,
+    .add-user__form-div-info,
+    .add-user__form-div-password{
         width: 500px;
         display: flex;
         flex-direction: row;
         gap: 20px;
     }
 
-    .register-container__form-div-name div,
-    .register-container__form-div-info div,
-    .register-container__form-div-password div {
+    .add-user__form-div-name div,
+    .add-user__form-div-info div,
+    .add-user__form-div-password div{
         width: 250px;
         display: flex;
         flex-direction: column;
@@ -166,16 +156,8 @@
         margin-bottom: 30px;
     }
 
-    .register-container__form-div-btn {
-        margin: 10px auto;
-        text-align: center;
-        width: 150px;
+    .add-user__form-div-btn a{
+        margin-left: 30px; 
     }
 
-    .register-container__form-div-p {
-        width: 30%;
-        text-align: center;
-        margin: 0 auto -20px auto;
-    }
 </style>
-
