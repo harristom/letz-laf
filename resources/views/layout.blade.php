@@ -51,6 +51,12 @@
             text-decoration: underline;
         }
 
+        ul {
+            list-style: none;
+        }
+
+        /* Button styles */
+
         button,
         input[type="button"],
         input[type="submit"],
@@ -93,8 +99,11 @@
             color: var(--primary-color);
         }
 
-        ul {
-            list-style: none;
+        input::file-selector-button {
+            border: thin solid var(--primary-color);
+            padding: 5px 10px;
+            text-transform: none;
+            margin-right: 10px;
         }
 
         /* Fix leaflet styles */
@@ -102,28 +111,6 @@
         .leaflet-container a:hover {
             text-decoration: none;
         }
-        /* --- */
-      /*  nav {
-            display: flex;
-        }
-
-        ul {
-            display: flex;
-            gap: 50px;
-        }
-
-        .profilePicture {
-            height: 100px;
-            width: 100px;
-            border-radius: 50%;
-        }
-
-        .logo {
-            height: 100px;
-            width: 100px;
-            border-radius: 50%;
-        }
-        */
 
         /*-------input fields------*/
         input[type=text],
@@ -152,13 +139,6 @@
             border: 1px solid lightgray;
         }
 
-        input::file-selector-button {
-            border: thin solid var(--primary-color);
-            padding: 5px 10px;
-            text-transform: none;
-            margin-right: 10px;
-        }
-
         /*-------select option------*/
         select {
             border: 1px solid lightgray;
@@ -168,9 +148,10 @@
 
         /*-----------table-----------*/
 
-        table{
+        table {
             width: 80%;
             margin: 0 auto;
+            border-collapse: collapse;
         }
 
         table th,
@@ -179,23 +160,13 @@
             text-align: center;
         }
 
-        table tr{
+        table tr {
             background-color: transparent;
         }
 
-        tr:nth-child(1) {
-            background-color: transparent;
-        }
-
-        tr:nth-child(2) {
+        tr:nth-child(even) {
             background-color: white;
         }
-        
-        td:nth-child(even){
-            background-color: transparent;
-        }
-
-
     </style>
     <title>LëtzLaf</title>
 </head>
@@ -226,9 +197,10 @@
                     </form>
                 </li>
                 <li>
-                    <a href="/profile/{{auth()->user()->id}}">
-                        {{ auth()->user()->first_name }} {{auth()->user()->last_name}}
-                        <img class="profilePicture" src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : asset('images/profilePicturePlaceholder.jpeg') }}">
+                    <a href="/profile/{{ auth()->user()->id }}">
+                        {{ auth()->user()->first_name }} {{ auth()->user()->last_name }}
+                        <img class="profilePicture"
+                            src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : asset('images/profilePicturePlaceholder.jpeg') }}">
                     </a>
                 </li>
             @else
@@ -259,149 +231,3 @@
 </body>
 
 </html>
-
-<style>
-
-:root {
-            --page-bg: #f7f4eb;
-            --primary-color: #ee5c35;
-            --card-bg: white;
-        }
-
-        body {
-            font-family: 'Lato', sans-serif;
-            background-color: var(--page-bg)
-        }
-
-        main {
-            max-width: 1500px;
-            margin: 0 auto;
-        }
-
-        a {
-            text-decoration: none;
-            color: var(--primary-color);
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        button,
-        input[type="button"],
-        input[type="submit"],
-        .button {
-            font-family: inherit;
-            border: none;
-            color: var(--card-bg);
-            padding: 10px 20px;
-            border-radius: 2px;
-            cursor: pointer;
-            text-transform: uppercase;
-            border-color: var(--primary-color);
-            border-style: solid;
-            border-width: 2px;
-            /* I know this is crazy but it fixes the flicker */
-            /* The bg color is orange with a 0% width solid white "gradient" on top */
-            /* The gradient grows to 100% width on hover */
-            background-color: var(--primary-color);
-            background-image: linear-gradient(white 0 0);
-            background-size: 0% 100%;
-            background-repeat: no-repeat;
-            transition: 175ms;
-            font-size: 0.9rem;
-            text-decoration: none;
-        }
-
-        button:hover,
-        input[type="button"]:hover,
-        input[type="submit"]:hover,
-        .button:hover {
-            background-size: 100% 100%;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-    
-
-        footer {
-            background-color: #ee5c35;
-            padding: 10px;
-        }
-
-        /*-------input fields------*/
-        input[type=text],
-        input[type=email],
-        input[type=password],
-        input[type=date],
-        input[type=textarea] {
-            padding: 10px;
-            border-radius: 3px;
-            border: 1px solid lightgray;
-        }
-
-        /*-------radio buttons------*/
-        input[type=radio]:checked {
-            accent-color: var(--primary-color);
-        }
-
-        /*-------file upload------*/
-        input[type=file] {
-            padding: 10px 10px 8px 10px;
-            border-radius: 3px;
-            border: 1px solid lightgray;
-        }
-
-        input::file-selector-button {
-            font-weight: bold;
-            color: white;
-            background-color: var(--primary-color);
-            border: thin solid var(--primary-color);
-            border-radius: 3px;
-            cursor: pointer;
-        }
-
-        /*-------select option------*/
-        select {
-            border: 1px solid lightgray;
-            padding: 10px;
-            border-radius: 3px;
-        }
-
-
-    table{
-            width: 80%;
-            margin: 0 auto;
-        }
-
-        table th,
-        table td {
-            width: 100%;
-            padding: 15px 0;
-            text-align: center;
-        }
-
-        table tr{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            background-color: transparent;
-        }
-
-        tr:nth-child(1) {
-            background-color: transparent;
-        }
-
-        tr:nth-child(2) {
-            background-color: white;
-        }
-        
-        td:nth-child(even){
-            background-color: transparent;
-        }
-
-</style>
