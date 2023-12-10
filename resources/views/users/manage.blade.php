@@ -11,11 +11,10 @@
             <thead>
                 <tr class="users-manage-container__table--title">
                     <th>ID</th>
-                    <th></th>
                     <th>Profile</th>
                     <th>Email</th>
                     <th>Role</th>
-                    <th></th>
+                    
                     <th>@include('partials._search')</th>
                 </tr>
             </thead>
@@ -130,18 +129,38 @@
         color: var(--primary-color);
     }
     
-    /*select the second td and th*/
-    .users-manage-container__table--title th:nth-child(2),
-    .users-manage-container__table--tr--two td:nth-child(2){
-        width: 20%;
+    .users-manage-container__table {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
     }
-    
-    .users-manage-container__table--title {
+
+    .users-manage-container__table--title{
+        width: 100%;
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        align-items: center;
     }
-    
+
+    .users-manage-container__table--title th{
+        width: 100%;
+    }
+
+    .users-manage-container__table--tr--two{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .users-manage-container__table--tr--two td{
+        width: 100%;
+    }
+
+    .users-manage-container__table--tr--two td:nth-child(2){
+       width: 50px;
+    }
+
     .users-manage-container__table--img{
         width: 50px;
         height: 50px;
