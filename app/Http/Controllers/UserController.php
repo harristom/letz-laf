@@ -96,9 +96,6 @@ class UserController extends Controller
             return redirect('/')->with('message', 'User logged in Successfully!');
         }
 
-        //If it doesn't find a match send error
-        return back()->withErrors(['login' => 'Invalid Credentials']);
-
     }
 
     public function manage()
