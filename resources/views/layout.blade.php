@@ -43,8 +43,10 @@
         body {
             font-family: 'Lato', sans-serif;
             background-color: var(--page-bg);
+            display: grid;
+            grid-template-rows: auto 1fr auto;
         }
-
+        
         main {
             max-width: 1500px;
             margin: 0 auto;
@@ -216,6 +218,15 @@
         .main-nav__a:hover {
             text-decoration: none;
         }
+
+        .main-footer {
+            margin-top: 30px;
+            text-align: center;
+            background-color: var(--card-bg);
+            padding: 50px 10px;
+            color: rgb(56, 56, 56);
+            font-size: 0.8rem;
+        }
     </style>
     <title>LëtzLaf</title>
 </head>
@@ -266,13 +277,14 @@
             @endauth
         </nav>
     </header>
-    <main>
-        @yield('content')
-    </main>
+    <div>
+        <main>
+            @yield('content')
+        </main>
+    </div>
 
     {{-- <x-flash-message /> --}}
-
-    <footer>
+    <footer class="main-footer">
         <p>Copyright &copy; 2023, All Rights reserved</p>
     </footer>
 </body>
