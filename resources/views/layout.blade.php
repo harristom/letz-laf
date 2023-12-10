@@ -277,6 +277,7 @@
             @endauth
         </nav>
     </header>
+    {{-- Extra wrapping div to keep margin collapse in main (grid prevents margin collapse otherwise) --}}
     <div>
         <main>
             @yield('content')
