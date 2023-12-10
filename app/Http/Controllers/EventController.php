@@ -17,11 +17,9 @@ class EventController extends Controller
         return view(
             'events.index',
             [
-                'events' => Event::all(),
+                'events' => Event::orderBy('date')->get(),
             ]
         );
-
-        
     }
 
     /**
@@ -65,8 +63,6 @@ class EventController extends Controller
         return view('events.show', [
             'event' => $event
         ]);
-        
-       
     }
 
     /**

@@ -11,7 +11,7 @@
                 <span class="event-card__month">{{ \Carbon\Carbon::parse($event->date)->format('M') }}</span>
             </time>
             <img src="{{ $event->image_path ? asset('storage/' . $event->image_path) : asset('images/running-is-one-of-the-best-ways-to-stay-fit-royalty-free-image-1036780592-1553033495.jpg') }}"
-                alt="" width="640px" height="427px" class="event-card__img">
+                alt="" class="event-card__img">
         </section>
         {{-- The title and details --}}
         <section class="event-card__details">
