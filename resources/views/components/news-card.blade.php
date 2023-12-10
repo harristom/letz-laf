@@ -4,7 +4,8 @@
     @if (file_exists(public_path($post->image_path)))
         {{-- Image exists, show the div with the image --}}
         <div class="news-component-container__content one">
-            <img class="news-component-container__content-img" src="{{ asset('storage/' . $post->image_path) }}" alt="">
+            <img class="news-component-container__content-img" src="{{ asset('storage/' . $post->image_path) }}"
+                alt="">
         </div>
         {{ $post->content }}
     @else
@@ -15,6 +16,7 @@
     <div class="news-component-container__content two">
         <p>{{ $post->content }}</p>
     </div>
+    <p id="1"><a href="/news">See more</p>
 </div>
 
 <style>
@@ -25,7 +27,7 @@
         border-radius: 0%;
         padding: 15px;
         margin: 10px;
-        width: 500px;
+        width: 600px;
         box-shadow: 0 4px 8px rgba(87, 87, 87, 0.1);
     }
 
@@ -34,6 +36,7 @@
         margin-top: 10px;
         font-size: 18px;
     }
+
     .news-component-container__content {
         display: ;
         flex-direction: row;
@@ -51,5 +54,4 @@
         max-width: 100%;
         height: auto;
     }
-
 </style>

@@ -1,20 +1,30 @@
-{{--news page card--}}
+{{-- news page card --}}
 
 <div class="news-content-container">
     <div class="news-content news-div-content">
-        <h3>{{$post->title}}</h3>
-        <div class="news-div">
-            <div>
-                <img src="{{ asset('storage/'. $post->image_path) }}" alt="">
-            </div>
-            <div>
-                <p>{{$post->content}}</p>
-            </div>
-        </div>
-        </div>
-    <div class="news-content news-div-date">
-        <small>Created : {{$post->created_at}}</small>
+        <h3>{{ $post->title }}</h3>
+        {{-- Check if image file exists  --}}
+        @if (file_exists(public_path($post->image_path)))
+            {{-- Image exists, show the div with the image --}}
+            <div class="news-div">
+                <div>
+
+                    <img class="news-component-container__content-img" src="{{ asset('storage/' . $post->image_path) }}"
+                        alt="">
+                </div>
+                <div>
+                    <p>{{ $post->content }}</p>
+                @else
+                    {{-- Image does not exists, hide the div --}}
+                    <div style="display: none">
+                    </div>
+        @endif
+
     </div>
+</div>
+<div class="news-content news-div-date">
+    <small>Created : {{ $post->created_at }}</small>
+</div>
 </div>
 
 <style>
@@ -23,13 +33,14 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        margin: 20px; 
+        margin: 20px;
         border-radius: 10px;
-        padding: 10px 25px 25px 25px; 
-        box-shadow: 0px 0px 20px -3px rgba(0,0,0,0.2);
+        padding: 10px 25px 25px 25px;
+        box-shadow: 0px 0px 20px -3px rgba(0, 0, 0, 0.2);
         transition: transform .5s;
     }
-    .news-content-container:hover{
+
+    .news-content-container:hover {
         transform: scale(1.1);
     }
 
@@ -47,25 +58,25 @@
     .news-div p {
         margin: 0;
     }
-    
+
     .news-content h3 {
         text-align: center;
-        font-size: 30px; 
+        font-size: 30px;
     }
 
     .news-content img {
-        width: 400px; 
+        width: 400px;
         margin: auto;
-        height: auto; 
+        height: auto;
         border-radius: 5px;
         margin-right: 20px;
     }
 
     .news-content p {
-        font-size: 20px; 
+        font-size: 20px;
         text-align: center;
-        hyphens: auto; 
-	    text-align: justify
+        hyphens: auto;
+        text-align: justify
     }
 
     .news-div-date {
@@ -78,6 +89,4 @@
         text-align: left;
         padding: 20px 0 0 0;
     }
-
-
 </style>
