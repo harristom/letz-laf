@@ -7,14 +7,11 @@
             <a href="/users/create">Add User</a>
         </header>
         
+        <div class="users-manage-container__table--search">
+            @include('partials._search')
+        </div>
         <table class="users-manage-container__table" id="table">
             <thead>
-                <tr class="users-manage-container__table--tr--one">
-                    <th>User List</th>
-                    <th>
-                        @include('partials._search')
-                    </th>
-                <tr>
                 <tr class="users-manage-container__table--title">
                     <th>ID</th>
                     <th></th>
@@ -136,6 +133,7 @@
     .users-manage-container__table--title {
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
     }
 
     .users-manage-container__table--img{

@@ -2,6 +2,8 @@
 
 @section('content')
 
+<h2 class="events-page__title">Events</h2>
+
 <button class="past-events-btn" type="button">Previous</button>
 
 <div class="events-page-list">
@@ -21,15 +23,24 @@
 @endsection
 
 <style>
+    /* adding a title to the page */
+    .events-page__title{
+        text-align: left;
+        color: var(--primary-color);
+        font-size: 40px;
+        margin: 20px 75px;
+    }
+
+
     .events-page-list {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: center;
-        width: 80%;
+        justify-content: space-around;
+        width: 100%;
+        padding: 40px 2%;
         align-items: center;
-        margin: 30px auto;
-        gap: 30px;
+        gap: 40px;
       }
 
       .past-events-btn {

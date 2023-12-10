@@ -33,21 +33,21 @@
         }
 
         /* Leaving commented until we've discussed */
-        /* * {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        } */
+        }
 
         body {
             font-family: 'Lato', sans-serif;
             background-color: var(--page-bg);
             /* TODO: Delete me if set in reset */
-            margin: 0;
+            margin: 0 100px;
         }
 
         main {
-            max-width: 1500px;
+           /* max-width: 1500px;*/
             margin: 0 auto;
         }
 
@@ -173,7 +173,11 @@
             background-color: transparent;
         }
 
-        tr:nth-child(even) {
+        table thead tr:first-child {
+            background-color: white;
+        }
+
+        table tr:nth-child(even) {
             background-color: white;
         }
 
@@ -188,10 +192,10 @@
 
         .main-nav {
             display: flex;
-            gap: 10px;
+            gap: 40px;
             align-items: center;
             background: var(--card-bg);
-            padding: 5px 10px;
+            padding: 5px 20px;
         }
 
         .main-nav__logo {
@@ -200,13 +204,13 @@
 
         .main-nav__link-list {
             display: flex;
-            gap: 20px;
+            gap: 50px;
             font-size: 1.3rem;
             align-items: center;
             margin-left: auto;
             padding: 0;
         }
-
+        
         .main-nav__button-list {
             margin-left: 20px;
             display: flex;

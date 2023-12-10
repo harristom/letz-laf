@@ -27,7 +27,7 @@
     </h3>
 
     <div class="events-preview__listings">
-        @foreach(\App\Models\Event::latest()->take(3)->get() as $event)
+        @foreach(\App\Models\Event::latest()->take(4)->get() as $event)
             <x-event-card :event="$event"/>
         @endforeach
     </div>
@@ -54,22 +54,13 @@
         height: 400px;
         color: var(--card-bg);
         text-transform: uppercase;
+        opacity: 0.8;
     }
 
     .homepage__titles--main-color{
         color: var(--primary-color);
-        gap: 10px;
         padding-left: 10px;
-        margin: 0;
         /* font-family: 'Lato', sans-serif; */
-    }
-
-    .homepage__titles--white-color{
-        margin: 0;
-    }
-
-    .homepage__titles--black-color{
-        margin: 0;
     }
 
     .top-section__slogan{
@@ -92,16 +83,21 @@
         text-align: center;
         display: flex;
         text-transform: uppercase;
-        margin:0 40%;
+        margin: 40px auto;
         justify-content: center;
+        font-size: 30px;
     }
     
     .events-preview{
-        margin: 50px 10%;
+        margin: 50px 5% 100px 5%;
     }
 
     .events-preview__listings{
+        width: 100%;
         display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 40px;
     }
 
 </style>
