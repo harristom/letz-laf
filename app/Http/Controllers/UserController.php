@@ -93,19 +93,11 @@ class UserController extends Controller
             $request->session()->regenerate();
 
             // redirect to the home page
-            return redirect('/')->with('message', 'User logged in Successfully!');
+            return redirect('/')->with('message', 'User logged in successfully!');
         }
 
-        // Check if the email is incorrect
-        $userExists = User::where('email', $formFields['email'])->exists();
-
-        if (!$userExists) {
-            // Invalid email
-            return back()->withErrors(['email' => 'Invalid email'])->withInput($request->except('password'));
-        }
-
-        // If reached here, the password is incorrect
-        return back()->withErrors(['password' => 'Invalid password'])->withInput($request->except('password'));
+        // If reached here, the credentials are incorrect
+        return back()->withErrors(['password' => 'Incorrect email or password']);
     }
 
     public function manage()
