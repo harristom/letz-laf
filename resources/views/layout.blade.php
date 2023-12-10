@@ -172,6 +172,7 @@
         table tr {
             background-color: transparent;
         }
+        
 
         table thead tr:first-child {
             background-color: white;

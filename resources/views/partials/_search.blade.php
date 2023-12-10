@@ -1,11 +1,21 @@
 <form action="">
-    <div>
+    <div class="search-bar-container">
         <input type="text" name="search" id="search-input" placeholder="Search for a name...">
         <button type="submit">
             Search
         </button>
     </div>
 </form>
+
+<style>
+    .search-bar-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+
 
 {{--
     <script>

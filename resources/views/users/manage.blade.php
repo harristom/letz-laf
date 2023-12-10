@@ -6,10 +6,7 @@
             <h2>Manage Users</h2>
             <a href="/users/create">Add User</a>
         </header>
-        
-        <div class="users-manage-container__table--search">
-            @include('partials._search')
-        </div>
+
         <table class="users-manage-container__table" id="table">
             <thead>
                 <tr class="users-manage-container__table--title">
@@ -19,7 +16,7 @@
                     <th>Email</th>
                     <th>Role</th>
                     <th></th>
-                    <th></th>
+                    <th>@include('partials._search')</th>
                 </tr>
             </thead>
             <tbody>
@@ -135,7 +132,7 @@
         flex-direction: row;
         justify-content: space-between;
     }
-
+    
     .users-manage-container__table--img{
         width: 50px;
         height: 50px;
