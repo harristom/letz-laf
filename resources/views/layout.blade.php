@@ -237,6 +237,7 @@
             text-align: center;
             padding: 20px;
             background: var(--page-bg);
+            bottom: 0;
             box-shadow: 10px 0px 20px -3px rgba(0,0,0,0.1);
         }
     </style>

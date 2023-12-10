@@ -114,6 +114,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin: 30px;
     }
 
     .register-container__header-h2 {
@@ -125,15 +126,14 @@
 
     .register-container__header-p {
         font-size: 15px;
-        max-width: 85%;
         text-align: center;
         line-height: 1.1rem;
         padding: 10px 0 20px 0;
     }
 
     .register-container__form {
-        width: 70%;
-        margin: 20px auto;
+        width: 80%;
+        margin: 10px auto 50px auto;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -144,15 +144,16 @@
         flex-direction: column;
         gap: 20px;
         margin: 0 0 30px 0;
-        width: 500px;
+        width: 515px;
     }
 
     .register-container__form-div-name,
     .register-container__form-div-info,
     .register-container__form-div-password {
-        width: 500px;
+        width: 550px;
         display: flex;
         flex-direction: row;
+        justify-content: center;
         gap: 20px;
     }
 
@@ -173,9 +174,9 @@
     }
 
     .register-container__form-div-p {
-        width: 30%;
+        width: 50%;
         text-align: center;
-        margin: 0 auto -20px auto;
+        padding: 5px;
     }
 </style>
 
