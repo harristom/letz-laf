@@ -93,12 +93,11 @@ class UserController extends Controller
             $request->session()->regenerate();
 
             // redirect to the home page
-            return redirect('/')->with('message', 'User logged in Successfully!');
+            return redirect('/')->with('message', 'User logged in successfully!');
         }
 
-        //If it doesn't find a match send error
-        return back()->withErrors(['login' => 'Invalid Credentials']);
-
+        // If reached here, the credentials are incorrect
+        return back()->withErrors(['password' => 'Incorrect email or password']);
     }
 
     public function manage()
