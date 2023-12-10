@@ -211,6 +211,11 @@
 
         .main-nav__avatar {
             border-radius: 50%;
+            border: 3px solid transparent;
+        }
+
+        .main-nav__avatar:hover {
+            border-color: rgba(0, 0, 0, 0.3);
         }
 
         .main-nav__a:hover {
