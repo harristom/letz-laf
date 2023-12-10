@@ -32,18 +32,17 @@
             --card-bg: white;
         }
 
-        /* Leaving commented until we've discussed */
-        /* * {
+        *,
+        ::before,
+        ::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        } */
+        }
 
         body {
             font-family: 'Lato', sans-serif;
             background-color: var(--page-bg);
-            /* TODO: Delete me if set in reset */
-            margin: 0;
         }
 
         main {
@@ -178,13 +177,6 @@
         }
 
         /* Header styles */
-
-        /* TODO: Delete me if we set this in reset */
-        :where(header) * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
         .main-nav {
             display: flex;
