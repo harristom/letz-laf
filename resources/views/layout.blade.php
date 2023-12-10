@@ -40,6 +40,7 @@
         }
 
         body {
+            position: relative;
             font-family: 'Lato', sans-serif;
             background-color: var(--page-bg);
             /* TODO: Delete me if set in reset */
@@ -234,10 +235,12 @@
 
         /*----------Footer----------*/
         footer {
-            text-align: center;
-            padding: 20px;
-            background: var(--page-bg);
+            width: 100%;
+            position: relative;
             bottom: 0;
+            padding: 20px;
+            text-align: center;
+            background: var(--page-bg);
             box-shadow: 10px 0px 20px -3px rgba(0,0,0,0.1);
         }
     </style>

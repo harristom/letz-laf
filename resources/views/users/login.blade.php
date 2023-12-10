@@ -48,6 +48,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin: 125px 0px 70px 0px;
     }
 
     .login-container__header-h2{
@@ -59,18 +60,19 @@
 
     .login-container__header-p{
         font-size: 15px;
-        max-width: 85%;
+        max-width: 100%;
         text-align: center;
         line-height: 1.1rem;
-        padding: 10px 0 20px 0;
+        padding: 20px 0 0 0;
     }
 
     .login-container__form {
-        width: 500px;
+        width: 550px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 20px;
+        margin-top: 10px;
+        margin-bottom: 125px;
     }
 
     .login-container__form-div {
@@ -78,16 +80,17 @@
         flex-direction: column;
         gap: 20px;
         margin: 0 0 30px 0;
-        width: 400px;
+        width: 450px;
     }
 
     .login-container__form-div-btn{
-        margin: 10px auto;
+        margin: 20px auto 0 auto;
         width: 150px;
     }
 
     .login-container__form-div-p{
         margin: 0 auto 0 auto;
+        padding: 0;
     }
 
 </style>

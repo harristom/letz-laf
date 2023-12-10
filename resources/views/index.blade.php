@@ -42,7 +42,6 @@
             <x-big-news-card :post="$post" />
         @endforeach
     </div>
-    
 </section>
 
 @endsection
