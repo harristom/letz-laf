@@ -25,7 +25,7 @@
         width: 45%;
         display: flex;
         flex-direction: column;
-        margin: 20px;
+        margin: 20px 20px 50px 20px;
         border-radius: 10px;
         padding: 10px 25px 25px 25px;
         box-shadow: 0px 0px 20px -3px rgba(0, 0, 0, 0.2);

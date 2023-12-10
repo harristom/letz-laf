@@ -231,6 +231,14 @@
         .main-nav__a:hover {
             text-decoration: none;
         }
+
+        /*----------Footer----------*/
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: var(--page-bg);
+            box-shadow: 10px 0px 20px -3px rgba(0,0,0,0.1);
+        }
     </style>
     <title>LëtzLaf</title>
 </head>
