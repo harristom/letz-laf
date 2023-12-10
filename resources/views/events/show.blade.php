@@ -88,16 +88,21 @@
                     <div><i class="fa-solid fa-person-running"></i> {{ count($event->participants) }} registered</div>
                 </div>
                 <div class="event-details__buttons">
-                    <form action="{{ route('events.register', $event) }}" method="POST" class="event-details__form">
-                        @csrf
-                        <button>Join</button>
-                    </form>
-                    <a href="{{ route('events.edit', $event) }}" class="button">Edit</a>
-                    <form action="{{ route('events.destroy', $event) }}" method="POST" class="event-details__form">
-                        @csrf
-                        @method('DELETE')
-                        <button>Delete</button>
-                    </form>
+
+                    @if(auth()->check() && (auth()->user()->id == $event->organiser_id || auth()->user()->role == 'Admin'))
+                        <a href="{{ route('events.edit', $event) }}" class="button">Edit</a>
+                        <form action="{{ route('events.destroy', $event) }}" method="POST" class="event-details__form">
+                            @csrf
+                            @method('DELETE')
+                            <button>Delete</button>
+                        </form>
+                    @else 
+                        <form action="{{ route('events.register', $event) }}" method="POST" class="event-details__form">
+                            @csrf
+                            <button>Join</button>
+                        </form>
+                    @endif
+
                 </div>
                 @if (count($event->results) > 0)
                     <x-event-results-table :event="$event" />
