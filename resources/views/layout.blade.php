@@ -27,7 +27,7 @@
     <style>
         /* Base styles */
         :root {
-            --page-bg: #f7f4eb;
+            --page-bg: white;
             --primary-color: #ee5c35;
             --card-bg: white;
         }
@@ -44,6 +44,7 @@
             background-color: var(--page-bg);
             /* TODO: Delete me if set in reset */
             margin: 0 100px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
         }
 
         main {
@@ -197,6 +198,7 @@
             align-items: center;
             background: var(--card-bg);
             padding: 5px 20px;
+            box-shadow: 0px 10px 20px -3px rgba(0,0,0,0.1);
         }
 
         .main-nav__logo {

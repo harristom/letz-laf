@@ -38,7 +38,7 @@
     <h3 class="news-preview__title"> News</h3>
 
     <div class="news-preview__listings">
-        @foreach(\App\Models\Post::latest()->take(3)->get() as $post)
+        @foreach(\App\Models\Post::latest()->take(2)->get() as $post)
             <x-big-news-card :post="$post" />
         @endforeach
     </div>
@@ -98,6 +98,17 @@
         justify-content: space-around;
         flex-wrap: wrap;
         gap: 40px;
+    }
+
+    .news-preview__listings{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .news-preview{
+        background-color: #d3d3d347;
     }
 
 </style>
