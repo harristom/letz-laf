@@ -111,14 +111,23 @@
 
 
 <style>
+    .users-manage-container{
+        width: 100%;
+    }
     
-
     .users-manage-container__header{
         width: 80%;
         margin: 0 auto;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
+        padding: 40px 0;
+    }
+
+    .users-manage-container__header h2{
+        font-size: 40px;
+        color: var(--primary-color);
     }
     
     /*select the second td and th*/

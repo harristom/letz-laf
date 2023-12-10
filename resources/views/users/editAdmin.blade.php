@@ -119,6 +119,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin: 50px 0 20px 0;
     }
 
     .edit-user__header-h2{
@@ -130,7 +131,7 @@
 
     .edit-user__form {
         width: 70%;
-        margin: 20px auto;
+        margin: 20px auto 30px auto;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -174,8 +175,12 @@
         margin-bottom: 30px;
     }
 
-    .edit-user__form--div--btn a{
-        margin-left: 30px; 
+    .edit-user__form-div-btn{
+        margin: 20px; 
+    }
+
+    .edit-user__form-div-btn a{
+        padding-left: 40px; 
     }
 
 

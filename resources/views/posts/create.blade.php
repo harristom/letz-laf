@@ -3,7 +3,7 @@
 @section('content')
     <div class="create-post-container">
         <header class="create-post-container__header">
-            <h2>Create a Post</h2>
+            <h2>New Post</h2>
         </header>
         <form action="/news" method="post" enctype="multipart/form-data" class="create-post-container__form">
             @csrf
@@ -39,15 +39,15 @@
 <style>
 
     .create-post-container{
-        width: 80% ;
-        background-color: ;
+        width: 100% ;
         margin: 0 auto;
     }
 
     .create-post-container__header{
         text-align: center;
         color: var(--primary-color);
-        padding: 40px 0 20px 0;
+        padding: 50px 0 20px 0;
+        font-size: 25px;
     }
 
     .create-post-container__form{
@@ -55,6 +55,7 @@
         flex-direction: column;
         align-items: center;
         gap: 20px;
+        margin-bottom: 80px;
     }
 
     .create-post-container__form-div{
@@ -72,7 +73,7 @@
     }
 
     .create-post-container__form-div-btn a{
-        padding: 30px;
+        padding-left: 40px; 
     }
 
 

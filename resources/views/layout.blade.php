@@ -135,7 +135,7 @@
             font-family: inherit;
             padding: 10px;
             border-radius: 3px;
-            border: 1px solid lightgray;
+            border: 1px solid var(--primary-color);
         }
 
         /*-------radio buttons------*/
@@ -147,12 +147,12 @@
         input[type=file] {
             padding: 10px 10px 8px 10px;
             border-radius: 3px;
-            border: 1px solid lightgray;
+            border: 1px solid var(--primary-color);
         }
 
         /*-------select option------*/
         select {
-            border: 1px solid lightgray;
+            border: 1px solid var(--primary-color);
             padding: 10px;
             border-radius: 3px;
         }
@@ -163,6 +163,7 @@
             width: 80%;
             margin: 0 auto;
             border-collapse: collapse;
+            border: 1px solid #d3d3d347;
         }
 
         table th,
@@ -177,11 +178,11 @@
         
 
         table thead tr:first-child {
-            background-color: white;
+            background-color: #d3d3d347;
         }
 
         table tr:nth-child(even) {
-            background-color: white;
+            background-color: #d3d3d347;
         }
 
         /* Header styles */
