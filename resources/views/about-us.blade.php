@@ -46,11 +46,11 @@
             <p class="team-card__description--padding">Vania Barbosa</p>
             <p class="team-card__description--padding">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam rerum itaque ad tempora reiciendis voluptatibus tempore sint totam debitis excepturi?</p>
             <div>
-                <a class="team-card__linkedin-link" href="#">
-                    Get in touch <i class="fa-brands fa-linkedin"></i>
+                <a class="team-card__linkedin-link" href="#"><i class="fa-brands fa-linkedin"></i>
+                    Get in touch
                 </a> 
                 <br>
-                <a class="team-card__portfolio-link" href="#">
+                <a class="team-card__portfolio-link" href="#"> <i class="fa-solid fa-laptop-code"></i>
                     Browse my portfolio
                 </a>
             </div>
@@ -65,11 +65,11 @@
             <p class="team-card__description--padding">Tom HARRIS</p>
             <p class="team-card__description--padding">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam rerum itaque ad tempora reiciendis voluptatibus tempore sint totam debitis excepturi?</p>
             <div>
-                <a class="team-card__linkedin-link" href="#">
-                    Get in touch <i class="fa-brands fa-linkedin"></i>
+                <a class="team-card__linkedin-link" href="#"><i class="fa-brands fa-linkedin"></i>
+                    Get in touch
                 </a> 
                 <br>
-                <a class="team-card__portfolio-link" href="#">
+                <a class="team-card__portfolio-link" href="#"> <i class="fa-solid fa-laptop-code"></i>
                     Browse my portfolio
                 </a>
             </div>
@@ -83,11 +83,11 @@
             <p class="team-card__description--padding">Jaria POBA</p>
             <p class="team-card__description--padding">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam rerum itaque ad tempora reiciendis voluptatibus tempore sint totam debitis excepturi?</p>
             <div>
-                <a class="team-card__linkedin-link" href="#">
-                    Get in touch <i class="fa-brands fa-linkedin"></i>
+                <a class="team-card__linkedin-link" href="#"><i class="fa-brands fa-linkedin"></i>
+                    Get in touch
                 </a> 
                 <br>
-                <a class="team-card__portfolio-link" href="#">
+                <a class="team-card__portfolio-link" href="#"> <i class="fa-solid fa-laptop-code"></i>
                     Browse my portfolio
                 </a>
             </div>
@@ -102,11 +102,11 @@
             <p class="team-card__description--padding">Marcia SANTOS</p>
             <p class="team-card__description--padding">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam rerum itaque ad tempora reiciendis voluptatibus tempore sint totam debitis excepturi?</p>
             <div>
-                <a class="team-card__linkedin-link" href="#">
-                    Get in touch <i class="fa-brands fa-linkedin"></i>
+                <a class="team-card__linkedin-link" href="#"><i class="fa-brands fa-linkedin"></i>
+                    Get in touch
                 </a> 
                 <br>
-                <a class="team-card__portfolio-link" href="#">
+                <a class="team-card__portfolio-link" href="#"> <i class="fa-solid fa-laptop-code"></i>
                     Browse my portfolio
                 </a>
             </div>
@@ -151,6 +151,7 @@
 .intro__text{
     width: 50%;
     padding: 50px; 
+    border-radius:  3px 0 0 3px ;
 }
 
 .intro__text-title{
@@ -162,6 +163,7 @@
 .intro__picture{
     width: 50%;
     flex-shrink: 0;
+    border-radius: 0 3px 3px 0;
 }
 
 .intro__text-content{
@@ -204,6 +206,7 @@
     align-items: center;
     justify-content: center;
     z-index: 1;
+    border-radius: 3px;
 }
 
 .team-card__picture--reverse{
@@ -214,6 +217,7 @@
     align-items: center;
     justify-content: center;
     z-index: 1;
+    border-radius: 3px;
 }
 
 .team-card__description {
@@ -230,6 +234,7 @@
     padding: 0 25px;
     font-weight: lighter;
     transform: translateX(25%);
+    border-radius: 3px;
 }
 
 .team-card__description--reverse{
@@ -246,6 +251,7 @@
     font-size: 15px;
     padding: 0 25px;
     transform: translateX(-25%);
+    border-radius: 3px;
 }
 
 .team-card:hover .team-card__description {
