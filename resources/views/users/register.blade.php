@@ -43,7 +43,7 @@
             </div>
             <div class="register-container__form-div">
                 <label>Gender</label>
-                <div>
+                <div class="register-container__form-div-gender">
                     <label>
                         <input type="radio" name="gender" value="male" {{ old('gender') === 'male' ? 'checked' : '' }}>
                         Male
@@ -178,5 +178,10 @@
         text-align: center;
         padding: 5px;
     }
+
+    .register-container__form-div-gender label{
+        padding: 0 25px 0 0; 
+    }
+
 </style>
 
