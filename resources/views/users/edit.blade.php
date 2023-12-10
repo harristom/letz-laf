@@ -114,7 +114,8 @@
 
     .user-edit-container__header-h2{
         margin: 0;
-        font-size: 40px;
+        font-size: 30px;
+        padding-bottom: 20px;
         font-weight: 700;
         color: var(--primary-color);
     }

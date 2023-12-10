@@ -2,6 +2,10 @@
 
 @section('information')
 
+    <header class="profile-card__info__header">
+        <h3>Account Details</h3>
+    </header>
+
     <div class="profile-card__info__item">
         <div>
             <h3>First Name</h3>
@@ -23,7 +27,7 @@
             <p>{{$user->gender}}</p>
         </div>
     </div>
-    <div class="profile-card__info__item">
+    <div class="profile-card__info__item profile-card__info__item-password">
         <div>
             <h3>Email</h3>
             <p>{{$user->email}}</p>
@@ -37,12 +41,20 @@
 @endsection
 
 <style>
+    .profile-card__info__header{
+        width: 100%;
+        text-align: center;
+        padding: 0 0 40px 0;
+        color: var(--primary-color);
+        font-size: 25px;
+    }
 
     .profile-card__info__item{
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: center;
+        text-align: center;
         gap: 30px;
         padding: 0 20px 40px 20px;
     }
