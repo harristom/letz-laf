@@ -14,14 +14,14 @@
                     <label for="first_name">First Name</label>
                     <input type="text" name="first_name" id="first_name" value="{{ old('first_name') }}" />
                     @error('first_name')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
                 <div>
                     <label for="last_name">Last Name</label>
                     <input type="text" name="last_name" id="last_name" value="{{ old('last_name') }}" />
                     @error('last_name')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
@@ -30,14 +30,14 @@
                     <label for="birthdate">Date of birth</label>
                     <input type="date" name="birthdate" id="birthdate" value="{{ old('birthdate') }}" />
                     @error('birthdate')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
                 <div>
                     <label for="profile_picture">Profile picture</label>
                     <input type="file" id="profile_picture" name="profile_picture" />
                     @error('profile_picture')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
@@ -60,14 +60,14 @@
                     </label>
                 </div>
                 @error('gender')
-                    <p>{{ $message }}</p>
+                    <p class="errors">{{ $message }}</p>
                 @enderror
             </div>
             <div class="register-container__form-div">
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" value="{{ old('email') }}" />
                 @error('email')
-                    <p>{{ $message }}</p>
+                    <p class="errors">{{ $message }}</p>
                 @enderror
             </div>
             <div class="register-container__form-div-password">
@@ -75,14 +75,14 @@
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" value="{{ old('password') }}" />
                     @error('password')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
                 <div>
                     <label for="password_confirmation">Confirm Password</label>
                     <input type="password" id="password_confirmation" name="password_confirmation" />
                     @error('password')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
             </div>

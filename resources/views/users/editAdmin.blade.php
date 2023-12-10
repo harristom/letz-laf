@@ -13,14 +13,14 @@
                     <label for="first_name">First Name</label>
                     <input type="text" name="first_name" id="first_name" value="{{$user->first_name}}" />
                     @error('first_name')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
                 <div>
                     <label for="last_name">Last Name</label>
                     <input type="text" name="last_name" id="last_name" value="{{$user->last_name}}" />
                     @error('last_name')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
@@ -29,14 +29,14 @@
                     <label for="birthdate">Date of birth</label>
                     <input type="date" name="birthdate" id="birthdate" value="{{$user->birthdate}}" />
                     @error('birthdate')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
                 <div>
                     <label for="profile_picture" >Profile picture</label>
                     <input type="file" id="profile_picture" name="profile_picture"/>
                     @error('profile_picture')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
@@ -57,7 +57,7 @@
                     </label>
                 </div>
                 @error('gender')
-                    <p>{{ $message }}</p>
+                    <p class="errors">{{ $message }}</p>
                 @enderror
             </div>
             <div class="edit-user__form-div-email">
@@ -65,7 +65,7 @@
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" value="{{$user->email}}" />
                     @error('email')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
                 <div>
@@ -76,7 +76,7 @@
                         <option value="Admin" {{ $user->role === 'Admin' ? 'selected' : '' }}>Admin</option>
                     </select>
                     @error('role')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
@@ -85,14 +85,14 @@
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" value="" />
                     @error('password')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
                 <div>
                     <label for="password_confirmation">Password Confirmation</label>
                     <input type="password" name="password_confirmation" id="password_confirmation" value="" />
                     @error('password_confirmation')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
             </div>

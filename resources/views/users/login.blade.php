@@ -12,14 +12,14 @@
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" value="{{ old('email') }}" />
                 @error('email')
-                    <p>{{ $message }}</p>
+                    <p class="errors">{{ $message }}</p>
                 @enderror
             </div>
             <div class="login-container__form-div">
                 <label for="password">Password</label>
                 <input type="password" name="password" id="password" value="{{ old('password') }}" />
                 @error('password')
-                    <p>{{ $message }}</p>
+                    <p class="errors">{{ $message }}</p>
                 @enderror
             </div>
             <div class="login-container__form-div">

@@ -234,6 +234,12 @@
             text-decoration: none;
         }
 
+        /*----------Errors---------*/
+        .errors{
+            color: red;
+            padding: 0;
+        }
+
         /*----------Footer----------*/
         footer {
             width: 100%;
