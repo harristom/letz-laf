@@ -22,11 +22,14 @@ Route::view('/', 'index');
 /*----------------------POSTS----------------------*/
 
 //show all the news
-Route::get('/news', [PostController::class, 'index']);
+Route::get('/news', [PostController::class, 'index'])->name('posts.index');
 //create a new post
 Route::get('/news/create', [PostController::class, 'create']);
 //store a new post
 Route::post('/news', [PostController::class, 'store']);
+//Update a post
+Route::get('/news/{id}', [PostController::class, 'edit'])->where('id', '[0-9]+')->name('posts.edit');
+Route::put('/news/{id}', [PostController::class, 'update'])->name('posts.update');
 
 /*----------------------USERS----------------------*/
 //Show register form

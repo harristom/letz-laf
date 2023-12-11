@@ -16,6 +16,10 @@
     </div>
     <div class="news-content news-div-date">
         <small>Created : {{ $post->created_at }}</small>
+
+        @if(auth()->user()->role == 'Admin' || (isset($post) && auth()->user()->id == $post->user_id))
+            <a href="/news/{{ $post->id }}">Update</a>
+        @endif
     </div>
 </div>
 
@@ -28,12 +32,8 @@
         margin: 20px;
         border-radius: 10px;
         padding: 10px 25px 25px 25px;
-        box-shadow: 0px 0px 20px -3px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.2);
         transition: transform .5s;
-    }
-
-    .news-content-container:hover {
-        transform: scale(1.1);
     }
 
     .news-content {

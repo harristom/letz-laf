@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller{
@@ -48,6 +49,42 @@ class PostController extends Controller{
         return redirect('/news')->with('message', 'Post created successfully!');
     }
 
+    public function edit($id)
+    {
+        $post = Post::find($id);
+        //Check if logged in user is the owner
+        if($post->user_id != auth()->id()){
+            abort(403, 'Unauthorized action.');
+        }
 
+        return view('posts.edit', [
+            'post' => $post
+        ]);
+    }
+
+    public function update(Request $request , Post $post)
+    {
+        $validated = $request->validate([
+            'title'=>'required|string',
+            'content'=> 'required|string',
+            'image_path'=> 'image|mimes:png,jpg,jpeg|max:2048',
+        ]);
+
+        if ($request->hasFile('image_path')) {
+            $validated['image_path'] = $request->file('image_path')->store('posts', 'public');
+        }
+        $post->update($validated);
+
+        // dd('Update method executed');
+        dd($request->all(), $validated, $post);
+
+        return redirect()->route('posts.index', $post)->with('message', 'Post updated successfully');
+    }
+
+    public function delete(Post $post)
+    {
+        $post->delete();
+        return redirect()->route('posts.index')->with('message', 'Post deleted!');
+    }
 
 }
