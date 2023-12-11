@@ -14,6 +14,7 @@ class EventController extends Controller
      */
     public function index()
     {
+
         //
         return view(
             'events.index',
@@ -53,7 +54,7 @@ class EventController extends Controller
         if ($request->hasFile('image_path')) {
             $validated['image_path'] = $request->file('image_path')->store('events', 'public');
         }
-        $validated['organiser_id'] = auth()->user();
+        $validated['organiser_id'] = auth()->id();
         $event = Event::create($validated);
         return to_route('events.show', $event);
     }
@@ -120,8 +121,12 @@ class EventController extends Controller
         return redirect()->route('events.index')->with('message', 'Event deleted!');
     }
 
-    public function register(Event $event)
-    {
+    public function register(Event $event){
+
+        if ($event->date < now()) {
+            abort(403, 'This event has already passed.');
+        }
+
         $event->participants()->attach(auth()->user());
         return back();
     }

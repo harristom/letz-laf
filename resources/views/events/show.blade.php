@@ -97,10 +97,13 @@
                             <button>Delete</button>
                         </form>
                     @endif
+
+                    @if (auth()->user() && !$event->participants->contains(auth()->user()) && $event->date >= now())
                         <form action="{{ route('events.register', $event) }}" method="POST" class="event-details__form">
                             @csrf
                             <button>Join</button>
                         </form>
+                    @endif
 
                 </div>
                 @if (count($event->results) > 0)
