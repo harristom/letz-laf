@@ -4,10 +4,14 @@
     <div class="news-content news-div-content">
         <h3>{{ $post->title }}</h3>
         {{-- Check if image file exists  --}}
-        @if (file_exists(public_path($post->image_path)))
+        @if (file_exists(public_path('images/' . $post->image_path)))
             {{-- Image exists, show the div with the image --}}
             <div>
-                <img src="{{ asset('storage/' . $post->image_path) }}" alt="">
+                <img src="{{ asset('images/' . $post->image_path) }}" alt="">
+            </div>
+        @else
+            {{-- Image does not exists, hide the div --}}
+            <div style="display: none">
             </div>
         @endif
         <div>
@@ -28,7 +32,9 @@
         margin: 20px;
         border-radius: 10px;
         padding: 10px 25px 25px 25px;
-        box-shadow: 0px 0px 20px -3px rgba(0, 0, 0, 0.2);
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+            rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+        ;
         transition: transform .5s;
     }
 
