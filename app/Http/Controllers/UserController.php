@@ -118,7 +118,7 @@ class UserController extends Controller
     }
 
     public function destroy($id){
-
+        // TODO: Allow users to delete their own account
         if (auth()->user()->role != 'Admin') {
             abort(403, 'Unauthorized action.');
         }
