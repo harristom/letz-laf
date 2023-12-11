@@ -24,7 +24,7 @@ Route::view('/', 'index');
 //show all the news
 Route::get('/news', [PostController::class, 'index']);
 //create a new post
-Route::get('/news/create', [PostController::class, 'create']);
+Route::get('/news/create', [PostController::class, 'create'])->middleware('role:Admin,Organiser');
 //store a new post
 Route::post('/news', [PostController::class, 'store']);
 
