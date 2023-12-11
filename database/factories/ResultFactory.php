@@ -17,9 +17,7 @@ class ResultFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => fake()->numberBetween(1, 3),
-            'event_id' => fake()->numberBetween(1, 3),
-            'finish_time' => fake()->numberBetween(60, 3600) // Random finish time
+            //
         ];
     }
 }
