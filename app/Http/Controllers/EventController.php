@@ -11,16 +11,15 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index( Request $request)
+    public function index()
     {
         //
         return view(
             'events.index',
             [
-                'events' => Event::all()
-                
+                'events' => Event::all(),
             ]
-            );
+        );
 
         
     }
@@ -67,17 +66,7 @@ class EventController extends Controller
             'event' => $event
         ]);
 
-        return view(
-            'events.index',
-        [
-            'events' => Event::latest() 
-            ->filter(request(['search']))
-            ->get(),
-        ]);
-
-       
-        
-       
+               
     }
 
     /**
