@@ -58,7 +58,11 @@ Route::get('/users/create', [UserController::class, 'createAdmin'])->middleware(
 
 /*-------------------------------PROFILE------------------------------- */
 //show profile page
-Route::get('/profile/{id}', [UserController::class, 'show'])->middleware('auth');
+//Route::get('/profile/{id}', [UserController::class, 'show'])->middleware('auth');
+
+Route::get('/profile/{user}', [UserController::class, 'attendedEvents'])->name('users.attended-events');
+
+
 //Show update profile page
 Route::get('/profile/{id}/edit', [UserController::class, 'edit'])->middleware('auth');
 //Update user info

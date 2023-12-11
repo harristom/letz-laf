@@ -252,4 +252,28 @@ class UserController extends Controller
         //Redirect to the user detail page
         return redirect('profile/'. $user->id)->with('message', 'Profile updated Successfully!');
     }
+
+    public function attendedEvents(User $user)
+    {
+        // Get the attended results of the user
+        $attendedResults = $user->results;
+
+        // Sort the attended results by finish time
+        $sortedResults = $attendedResults->sortBy('finish_time');
+
+        // Initialize the rank variable
+        $rank = 1;
+
+        // Assign the rank to each result
+        foreach ($sortedResults as $result) {
+            // Set the rank property of each result object
+            $result->rank = $rank;
+            // Increment the rank for the next result
+            $rank++;
+        }
+
+        // Return the view with the user and sorted results
+        return view('users.show', compact('user', 'sortedResults'));
+    }
+
 }
