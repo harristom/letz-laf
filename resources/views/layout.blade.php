@@ -189,7 +189,8 @@
         }
 
         .main-nav__logo {
-            border-radius: 50%;
+            width: 100px;
+            height: auto;
         }
 
         .main-nav__link-list {
@@ -240,7 +241,7 @@
     <header class="header">
         <nav class="main-nav">
             <a href="/">
-                <img class="main-nav__logo" src="{{ asset('images/letzlogo.png') }}" alt="LetzLaf" height="100">
+                <img class="main-nav__logo" src="{{ asset('images/Artboard 1.png') }}" alt="LetzLaf" height="100">
             </a>
             <ul class="main-nav__link-list">
                 <li>

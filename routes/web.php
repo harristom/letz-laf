@@ -22,9 +22,12 @@ Route::view('/', 'index');
 /*----------------------POSTS----------------------*/
 
 //show all the news
-Route::get('/news', [PostController::class, 'index']);
+Route::get('/news', [PostController::class, 'index'])->name('posts.index');
 //create a new post
 Route::get('/news/create', [PostController::class, 'create'])->middleware('role:Admin,Organiser');
+//Update a post
+Route::get('/news/{id}', [PostController::class, 'edit'])->middleware('role:Admin,Organiser')->name('posts.edit');
+Route::put('/news/{post}', [PostController::class, 'update'])->middleware('role:Admin,Organiser')->name('posts.update');
 //store a new post
 Route::post('/news', [PostController::class, 'store'])->middleware('role:Admin,Organiser');
 
