@@ -102,6 +102,9 @@
                 @if (count($event->results) > 0)
                     <x-event-results-table :event="$event" />
                 @endif
+                @if (count($event->participants) > 0)
+                    <x-event-participants-table :event="$event" />
+                @endif
                 
             </div>
             <div class="event-details__right">

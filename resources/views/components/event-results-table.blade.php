@@ -16,8 +16,7 @@
                 <td>{{ $result->user->first_name }}</td>
                 <td>{{ $result->user->last_name }}</td>
                 <td>{{ $result->event->name }}</td>
-                <td>{{ sprintf('%02d:%02d:%02d', $result->finish_time / 3600, ($result->finish_time / 60) % 60, $result->finish_time % 60) }}
-                </td>
+                <td>{{ sprintf('%02d:%02d:%02d', $result->finish_time / 3600, ($result->finish_time / 60) % 60, $result->finish_time % 60) }}</td>
             </tr>
         @endforeach
     </tbody>
