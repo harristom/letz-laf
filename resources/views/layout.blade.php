@@ -46,7 +46,7 @@
             display: grid;
             grid-template-rows: auto 1fr auto;
         }
-        
+
         main {
             max-width: 1500px;
             margin: 0 auto;
@@ -252,7 +252,7 @@
                 <li>
                     <a href="{{ route('about') }}" class="main-nav__a">About Us</a>
                 </li>
-                @if(auth()->check() && auth()->user()->role == 'Admin')
+                @if (auth()->check() && auth()->user()->role == 'Admin')
                     <li>
                         <a href="/users/manage">Manage Users</a>
                     </li>
@@ -274,16 +274,17 @@
                         <a href="/register" class="main-nav__a button"><i class="fa-solid fa-user-plus"></i> Register</a>
                     </li>
                     <li>
-                        <a href="/login" class="main-nav__a button"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</a>
+                        <a href="/login" class="main-nav__a button"><i class="fa-solid fa-arrow-right-to-bracket"></i>
+                            Login</a>
                     </li>
                 @endauth
             </ul>
             @auth
-            <a href="/profile/{{ auth()->user()->id }}" class="main-nav__a">
-                <img class="main-nav__avatar"
-                    src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : asset('images/profilePicturePlaceholder.jpeg') }}"
-                    alt="The user's profile picture" height="50">
-            </a>
+                <a href="/profile/{{ auth()->user()->id }}" class="main-nav__a">
+                    <img class="main-nav__avatar"
+                        src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : asset('images/profilePicturePlaceholder.jpeg') }}"
+                        alt="The user's profile picture" height="50">
+                </a>
             @endauth
         </nav>
     </header>
