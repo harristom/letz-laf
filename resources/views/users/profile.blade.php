@@ -9,29 +9,24 @@
                 {{$user->first_name}} {{$user->last_name}} <br>
                 <small>{{$user->role}}</small>
             </h3>
-            <div>
 
-                <a class="{{ request()->is('profile/'.$user->id) ? 'active' : '' }}" href="/profile/{{$user->id}}">Account Details</a>
-
-                <a class="{{ request()->is('profile/'.$user->id.'/edit') ? 'active' : '' }}" href="/profile/{{$user->id}}/edit">Account Settings</a>
-{{--
-                <div class="{{ request()->is('profile/'.$user->id) ? 'active' : '' }}">
-                    <a href="/profile/{{$user->id}}">Account Details</a>
-                </div>
-                <div class="{{ request()->is('profile/'.$user->id.'/edit') ? 'active' : '' }}">
-                    <a href="/profile/{{$user->id}}/edit">Account Settings</a>
-                </div>
-                --}}
+            @if(auth()->check() && auth()->user()->id == $user->id)
                 <div>
-                    <form method="POST" action="/logout">
-                        @csrf
-                        <button class="profile-card__picture__btn">
-                            <i class="fa-solid fa-door-closed"></i>
-                            Logout
-                        </button>
-                    </form>
+                    <a class="{{ request()->is('profile/'.$user->id) ? 'active' : '' }}" href="/profile/{{$user->id}}">Account Details</a>
+
+                    <a class="{{ request()->is('profile/'.$user->id.'/edit') ? 'active' : '' }}" href="/profile/{{$user->id}}/edit">Account Settings</a>
+
+                    <div>
+                        <form method="POST" action="/logout">
+                            @csrf
+                            <button class="profile-card__picture__btn">
+                                <i class="fa-solid fa-door-closed"></i>
+                                Logout
+                            </button>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
 
         <div class="profile-card__info">

@@ -7,7 +7,10 @@
     <div class="big-news">
         <div class="header-news">
             <h2>News</h2>
-            <a href="/news/create">Create a news post</a>
+            @if(auth()->check() && (auth()->user()->role == 'Admin' || auth()->user()->role == 'Organiser'))
+                <a href="/news/create">Create a news post</a>
+            @endif
+
         </div>
 
         {{--checks if the $posts variable is empty--}}

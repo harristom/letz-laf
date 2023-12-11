@@ -18,14 +18,14 @@ class PostController extends Controller{
     }
 
     //Show create blog form
-    public function create()
-    {
+    public function create(){
+
         return view('posts.create');
     }
+
     //Store new post in DB
     public function store(Request $request){
-        //comment all the code
-        
+    
         //validation form fields
         //ensures that the 'title' and 'content' fields are required
         //that the 'image_path' field is an image file with a maximum size of 2MB and a file extension of png, jpg, or jpeg
