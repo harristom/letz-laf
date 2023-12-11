@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Event;
+use App\Models\Result;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -113,5 +113,28 @@ class EventController extends Controller
     {
         $event->participants()->attach(auth()->user());
         return back();
+    }
+
+    public function addResults(Request $request){
+
+        $validated = $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'event_id' => 'required|exists:events,id',
+            'finish_time' => 'required|string',
+        ]);
+
+        list($hours, $minutes, $seconds) = explode(':', $validated['finish_time']);
+
+        $finishTimeInSeconds = ($hours * 3600) + ($minutes * 60) + $seconds;
+
+        
+        Result::updateOrcreate([
+            'user_id' => $validated['user_id'],
+            'event_id' => $validated['event_id'],
+            'finish_time' => $finishTimeInSeconds,
+        ]);
+
+        return redirect()->back()->with('message', 'Added to results!');
+        
     }
 }

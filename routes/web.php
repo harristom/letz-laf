@@ -75,6 +75,11 @@ Route::post('/events/{event}/register', [EventController::class, 'register'])
     ->middleware('auth')
     ->name('events.register');
 
+// Add results
+Route::post('/events/{event}/add-results', [EventController::class, 'addResults'])
+    ->middleware('auth')
+    ->name('events.addResults');
+
 /*-----------------------MISC-----------------------*/
 Route::view('/about-us', 'about-us')->name('about');
 

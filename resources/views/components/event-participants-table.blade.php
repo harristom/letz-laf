@@ -11,7 +11,7 @@
         @foreach ($event->participants as $participant)
             <tr class="manage-users-list"> 
                 {{--action needed--}}
-                <form action="" method="POST">
+                <form action="/events/{{$event->id}}/add-results" method="POST">
                     @csrf
 
                     {{-- to insert inside the database event_id and user_id--}}
