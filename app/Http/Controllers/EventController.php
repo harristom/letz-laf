@@ -114,4 +114,8 @@ class EventController extends Controller
         $event->participants()->attach(auth()->user());
         return back();
     }
+    
+
+    // event organiser can see list of organised events
+    
 }
