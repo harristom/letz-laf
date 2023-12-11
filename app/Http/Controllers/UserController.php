@@ -16,8 +16,12 @@ class UserController extends Controller
         return view('users.register');
     }
 
-    public function createAdmin()
-    {
+    public function createAdmin(){
+
+        if (auth()->user()->role != 'Admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
         return view('users.createAdmin');
     }
 
@@ -100,8 +104,12 @@ class UserController extends Controller
         return back()->withErrors(['password' => 'Incorrect email or password']);
     }
 
-    public function manage()
-    {
+    public function manage(){
+
+        if (auth()->user()->role != 'Admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
         return view('users.manage',[
             //'users' => auth()->user()->users,
             'users' => User::latest()->filter(request(['search']))->get(),
@@ -109,8 +117,12 @@ class UserController extends Controller
         ]);
     }
 
-    public function destroy($id)
-    {
+    public function destroy($id){
+        // TODO: Allow users to delete their own account
+        if (auth()->user()->role != 'Admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
         //Fetch the user to be deleted
         $user= User::find($id);
 
@@ -121,8 +133,12 @@ class UserController extends Controller
         return redirect('/users/manage')->with('message', 'User deleted Successfully!');
     }
 
-    public function editAdmin($id)
-    {
+    public function editAdmin($id){
+
+        if (auth()->user()->role != 'Admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
         $user = User::find($id);
 
         return view('users.editAdmin', [
@@ -151,8 +167,12 @@ class UserController extends Controller
         ]);
     }
 
-    public function updateAdmin(Request $request, $id)
-    {
+    public function updateAdmin(Request $request, $id){
+
+        if (auth()->user()->role != 'Admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
         //Fetch the user to be updated
         $user = User::find($id);      
 
@@ -190,8 +210,8 @@ class UserController extends Controller
     }     
 
     //update the user information
-    public function update(Request $request,$id)
-    {
+    public function update(Request $request,$id){
+
          //Fetch the user to be updated
         $user = User::find($id);
 

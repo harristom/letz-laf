@@ -252,6 +252,11 @@
                 <li>
                     <a href="{{ route('about') }}" class="main-nav__a">About Us</a>
                 </li>
+                @if(auth()->check() && auth()->user()->role == 'Admin')
+                    <li>
+                        <a href="/users/manage">Manage Users</a>
+                    </li>
+                @endif
             </ul>
             <ul class="main-nav__button-list">
                 @auth
