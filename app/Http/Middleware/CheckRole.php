@@ -15,11 +15,11 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next, $role): Response
     {
-        
-        if ($request->user() && $request->user()->role != $role) {
-            abort(403, 'Unauthorized access.');
+        // TODO: Handle multiple roles
+        if ($request->user() && $request->user()->role == $role) {
+            return $next($request);
         }
-
-        return $next($request);
+        
+        abort(403, 'Unauthorized access.');
     }
 }
