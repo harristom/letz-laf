@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\Result;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -128,12 +129,19 @@ class EventController extends Controller
         $finishTimeInSeconds = ($hours * 3600) + ($minutes * 60) + $seconds;
 
         
-        Result::updateOrcreate([
-            'user_id' => $validated['user_id'],
-            'event_id' => $validated['event_id'],
-            'finish_time' => $finishTimeInSeconds,
-        ]);
+        /*
+            Update or insert a record in the 'results' table of the database
+            The record is identified by the 'user_id' and 'event_id' fields
+            If a record with the same 'user_id' and 'event_id' already exists, it will be updated
+            Otherwise, a new record will be inserted
+        */
 
+        DB::table('results')->updateOrInsert(
+            ['user_id' => $validated['user_id'], 'event_id' => $validated['event_id']],
+            ['finish_time' => $finishTimeInSeconds]
+        );
+
+        
         return redirect()->back()->with('message', 'Added to results!');
         
     }
