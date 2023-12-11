@@ -70,20 +70,20 @@
         bottom: 10px;
         right: 20px;
     }
-
 </style>
 
 @section('content')
     <div class="event-page">
         <div class="event-details__banner">
             <h2 class="event-details__title">{{ $event->name }}</h2>
-            <x-weather-card :event="$event"/>
+            <x-weather-card :event="$event" />
         </div>
         <div class="event-details__content">
             <div class="event-details__left">
                 <p class="event-details__description">{{ $event->description }}</p>
                 <div class="event-details__data">
-                    <div><i class="fa-regular fa-calendar"></i> {{ \Carbon\Carbon::parse($event->date)->format('d/m/Y') }}</div>
+                    <div><i class="fa-regular fa-calendar"></i> {{ \Carbon\Carbon::parse($event->date)->format('d/m/Y') }}
+                    </div>
                     <div><i class="fa-regular fa-clock"></i> {{ \Carbon\Carbon::parse($event->date)->format('H:i') }}</div>
                     <div><i class="fa-solid fa-person-running"></i> {{ count($event->participants) }} registered</div>
                 </div>
