@@ -53,7 +53,7 @@ class EventController extends Controller
         if ($request->hasFile('image_path')) {
             $validated['image_path'] = $request->file('image_path')->store('events', 'public');
         }
-        $validated['organiser_id'] = auth()->user();
+        $validated['organiser_id'] = auth()->id();
         $event = Event::create($validated);
         return to_route('events.show', $event);
     }
