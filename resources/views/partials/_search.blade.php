@@ -1,14 +1,14 @@
 <form action="">
     <div>
         <input type="text" name="search" id="search-input" placeholder="Search for a name...">
-        <button type="submit">
+        {{-- <button type="submit">
             Search
-        </button>
+        </button> --}}
     </div>
 </form>
 
-{{--
-    <script>
+
+    {{-- <script>
     // Add script after the DOM has loaded
     document.addEventListener('DOMContentLoaded', function () {
         // Get the search input element
@@ -53,6 +53,4 @@
             }
         });
     });
-</script>
-
---}}
+</script> --}}

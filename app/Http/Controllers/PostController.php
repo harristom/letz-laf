@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller{
@@ -18,14 +19,14 @@ class PostController extends Controller{
     }
 
     //Show create blog form
-    public function create()
-    {
+    public function create(){
+
         return view('posts.create');
     }
+
     //Store new post in DB
     public function store(Request $request){
-        //comment all the code
-        
+    
         //validation form fields
         //ensures that the 'title' and 'content' fields are required
         //that the 'image_path' field is an image file with a maximum size of 2MB and a file extension of png, jpg, or jpeg
@@ -48,6 +49,42 @@ class PostController extends Controller{
         return redirect('/news')->with('message', 'Post created successfully!');
     }
 
+    public function edit($id)
+    {
+        $post = Post::find($id);
+        //Check if logged in user is the owner
+        // TODO: Allow admin to edit and only allow author to edit if they still have rights
+        if($post->user_id != auth()->id()){
+            abort(403, 'Unauthorized action.');
+        }
 
+        return view('posts.edit', [
+            'post' => $post
+        ]);
+    }
+
+    public function update(Request $request , Post $post)
+    {
+        // TODO: Add check user permission
+        $validated = $request->validate([
+            'title'=>'required|string',
+            'content'=> 'required|string',
+            'image_path'=> 'image|mimes:png,jpg,jpeg|max:2048',
+        ]);
+
+        if ($request->hasFile('image_path')) {
+            $validated['image_path'] = $request->file('image_path')->store('posts', 'public');
+
+        }
+        $post->update($validated);
+
+        return redirect()->route('posts.index')->with('message', 'Post updated successfully');
+    }
+
+    public function delete(Post $post)
+    {
+        $post->delete();
+        return redirect()->route('posts.index')->with('message', 'Post deleted!');
+    }
 
 }

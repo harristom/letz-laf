@@ -26,9 +26,12 @@ class EventController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
+    public function create() {
+
+        if (auth()->user()->role != 'Admin' && auth()->user()->role != 'Organiser') {
+            abort(403, 'Unauthorized action.');
+        }
+
         return view('events.create');
     }
 
@@ -64,14 +67,18 @@ class EventController extends Controller
         return view('events.show', [
             'event' => $event
         ]);
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Event $event)
-    {
-        //
+    public function edit(Event $event) {
+        // TODO: Check that the organiser matches, don't just allow any organiser to edit
+        if (auth()->user()->role != 'Admin' && auth()->user()->role != 'Organiser') {
+            abort(403, 'Unauthorized action.');
+        }
+
         return view('events.edit', [
             'event' => $event
         ]);
@@ -103,9 +110,12 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Event $event)
-    {
-        //
+    public function destroy(Event $event) {
+        // TODO: Check that the organiser matches, don't just allow any organiser to delete
+        if (auth()->user()->role != 'Admin' && auth()->user()->role != 'Organiser') {
+            abort(403, 'Unauthorized action.');
+        }
+ 
         $event->delete();
         return redirect()->route('events.index')->with('message', 'Event deleted!');
     }
