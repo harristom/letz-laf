@@ -44,7 +44,7 @@
 
     .event-details__banner {
         background-color: var(--primary-color);
-        background-image: url('{{ asset('storage/' . $event->image_path) }}');
+        background-image: url('{{ asset('images/' . $event->image_path) }}');
         background-size: cover;
         background-position: 50% 25%;
         background-repeat: no-repeat;
@@ -89,7 +89,7 @@
                 </div>
                 <div class="event-details__buttons">
 
-                    @if(auth()->check() && (auth()->user()->id == $event->organiser_id || auth()->user()->role == 'Admin'))
+                    @if (auth()->check() && (auth()->user()->id == $event->organiser_id || auth()->user()->role == 'Admin'))
                         <a href="{{ route('events.edit', $event) }}" class="button">Edit</a>
                         <form action="{{ route('events.destroy', $event) }}" method="POST" class="event-details__form">
                             @csrf
@@ -97,10 +97,10 @@
                             <button>Delete</button>
                         </form>
                     @endif
-                        <form action="{{ route('events.register', $event) }}" method="POST" class="event-details__form">
-                            @csrf
-                            <button>Join</button>
-                        </form>
+                    <form action="{{ route('events.register', $event) }}" method="POST" class="event-details__form">
+                        @csrf
+                        <button>Join</button>
+                    </form>
 
                 </div>
                 @if (count($event->results) > 0)
