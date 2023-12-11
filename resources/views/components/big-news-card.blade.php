@@ -17,7 +17,8 @@
     <div class="news-content news-div-date">
         <small>Created : {{ $post->created_at }}</small>
 
-        @if(auth()->user()->role == 'Admin' || (isset($post) && auth()->user()->id == $post->user_id))
+        {{-- Check that the user is logged in and is either an admin or an event organiser who wrote the post originally --}}
+        @if(auth()->user() && (auth()->user()->role == 'Admin' || (auth()->user()->role == 'Organiser' && auth()->user() == $post->user)))
             <a href="/news/{{ $post->id }}">Update</a>
         @endif
     </div>
