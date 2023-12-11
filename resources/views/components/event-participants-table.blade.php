@@ -1,6 +1,6 @@
 <table>
     <thead>
-        <tr class="manage-users-title">
+        <tr>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Finish Time</th>
@@ -9,7 +9,7 @@
     </thead>
     <tbody>
         @foreach ($event->participants as $participant)
-            <tr class="manage-users-list"> 
+            <tr> 
                 {{--action needed--}}
                 <form action="/events/{{$event->id}}/add-results" method="POST">
                     @csrf
