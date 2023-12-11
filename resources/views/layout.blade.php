@@ -135,7 +135,7 @@
             font-family: inherit;
             padding: 10px;
             border-radius: 3px;
-            border: 1px solid var(--primary-color);
+            border: 1px solid lightgray;
         }
 
         /*-------radio buttons------*/
@@ -147,12 +147,11 @@
         input[type=file] {
             padding: 10px 10px 8px 10px;
             border-radius: 3px;
-            border: 1px solid var(--primary-color);
+            border: 1px solid lightgray;
         }
 
         /*-------select option------*/
         select {
-            border: 1px solid var(--primary-color);
             padding: 10px;
             border-radius: 3px;
         }
