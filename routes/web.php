@@ -66,8 +66,8 @@ Route::put('/profile/{id}', [UserController::class, 'update'])->middleware('auth
 
 /*----------------------EVENTS----------------------*/
 // https://laravel.com/docs/10.x/controllers#actions-handled-by-resource-controller
-Route::resource('events', EventController::class)->only(['index', 'show']);
 Route::resource('events', EventController::class)->except(['index', 'show'])->middleware('role:Admin,Organiser');
+Route::resource('events', EventController::class)->only(['index', 'show']);
 
 // Register for an event
 Route::post('/events/{event}/register', [EventController::class, 'register'])->middleware('auth')->name('events.register');

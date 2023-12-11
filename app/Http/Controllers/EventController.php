@@ -120,8 +120,12 @@ class EventController extends Controller
         return redirect()->route('events.index')->with('message', 'Event deleted!');
     }
 
-    public function register(Event $event)
-    {
+    public function register(Event $event){
+
+        if ($event->date < now()) {
+            abort(403, 'This event has already passed.');
+        }
+
         $event->participants()->attach(auth()->user());
         return back();
     }
