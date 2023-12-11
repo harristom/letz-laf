@@ -65,6 +65,7 @@ class PostController extends Controller{
 
     public function update(Request $request , Post $post)
     {
+        // TODO: Add check user permission
         $validated = $request->validate([
             'title'=>'required|string',
             'content'=> 'required|string',

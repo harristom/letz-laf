@@ -190,7 +190,7 @@
 
         .main-nav__logo {
             width: 100px;
-            height: 100%;
+            height: auto;
         }
 
         .main-nav__link-list {
