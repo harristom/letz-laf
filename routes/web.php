@@ -24,18 +24,18 @@ Route::view('/', 'index');
 //show all the news
 Route::get('/news', [PostController::class, 'index'])->name('posts.index');
 //create a new post
-Route::get('/news/create', [PostController::class, 'create']);
-//store a new post
-Route::post('/news', [PostController::class, 'store']);
+Route::get('/news/create', [PostController::class, 'create'])->middleware('role:Admin,Organiser');
 //Update a post
-Route::get('/news/{id}', [PostController::class, 'edit'])->where('id', '[0-9]+')->name('posts.edit');
-Route::put('/news/{post}', [PostController::class, 'update'])->name('posts.update');
+Route::get('/news/{id}', [PostController::class, 'edit'])->middleware('role:Admin,Organiser')->name('posts.edit');
+Route::put('/news/{post}', [PostController::class, 'update'])->middleware('role:Admin,Organiser')->name('posts.update');
+//store a new post
+Route::post('/news', [PostController::class, 'store'])->middleware('role:Admin,Organiser');
 
 /*----------------------USERS----------------------*/
 //Show register form
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 //Add user to database
-Route::post('/users', [UserController::class, 'store'])->middleware('guest');
+Route::post('/users', [UserController::class, 'store']);
 
 //Logout from user session
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
@@ -48,35 +48,32 @@ Route::post('/login', [UserController::class, 'authenticate'])->middleware('gues
 
 //manage page for the Admin
 //show manage
-Route::get('/users/manage', [UserController::class, 'manage']);
+Route::get('/users/manage', [UserController::class, 'manage'])->middleware('role:Admin');
 //delete user
-Route::delete('/users/{id}', [UserController::class, 'destroy'])->where('id', '[0-9]+');
+// TODO: Allow user to delete their account
+Route::delete('/users/{id}', [UserController::class, 'destroy'])->middleware('role:Admin');
 //edit user
-Route::get('/users/{id}/edit', [UserController::class, 'editAdmin'])->where('id', '[0-9]+');
+Route::get('/users/{id}/edit', [UserController::class, 'editAdmin'])->middleware('role:Admin');
 //update user
-Route::put('/users/{id}', [UserController::class, 'updateAdmin'])->where('id', '[0-9]+');
-//add new user
-Route::get('/users/create', [UserController::class, 'createAdmin']);
+Route::put('/users/{id}', [UserController::class, 'updateAdmin'])->middleware('role:Admin');
+// Admin add new user
+Route::get('/users/create', [UserController::class, 'createAdmin'])->middleware('role:Admin');
 
 /*-------------------------------PROFILE------------------------------- */
 //show profile page
-Route::get('/profile/{id}', [UserController::class, 'show']);
-
+Route::get('/profile/{id}', [UserController::class, 'show'])->middleware('auth');
 //Show update profile page
-Route::get('/profile/{id}/edit', [UserController::class, 'edit'])
-->where('id', '[0-9]+')->middleware('auth');
+Route::get('/profile/{id}/edit', [UserController::class, 'edit'])->middleware('auth');
 //Update user info
-Route::put('/profile/{id}', [UserController::class, 'update'])
-->where('id', '[0-9]+')->middleware('auth');
+Route::put('/profile/{id}', [UserController::class, 'update'])->middleware('auth');
 
 /*----------------------EVENTS----------------------*/
 // https://laravel.com/docs/10.x/controllers#actions-handled-by-resource-controller
-Route::resource('events', EventController::class);
+Route::resource('events', EventController::class)->except(['index', 'show'])->middleware('role:Admin,Organiser');
+Route::resource('events', EventController::class)->only(['index', 'show']);
 
 // Register for an event
-Route::post('/events/{event}/register', [EventController::class, 'register'])
-    ->middleware('auth')
-    ->name('events.register');
+Route::post('/events/{event}/register', [EventController::class, 'register'])->middleware('auth')->name('events.register');
 
 /*-----------------------MISC-----------------------*/
 Route::view('/about-us', 'about-us')->name('about');
