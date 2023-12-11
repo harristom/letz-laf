@@ -15,7 +15,6 @@ class EventSeeder extends Seeder
     {
         //
         $runs = [
-            // TODO: Add images
             [
                 'name' => 'Morning Jog',
                 'description' => 'Enjoy a refreshing morning run along the Pétrusse valley in Luxembourg City. Let\'s meet in the car park at the Grund end of the valley. See you there!',
@@ -45,7 +44,7 @@ class EventSeeder extends Seeder
             ],
             [
                 'name' => 'Belval Night Run',
-                'description' => 'Let\'s go for a late-night jog around Belval with its stunning mix of modern architecture and the old steelworks. Please make sure to wear reflecting clothin and dress warm!',
+                'description' => 'Let\'s go for a late-night jog around Belval with its stunning mix of modern architecture and the old steelworks. Please make sure to wear reflective clothing and dress warm!',
                 'date' => '2024-02-01 21:00:00',
                 'distance' => 7.000,
                 'latitude' => 49.500639,
@@ -54,7 +53,7 @@ class EventSeeder extends Seeder
             ],
             [
                 'name' => 'Stauséi Sprint',
-                'description' => 'Ok, you don\'t actually have to sprint ;) Join us for meander round the beautiful Lac de la Haute-Sûre. We will meet at 10 at the dam.',
+                'description' => 'Ok, you don\'t actually have to sprint ;) Join us for a meander round the beautiful Lac de la Haute-Sûre. We will meet at 10 at the dam.',
                 'date' => '2024-02-05 10:00:00',
                 'distance' => 7.500,
                 'latitude' => 49.910445,
@@ -94,7 +93,89 @@ class EventSeeder extends Seeder
                 'latitude' => 50.1065,
                 'longitude' => 6.0163,
             ],
+            // The ones below are fresh from ChatGPT and may not have correct co-ordinates as I haven't checked them all
+            [
+                'name' => 'City Center Run',
+                'description' => 'Enjoy a scenic run through the heart of Luxembourg City.',
+                'date' => '2023-11-10 09:15:00',
+                'distance' => 6.500,
+                'latitude' => 49.6116,
+                'longitude' => 6.1319,
+            ],
+            [
+                'name' => 'Parkour in Park Beggen',
+                'description' => 'Challenge yourself with an obstacle-filled run in Park Beggen.',
+                'date' => '2023-11-12 08:45:00',
+                'distance' => 7.800,
+                'latitude' => 49.6284,
+                'longitude' => 6.1802,
+            ],
+            [
+                'name' => 'Limpertsberg Loop',
+                'description' => 'Join us for a loop around the charming neighborhood of Limpertsberg.',
+                'date' => '2023-11-15 09:00:00',
+                'distance' => 5.700,
+                'latitude' => 49.6252,
+                'longitude' => 6.1372,
+            ],
+            [
+                'name' => 'Kirchberg Challenge',
+                'description' => 'Take on the Kirchberg Challenge with a run through the modern district of Kirchberg.',
+                'date' => '2023-11-18 08:30:00',
+                'distance' => 9.200,
+                'latitude' => 49.6270,
+                'longitude' => 6.1516,
+            ],
+            [
+                'name' => 'Echternach Exploration',
+                'description' => 'Explore the picturesque town of Echternach with a scenic run.',
+                'date' => '2023-11-20 10:30:00',
+                'distance' => 6.000,
+                'latitude' => 49.8094,
+                'longitude' => 6.4293,
+            ],
+            [
+                'name' => 'Luxembourg Gardens Run',
+                'description' => 'Discover the beauty of Luxembourg Gardens with a refreshing run.',
+                'date' => '2023-12-23 08:00:00',
+                'distance' => 8.100,
+                'latitude' => 49.6138,
+                'longitude' => 6.1338,
+            ],
+            [
+                'name' => 'Rolling Hills in Redange',
+                'description' => 'Experience a run through the rolling hills of Redange.',
+                'date' => '2023-12-25 11:15:00',
+                'distance' => 7.500,
+                'latitude' => 49.7402,
+                'longitude' => 5.8834,
+            ],
+            [
+                'name' => 'Wiltz Winter Wonderland Run',
+                'description' => 'Embrace the winter wonderland in Wiltz with a festive run.',
+                'date' => '2023-12-28 14:45:00',
+                'distance' => 10.000,
+                'latitude' => 49.9686,
+                'longitude' => 5.9267,
+            ],
+            [
+                'name' => 'Esch-sur-Alzette Evening Jog',
+                'description' => 'Wind down your day with an evening jog in Esch-sur-Alzette.',
+                'date' => '2023-11-30 19:00:00',
+                'distance' => 6.800,
+                'latitude' => 49.4944,
+                'longitude' => 5.9803,
+            ],
+            [
+                'name' => 'New Year\'s Day Run in Niederanven',
+                'description' => 'Start the new year with a rejuvenating run in Niederanven.',
+                'date' => '2024-01-01 10:30:00',
+                'distance' => 5.500,
+                'latitude' => 49.6511,
+                'longitude' => 6.2358,
+            ],
         ];
+
 
         foreach ($runs as $run) {
             $run['organiser_id'] = 1;

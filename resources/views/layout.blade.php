@@ -43,8 +43,10 @@
         body {
             font-family: 'Lato', sans-serif;
             background-color: var(--page-bg);
+            display: grid;
+            grid-template-rows: auto 1fr auto;
         }
-
+        
         main {
             max-width: 1500px;
             margin: 0 auto;
@@ -211,10 +213,24 @@
 
         .main-nav__avatar {
             border-radius: 50%;
+            border: 3px solid transparent;
+        }
+
+        .main-nav__avatar:hover {
+            border-color: rgba(0, 0, 0, 0.3);
         }
 
         .main-nav__a:hover {
             text-decoration: none;
+        }
+
+        .main-footer {
+            margin-top: 30px;
+            text-align: center;
+            background-color: var(--card-bg);
+            padding: 50px 10px;
+            color: rgb(56, 56, 56);
+            font-size: 0.8rem;
         }
     </style>
     <title>LëtzLaf</title>
@@ -236,6 +252,11 @@
                 <li>
                     <a href="{{ route('about') }}" class="main-nav__a">About Us</a>
                 </li>
+                @if(auth()->check() && auth()->user()->role == 'Admin')
+                    <li>
+                        <a href="/users/manage">Manage Users</a>
+                    </li>
+                @endif
             </ul>
             <ul class="main-nav__button-list">
                 @auth
@@ -266,13 +287,15 @@
             @endauth
         </nav>
     </header>
-    <main>
-        @yield('content')
-    </main>
+    {{-- Extra wrapping div to keep margin collapse in main (grid prevents margin collapse otherwise) --}}
+    <div>
+        <main>
+            @yield('content')
+        </main>
+    </div>
 
     {{-- <x-flash-message /> --}}
-
-    <footer>
+    <footer class="main-footer">
         <p>Copyright &copy; 2023, All Rights reserved</p>
     </footer>
 </body>
