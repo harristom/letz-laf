@@ -106,6 +106,12 @@
                 @if (count($event->results) > 0)
                     <x-event-results-table :event="$event" />
                 @endif
+                @if (count($event->participants) > 0 &&
+                        auth()->user() &&
+                        (auth()->user()->role == 'Admin' || auth()->user() == $event->organiser))
+                    <x-event-participants-table :event="$event" />
+                @endif
+
             </div>
             <div class="event-details__right">
                 <x-map-card :latitude="$event->latitude" :longitude="$event->longitude" />
