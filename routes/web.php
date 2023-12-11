@@ -29,7 +29,7 @@ Route::get('/news/create', [PostController::class, 'create']);
 Route::post('/news', [PostController::class, 'store']);
 //Update a post
 Route::get('/news/{id}', [PostController::class, 'edit'])->where('id', '[0-9]+')->name('posts.edit');
-Route::put('/news/{id}', [PostController::class, 'update'])->name('posts.update');
+Route::put('/news/{post}', [PostController::class, 'update'])->name('posts.update');
 
 /*----------------------USERS----------------------*/
 //Show register form

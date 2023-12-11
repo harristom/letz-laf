@@ -53,6 +53,7 @@ class PostController extends Controller{
     {
         $post = Post::find($id);
         //Check if logged in user is the owner
+        // TODO: Allow admin to edit and only allow author to edit if they still have rights
         if($post->user_id != auth()->id()){
             abort(403, 'Unauthorized action.');
         }
@@ -72,13 +73,11 @@ class PostController extends Controller{
 
         if ($request->hasFile('image_path')) {
             $validated['image_path'] = $request->file('image_path')->store('posts', 'public');
+
         }
         $post->update($validated);
 
-        // dd('Update method executed');
-        dd($request->all(), $validated, $post);
-
-        return redirect()->route('posts.index', $post)->with('message', 'Post updated successfully');
+        return redirect()->route('posts.index')->with('message', 'Post updated successfully');
     }
 
     public function delete(Post $post)
