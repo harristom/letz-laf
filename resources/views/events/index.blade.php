@@ -75,7 +75,9 @@
     <div class="events-page__list" id="list">
         <div class="events-page__add-btn-wrapper">
             {{-- TODO: Add scroll up button --}}
-            <a href="{{ route('events.create') }}" class="button events-page__add-btn"><i class="fa-solid fa-plus fa-xl" title="Add"></i></a>
+            @if (auth()->user() && in_array(auth()->user()->role, ['Organiser', 'Admin']))
+                <a href="{{ route('events.create') }}" class="button events-page__add-btn"><i class="fa-solid fa-plus fa-xl" title="Add"></i></a>
+            @endif
         </div>
 
         @if (count($events) == 0)
