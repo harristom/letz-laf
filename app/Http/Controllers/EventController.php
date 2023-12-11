@@ -118,6 +118,8 @@ class EventController extends Controller
 
     public function addResults(Request $request){
 
+        // TODO: add checks around event organiser / admin role
+
         $validated = $request->validate([
             'user_id' => 'required|exists:users,id',
             'event_id' => 'required|exists:events,id',
