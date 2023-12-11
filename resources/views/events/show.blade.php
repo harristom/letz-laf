@@ -102,6 +102,7 @@
                 @if (count($event->results) > 0)
                     <x-event-results-table :event="$event" />
                 @endif
+                @include('partials_search')
             </div>
             <div class="event-details__right">
                 <x-map-card :latitude="$event->latitude" :longitude="$event->longitude" />
