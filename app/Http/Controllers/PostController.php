@@ -81,10 +81,15 @@ class PostController extends Controller{
         return redirect()->route('posts.index')->with('message', 'Post updated successfully');
     }
 
-    public function delete(Post $post)
-    {
+    public function destroy(Post $post){
+        
+        if (auth()->user()->role != 'Admin' && auth()->user()->role != 'Organiser') {
+            abort(403, 'Unauthorized action.');
+        }
+    
         $post->delete();
         return redirect()->route('posts.index')->with('message', 'Post deleted!');
+     
     }
 
 }
