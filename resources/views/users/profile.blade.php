@@ -25,7 +25,6 @@
                         </button>
                     </form>
                 </div>
-            @endif
         </div>
 
         <div class="profile-card__info">

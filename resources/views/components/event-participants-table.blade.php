@@ -1,8 +1,7 @@
 <table>
     <thead>
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>Name</th>
             <th>Finish Time</th>
             <th></th>
         </tr>
@@ -18,8 +17,7 @@
                     <input type="hidden" name="user_id" value="{{ $participant->id }}">
                     <input type="hidden" name="event_id" value="{{ $event->id }}">
                     {{--showing user info --}}
-                    <td>{{ $participant->first_name }}</td>
-                    <td>{{ $participant->last_name }}</td>
+                    <td>{{ $participant->first_name }} {{ $participant->last_name }}</td>
                     {{--input insert finish time of the runner--}}
                     <td>
                         <input type="text" name="finish_time" placeholder="HH:mm:ss">
