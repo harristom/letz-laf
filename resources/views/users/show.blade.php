@@ -55,18 +55,29 @@
 
 <div class="attended-events-container">
 
-    @if ($$eventsParticipated->isNotEmpty())
-        @foreach ($$eventsParticipated as $event)
+    @if ($events->isNotEmpty())
+        @foreach ($events as $event)
             <article class="article-results-container">
                 <a href="/events/{{ $event->id }}" class="event-link">
                     <i class="fas fa-calendar-alt"></i> {{ $event->name }}
                 </a>
                 <div class="result-details">
                     <div class="rank">
-                        <i class="fas fa-trophy"></i> {{ $event->rank }}
+                        <i class="fas fa-trophy"></i>  
+                        @php
+                            // Retrieve the finish time from the pivot table of the event
+                            $finishTime = $event->pivot->finish_time;
+
+                            // Calculate the rank of the event based on the finish time
+                            $rank = $event->users->filter(function ($user) use ($finishTime) {
+                                return $user->pivot->finish_time < $finishTime;
+                            })->count() + 1;
+                        @endphp
+                        
+                        {{ $rank }}
                     </div>
                     <p class="finish-time">
-                        <i class="fas fa-clock"></i> {{ sprintf('%02d:%02d:%02d', $result->finish_time / 3600, ($result->finish_time / 60) % 60, $result->finish_time % 60) }}
+                        <i class="fas fa-clock"></i> {{ sprintf('%02d:%02d:%02d', $event->pivot->finish_time / 3600, ($event->pivot->finish_time / 60) % 60, $event->pivot->finish_time % 60) }}
                     </p>
                 </div>
             </article>

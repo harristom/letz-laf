@@ -258,12 +258,9 @@ class UserController extends Controller
 
     public function attendedEvents(User $user){
 
-        $user = User::find($user);
+        $events = Auth::user()->events;
 
-        $eventsParticipated = $user->events;
-
-        return view('users.show', compact('user', 'eventsParticipated'));
-
+        return view('users.show', compact('user', 'events'));
     }
 
 }
