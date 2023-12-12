@@ -1,7 +1,7 @@
 {{-- news page card --}}
 
 <div class="news-content-container">
-    <div class="news-content news-div-content">
+    <div class="news-content">
         <h3>{{ $post->title }}</h3>
         {{-- Check if image file exists  --}}
         @if (file_exists(public_path($post->image_path)))
@@ -10,7 +10,7 @@
                 <img src="{{ asset('storage/' . $post->image_path) }}" alt="">
             </div>
         @endif
-        <div>
+        <div class="news-content__div">
             <p>{{ $post->content }}</p>
         </div>
     </div>
@@ -32,10 +32,10 @@
 <style>
     /*------------------- BIG NEWS PAGE -------------------*/
     .news-content-container {
-        width: 100%;
+        width: 45%;
         display: flex;
         flex-direction: column;
-        margin: 20px;
+        margin: 20px 20px 50px 20px;
         border-radius: 10px;
         padding: 10px 25px 25px 25px;
         box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.2);
@@ -60,6 +60,7 @@
     .news-content h3 {
         text-align: center;
         font-size: 30px;
+        padding: 20px;
     }
 
     .news-content img {
@@ -71,10 +72,11 @@
     }
 
     .news-content p {
-        font-size: 20px;
+        font-size: 15px;
         text-align: center;
         hyphens: auto;
-        text-align: justify
+        text-align: justify;
+        line-height: 30px;
     }
 
     .news-div-date {
@@ -87,4 +89,10 @@
         text-align: left;
         padding: 20px 0 0 0;
     }
+
+    .news-content__div{
+        padding: 20px 0;
+    }
+
+
 </style>

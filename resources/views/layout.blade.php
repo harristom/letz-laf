@@ -27,7 +27,7 @@
     <style>
         /* Base styles */
         :root {
-            --page-bg: #f7f4eb;
+            --page-bg: white;
             --primary-color: #ee5c35;
             --card-bg: white;
         }
@@ -43,12 +43,13 @@
         body {
             font-family: 'Lato', sans-serif;
             background-color: var(--page-bg);
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
             display: grid;
             grid-template-rows: auto 1fr auto;
         }
         
         main {
-            max-width: 1500px;
+           /* max-width: 1500px;*/
             margin: 0 auto;
         }
 
@@ -162,6 +163,7 @@
             width: 80%;
             margin: 0 auto;
             border-collapse: collapse;
+            border: 1px solid #d3d3d347;
         }
 
         table th,
@@ -173,9 +175,14 @@
         table tr {
             background-color: transparent;
         }
+        
 
-        tr:nth-child(even) {
-            background-color: white;
+        table thead {
+            background-color: #d3d3d347;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #d3d3d347;
         }
 
         /* Header styles */
@@ -185,7 +192,8 @@
             gap: 10px;
             align-items: center;
             background: var(--card-bg);
-            padding: 5px 10px;
+            padding: 5px 20px;
+            box-shadow: 0px 10px 20px -3px rgba(0,0,0,0.1);
         }
 
         .main-nav__logo {
@@ -195,13 +203,13 @@
 
         .main-nav__link-list {
             display: flex;
-            gap: 20px;
+            gap: 50px;
             font-size: 1.3rem;
             align-items: center;
             margin-left: auto;
             padding: 0;
         }
-
+        
         .main-nav__button-list {
             margin-left: 20px;
             display: flex;
@@ -223,6 +231,12 @@
 
         .main-nav__a:hover {
             text-decoration: none;
+        }
+
+        /*----------Errors---------*/
+        .errors{
+            color: red;
+            padding: 0;
         }
 
         .main-footer {

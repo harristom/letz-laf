@@ -49,7 +49,7 @@
                         class="event-create-form__input">
                 </label>
                 @error('name')
-                    {{ $message }}
+                    <p class="errors">{{ $message }}</p>
                 @enderror
             </div>
             <div class="event-create-form__item">
@@ -57,7 +57,7 @@
                     <textarea name="description" id="description" class="event-create-form__input" cols="30" rows="10" required>{{ old('description') }}</textarea>
                 </label>
                 @error('description')
-                    {{ $message }}
+                    <p class="errors">{{ $message }}</p>
                 @enderror
             </div>
             <div class="event-create-form__item">
@@ -66,7 +66,7 @@
                         step="0.01" required value="{{ old('distance') }}">
                 </label>
                 @error('distance')
-                    {{ $message }}
+                    <p class="errors">{{ $message }}</p>
                 @enderror
             </div>
             <div class="event-create-form__item">
@@ -74,7 +74,7 @@
                 <input type="datetime-local" name="date" id="date" class="event-create-form__input" required
                     value="{{ old('date') }}">
                 @error('date')
-                    {{ $message }}
+                    <p class="errors">{{ $message }}</p>
                 @enderror
             </div>
             <div class="event-create-form__item">

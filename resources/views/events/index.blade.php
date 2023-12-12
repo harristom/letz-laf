@@ -5,6 +5,13 @@
     .events-page {
         margin-top: 30px;
     }
+    
+    .events-page__title{
+        text-align: left;
+        color: var(--primary-color);
+        font-size: 40px;
+        margin: 20px 75px;
+    }
 
     .events-page__list {
         display: flex;
@@ -66,6 +73,8 @@
     }
 
 </style>
+
+<h2 class="events-page__title">Events</h2>
 
 <div class="events-page">
     <div class="events-page__btns">

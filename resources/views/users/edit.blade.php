@@ -15,14 +15,14 @@
                     <label for="first_name">First Name</label>
                     <input type="text" name="first_name" id="first_name" value="{{$user->first_name}}" />
                     @error('first_name')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
                 <div>
                     <label for="last_name">Last Name</label>
                     <input type="text" name="last_name" id="last_name" value="{{$user->last_name}}" />
                     @error('last_name')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
@@ -31,7 +31,7 @@
                     <label for="birthdate">Date of birth</label>
                     <input type="date" name="birthdate" id="birthdate" value="{{$user->birthdate}}" />
                     @error('birthdate')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
                 {{-- Adding section for profile picture image upload --}}
@@ -39,13 +39,13 @@
                     <label for="profile_picture" >Profile picture</label>
                     <input type="file" id="profile_picture" name="profile_picture"/>
                     @error('profile_picture')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
             <div class="user-edit-container__form-div">
                 <label>Gender</label>
-                <div>
+                <div class="user-edit-container__form-div-gender">
                     <label>
                         <input type="radio" name="gender" value="male" {{ $user->gender === 'Male' ? 'checked' : '' }}>
                         Male
@@ -69,7 +69,7 @@
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" value="{{$user->email}}" />
                 @error('email')
-                    <p>{{ $message }}</p>
+                    <p class="errors">{{ $message }}</p>
                 @enderror
             </div>
             <div class="user-edit-container__form-div-password">
@@ -77,14 +77,14 @@
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" />
                     @error('password')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
                 <div>
                     <label for="password_confirmation">Confirm Password</label>
                     <input type="password" id="password_confirmation" name="password_confirmation" />
                     @error('password')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
@@ -114,7 +114,8 @@
 
     .user-edit-container__header-h2{
         margin: 0;
-        font-size: 40px;
+        font-size: 30px;
+        padding-bottom: 20px;
         font-weight: 700;
         color: var(--primary-color);
     }
@@ -133,6 +134,12 @@
         gap: 20px;
         margin: 0 0 30px 0;
         width: 500px;
+    }
+
+    .user-edit-container__form-div-gender {
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
     }
 
     .user-edit-container__form-div-name, 
