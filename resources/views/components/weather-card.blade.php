@@ -40,16 +40,30 @@
 <script defer>
     const lat = {{ $event->latitude }};
     const long = {{ $event->longitude }};
-    // TODO: Change to use real event time (currently has a problem due to forecasts being too far ahead possibly)
     const time = {{ \Carbon\Carbon::parse($event->date)->timestamp }};
     // const time = 1701889706;
     const KEY = 'FanFIXEd9GYfroPCKADlttIyYnZ1UMH3';
-    fetch(`https://api.pirateweather.net/forecast/${KEY}/${lat},${long},${time}?units=ca`)
+
+    fetch(`https://api.pirateweather.net/forecast/${KEY}/${lat},${long}
+        ?units=ca`)
         .then(res => res.json())
         .then(json => {
-            const forecast = json.hourly.data[0];
-            document.querySelector('.weather-card__temperature').textContent = Math.round(forecast.temperature) +
-                ' °C';
+            for (const forecast of json.hourly.data) {
+                if (time - forecast.time < 60 * 60) return forecast
+            }
+            for (const forecast of json.daily.data) {
+                if (time - forecast.time < 24 * 60 * 60) return forecast;
+            }
+        })
+        .then(forecast => {
+            console.log('Requested: ' + (new Date(time * 1000)).toLocaleString());
+            if (!forecast) {
+                console.log('no match');
+                return;
+            }
+            console.log('Found: ' + (new Date(forecast.time * 1000)).toLocaleString());
+            forecast.temperature ??= forecast.temperatureHigh;
+            document.querySelector('.weather-card__temperature').textContent = Math.round(forecast.temperature) + ' °C';
             document.querySelector('.weather-card__conditions').textContent = forecast.summary;
             document.querySelector('.weather-card__icon').src = '/images/weather-icons/' + forecast.icon + '.svg';
         });
