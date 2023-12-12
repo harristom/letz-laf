@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Event;
+use App\Models\Result;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -13,23 +14,25 @@ class EventController extends Controller
      */
     public function index()
     {
+
         //
         return view(
             'events.index',
             [
-                'events' => Event::all(),
+                'events' => Event::orderBy('date')->get(),
             ]
         );
-
-        
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
+    public function create() {
+
+        if (auth()->user()->role != 'Admin' && auth()->user()->role != 'Organiser') {
+            abort(403, 'Unauthorized action.');
+        }
+
         return view('events.create');
     }
 
@@ -51,7 +54,7 @@ class EventController extends Controller
         if ($request->hasFile('image_path')) {
             $validated['image_path'] = $request->file('image_path')->store('events', 'public');
         }
-        $validated['organiser_id'] = auth()->user();
+        $validated['organiser_id'] = auth()->id();
         $event = Event::create($validated);
         return to_route('events.show', $event);
     }
@@ -65,16 +68,18 @@ class EventController extends Controller
         return view('events.show', [
             'event' => $event
         ]);
-        
-       
+
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Event $event)
-    {
-        //
+    public function edit(Event $event) {
+        // TODO: Check that the organiser matches, don't just allow any organiser to edit
+        if (auth()->user()->role != 'Admin' && auth()->user()->role != 'Organiser') {
+            abort(403, 'Unauthorized action.');
+        }
+
         return view('events.edit', [
             'event' => $event
         ]);
@@ -106,16 +111,55 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Event $event)
-    {
-        //
+    public function destroy(Event $event) {
+        // TODO: Check that the organiser matches, don't just allow any organiser to delete
+        if (auth()->user()->role != 'Admin' && auth()->user()->role != 'Organiser') {
+            abort(403, 'Unauthorized action.');
+        }
+ 
         $event->delete();
         return redirect()->route('events.index')->with('message', 'Event deleted!');
     }
 
-    public function register(Event $event)
-    {
+    public function register(Event $event){
+
+        if ($event->date < now()) {
+            abort(403, 'This event has already passed.');
+        }
+
         $event->participants()->attach(auth()->user());
         return back();
+    }
+
+    public function addResults(Request $request){
+
+        // TODO: add checks around event organiser / admin role
+
+        $validated = $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'event_id' => 'required|exists:events,id',
+            'finish_time' => 'required|string',
+        ]);
+
+        list($hours, $minutes, $seconds) = explode(':', $validated['finish_time']);
+
+        $finishTimeInSeconds = ($hours * 3600) + ($minutes * 60) + $seconds;
+
+        
+        /*
+            Update or insert a record in the 'results' table of the database
+            The record is identified by the 'user_id' and 'event_id' fields
+            If a record with the same 'user_id' and 'event_id' already exists, it will be updated
+            Otherwise, a new record will be inserted
+        */
+
+        DB::table('results')->updateOrInsert(
+            ['user_id' => $validated['user_id'], 'event_id' => $validated['event_id']],
+            ['finish_time' => $finishTimeInSeconds]
+        );
+
+        
+        return redirect()->back()->with('message', 'Added to results!');
+        
     }
 }

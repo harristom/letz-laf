@@ -32,8 +32,9 @@
             --card-bg: white;
         }
 
-        /* Leaving commented until we've discussed */
-        * {
+        *,
+        ::before,
+        ::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -42,11 +43,11 @@
         body {
             font-family: 'Lato', sans-serif;
             background-color: var(--page-bg);
-            /* TODO: Delete me if set in reset */
-            margin: 0 100px;
             box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
         }
-
+        
         main {
            /* max-width: 1500px;*/
             margin: 0 auto;
@@ -186,13 +187,6 @@
 
         /* Header styles */
 
-        /* TODO: Delete me if we set this in reset */
-        :where(header) * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         .main-nav {
             display: flex;
             gap: 10px;
@@ -203,7 +197,8 @@
         }
 
         .main-nav__logo {
-            border-radius: 50%;
+            width: 100px;
+            height: auto;
         }
 
         .main-nav__link-list {
@@ -227,6 +222,11 @@
 
         .main-nav__avatar {
             border-radius: 50%;
+            border: 3px solid transparent;
+        }
+
+        .main-nav__avatar:hover {
+            border-color: rgba(0, 0, 0, 0.3);
         }
 
         .main-nav__a:hover {
@@ -239,15 +239,13 @@
             padding: 0;
         }
 
-        /*----------Footer----------*/
-        footer {
-            width: 100%;
-            position: relative;
-            bottom: 0;
-            padding: 20px;
+        .main-footer {
+            margin-top: 30px;
             text-align: center;
-            background: var(--page-bg);
-            box-shadow: 10px 0px 20px -3px rgba(0,0,0,0.1);
+            background-color: var(--card-bg);
+            padding: 50px 10px;
+            color: rgb(56, 56, 56);
+            font-size: 0.8rem;
         }
     </style>
     <title>LëtzLaf</title>
@@ -257,7 +255,7 @@
     <header class="header">
         <nav class="main-nav">
             <a href="/">
-                <img class="main-nav__logo" src="{{ asset('images/letzlogo.png') }}" alt="LetzLaf" height="100">
+                <img class="main-nav__logo" src="{{ asset('images/Artboard 1.png') }}" alt="LetzLaf" height="100">
             </a>
             <ul class="main-nav__link-list">
                 <li>
@@ -269,6 +267,11 @@
                 <li>
                     <a href="{{ route('about') }}" class="main-nav__a">About Us</a>
                 </li>
+                @if(auth()->check() && auth()->user()->role == 'Admin')
+                    <li>
+                        <a href="/users/manage">Manage Users</a>
+                    </li>
+                @endif
             </ul>
             <ul class="main-nav__button-list">
                 @auth
@@ -299,13 +302,15 @@
             @endauth
         </nav>
     </header>
-    <main>
-        @yield('content')
-    </main>
+    {{-- Extra wrapping div to keep margin collapse in main (grid prevents margin collapse otherwise) --}}
+    <div>
+        <main>
+            @yield('content')
+        </main>
+    </div>
 
     {{-- <x-flash-message /> --}}
-
-    <footer>
+    <footer class="main-footer">
         <p>Copyright &copy; 2023, All Rights reserved</p>
     </footer>
 </body>

@@ -2,116 +2,270 @@
 
 @section('content')
 
-    <h3>About us</h3>
+<h3 class="top-section__title">
+    <p class="top-section__title--black-color" >
+        About 
+    </p>
+    <p class="top-section__title--main-color" >
+        us
+    </p>
+</h3>
 
-    <div class="teamCardLeft AboutUsFlexbox">
-        <img class="teamPictureLeft" src="" alt="">
+<div class="aboutus__container">
 
-        <div class="aboutUsDescriptionLeft aboutUsDescription">
-            <p>Kammy A</p>
+    <div class="intro">
+        <div class="intro__text">
+            <h4 class="intro__text-title">Nice to meet you</h4>
+            <p class="intro__text-content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis voluptas sit mollitia officia deleniti saepe nisi eaque fuga non laudantium.</p>
+        </div>
 
-            <p class="">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam rerum itaque ad tempora reiciendis voluptatibus tempore sint totam debitis excepturi?</p>
+        <img class="intro__picture" src="{{asset('images/brainstormingSession.jpg')}}" alt="picture of a brain storming session">
+
+    </div>
+
+    <div class="team-card">
+        <img class="team-card__picture" src="{{asset('images/profilepicture.jpeg')}}" alt="">
+
+        <div class="team-card__description">
+            <p class="team-card__description--padding">Kammy A</p>
+            <p class="team-card__description--padding">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam rerum itaque ad tempora reiciendis voluptatibus tempore sint totam debitis excepturi?</p>
+            <div>
+                <a class="team-card__linkedin-link" href="#"><i class="fa-brands fa-linkedin"></i>
+                    Get in touch
+                </a> 
+                <br>
+                <a class="team-card__portfolio-link" href="#"> <i class="fa-solid fa-laptop-code"></i>
+                    Browse my portfolio
+                </a>
+            </div>
         </div>
 
     </div>
-    <div class="teamCardRight AboutUsFlexbox">
-        
-        <div class="aboutUsDescriptionRight aboutUsDescription">
-            <p>Vania Barbosa</p>
+    <div class="team-card__container--reverse">
+        <div class="team-card__description--reverse">
+            <p class="team-card__description--padding">Vania Barbosa</p>
+            <p class="team-card__description--padding">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam rerum itaque ad tempora reiciendis voluptatibus tempore sint totam debitis excepturi?</p>
+            <div>
+                <a class="team-card__linkedin-link" href="#">
+                    Get in touch <i class="fa-brands fa-linkedin"></i>
+                </a> 
+                <br>
+                <a class="team-card__portfolio-link" href="#">
+                    Browse my portfolio
+                </a>
+            </div>
+        </div>
+        <img class="team-card__picture--reverse" src="{{asset('images/profilepicture.jpeg')}}" alt="">
 
-            <p class="">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam rerum itaque ad tempora reiciendis voluptatibus tempore sint totam debitis excepturi?</p>
+    </div>
+    <div class="team-card">
+        <img class="team-card__picture" src="{{asset('images/profilepicture.jpeg')}}" alt="">
+
+        <div class="team-card__description">
+            <p class="team-card__description--padding">Tom HARRIS</p>
+            <p class="team-card__description--padding">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam rerum itaque ad tempora reiciendis voluptatibus tempore sint totam debitis excepturi?</p>
+            <div>
+                <a class="team-card__linkedin-link" href="#">
+                    Get in touch <i class="fa-brands fa-linkedin"></i>
+                </a> 
+                <br>
+                <a class="team-card__portfolio-link" href="#">
+                    Browse my portfolio
+                </a>
+            </div>
         </div>
 
-        <img class="teamPictureRight" src="" alt="">
-        
     </div>
-    <div class="teamCardLeft AboutUsFlexbox">
-        <img class="teamPictureLeft" src="" alt="">
+    <div class="team-card__container--reverse">
+        
 
-        <div class="aboutUsDescriptionLeft aboutUsDescription">
-            <p>Tom HARRIS </p>
+        <div class="team-card__description--reverse">
+            <p class="team-card__description--padding">Jaria POBA</p>
+            <p class="team-card__description--padding">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam rerum itaque ad tempora reiciendis voluptatibus tempore sint totam debitis excepturi?</p>
+            <div>
+                <a class="team-card__linkedin-link" href="#">
+                    Get in touch <i class="fa-brands fa-linkedin"></i>
+                </a> 
+                <br>
+                <a class="team-card__portfolio-link" href="#">
+                    Browse my portfolio
+                </a>
+            </div>
+        </div>
+        <img class="team-card__picture--reverse" src="{{asset('images/profilepicture.jpeg')}}" alt="">
 
-            <p class="">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam rerum itaque ad tempora reiciendis voluptatibus tempore sint totam debitis excepturi?</p>
+    </div>
+    <div class="team-card">
+        <img class="team-card__picture" src="{{asset('images/profilepicture.jpeg')}}" alt="">
+
+        <div class="team-card__description">
+            <p class="team-card__description--padding">Marcia SANTOS</p>
+            <p class="team-card__description--padding">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam rerum itaque ad tempora reiciendis voluptatibus tempore sint totam debitis excepturi?</p>
+            <div>
+                <a class="team-card__linkedin-link" href="#">
+                    Get in touch <i class="fa-brands fa-linkedin"></i>
+                </a> 
+                <br>
+                <a class="team-card__portfolio-link" href="#">
+                    Browse my portfolio
+                </a>
+            </div>
         </div>
 
-        
-        
     </div>
-    <div class="teamCardRight AboutUsFlexbox">
-        
-        <div class="aboutUsDescriptionRight aboutUsDescription">
-            <p>Jaria POBA </p>
+</div>
 
-            <p class="">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam rerum itaque ad tempora reiciendis voluptatibus tempore sint totam debitis excepturi?</p>
-        </div>
-
-        <img class="teamPictureLeft" src="" alt=""></div>
-        
-    </div>
-    <div class="teamCardLeft AboutUsFlexbox">
-        <img class="teamPictureLeft" src="" alt="">
-
-        <div class="aboutUsDescriptionLeft aboutUsDescription">
-            <p>Marcia SANTOS</p>
-
-            <p class="">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam rerum itaque ad tempora reiciendis voluptatibus tempore sint totam debitis excepturi?</p>
-        </div>
-        
-    </div>
 @endsection
 
 <style>
 
 /* ABOUT US PAGE STYLING */
-.AboutUsFlexbox img {
-    
-    flex-shrink: 0;
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-   
+
+
+.aboutus__container{
+    margin: 0 10px;
+    padding: 0 100px;
+    max-width: 1700px;
 }
 
-.teamPictureLeft{
-    transition: 0.5s ease;
-    box-shadow: 0 1px 2px rgba(255,165,0,0.75);
-
-}
-
-.teamPictureLeft:hover {
-    transition: 0.5s ease;
-    transform: scale(1.1);
-    box-shadow: -35px 28px 56px -32px rgba(255,165,0,0.75);
-
-}
-
-
-
-.teamPictureRight{
-    transition: 0.5s ease;
-    box-shadow: 0 1px 2px rgba(255,165,0,0.75);
-}
-
-.teamPictureRight:hover{
-    transition: 0.5s ease;
-    transform: scale(1.1);
-    box-shadow: 13px 17px 38px -11px rgba(255,165,0,0.75);
-
-}
-
-.AboutUsFlexbox{
+.top-section__title{
     display: flex;
-    width: 600px;
-    margin-left: 80px;
-    margin-right: 80px;
-    margin-top: 50px;
+    justify-content: center;
+    text-transform: uppercase;
 }
 
-.aboutUsDescription{
-    font-family: sans-serif;
-    margin-top: 40px;
-    margin-left: 30px;
-    margin-right: 30px;
+.top-section__title--main-color{
+    color: var(--primary-color);
+    padding-left: 5px;
 }
+
+.intro{
+    display: flex;
+    height: 400px;
+    width: 100%;
+    margin: 20px 10px;
+    background-color: white;
+    border-radius: 3px;  
+}
+
+.intro__text{
+    width: 50%;
+    padding: 50px; 
+}
+
+.intro__text-title{
+    color: var(--primary-color);
+    font-size: 25px;
+    text-transform: uppercase;
+}
+
+.intro__picture{
+    width: 50%;
+    flex-shrink: 0;
+}
+
+.intro__text-content{
+    font-weight: lighter;
+}
+
+.team-card{
+    display: flex;
+    width: 200px;
+    height: 250px;
+    color: var(--card-bg);
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition-duration: .5s;
+    cursor: pointer;
+    margin: 100px;
+}
+
+
+.team-card__container--reverse{
+    display: flex;
+    width: 200px;
+    height: 250px;
+    color: var(--card-bg);
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition-duration: .5s;
+    cursor: pointer;
+    margin: 100px;
+    margin-left: 70%;
+}
+
+.team-card__picture {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.team-card__picture--reverse{
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.team-card__description {
+    z-index: 0;
+    width: 400px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    transition-duration: .5s;
+    font-size: 15px;
+    padding: 0 25px;
+    font-weight: lighter;
+    transform: translateX(25%);
+}
+
+.team-card__description--reverse{
+    z-index: 0;
+    width: 400px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    transition-duration: .5s;
+    font-weight: lighter;
+    font-size: 15px;
+    padding: 0 25px;
+    transform: translateX(-25%);
+}
+
+.team-card:hover .team-card__description {
+    transform: translateX(110%) translateY(0%);
+    transition-duration: 0.5s;
+}
+
+.team-card__container--reverse:hover .team-card__description--reverse {
+    transform: translateX(-110%) translateY(0%);
+    transition-duration: 0.5s;
+}
+
+.team-card__portfolio-link, .team-card__linkedin-link {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+
+.team-card__portfolio-link:hover , .team-card__linkedin-link:hover {
+    color: var(--page-bg);
+}
+
 </style>

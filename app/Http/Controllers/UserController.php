@@ -16,8 +16,12 @@ class UserController extends Controller
         return view('users.register');
     }
 
-    public function createAdmin()
-    {
+    public function createAdmin(){
+
+        if (auth()->user()->role != 'Admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
         return view('users.createAdmin');
     }
 
@@ -55,9 +59,13 @@ class UserController extends Controller
 
         $user = User::create($formFields);
 
-        auth()->login($user);
+        if (auth()->check() && auth()->user()->role === 'Admin') {
+            return redirect('/users/manage')->with('message', 'User created Successfully!');
+        } else {
+            auth()->login($user);
+            return redirect('/')->with('message', 'User created and logged in Successfully!');
+        }
 
-        return redirect('/')->with('message', 'User created and logged in Successfully!');
 
     }
 
@@ -93,25 +101,32 @@ class UserController extends Controller
             $request->session()->regenerate();
 
             // redirect to the home page
-            return redirect('/')->with('message', 'User logged in Successfully!');
+            return redirect('/')->with('message', 'User logged in successfully!');
         }
 
-        //If it doesn't find a match send error
-        return back()->withErrors(['login' => 'Invalid Credentials']);
-
+        // If reached here, the credentials are incorrect
+        return back()->withErrors(['password' => 'Incorrect email or password']);
     }
 
-    public function manage()
-    {
+    public function manage(){
+
+        if (auth()->user()->role != 'Admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
         return view('users.manage',[
             //'users' => auth()->user()->users,
-            'users' => User::latest()->filter(request(['search']))->get(),
+            'users' => User::all(),
 
         ]);
     }
 
-    public function destroy($id)
-    {
+    public function destroy($id){
+        // TODO: Allow users to delete their own account
+        if (auth()->user()->role != 'Admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
         //Fetch the user to be deleted
         $user= User::find($id);
 
@@ -122,8 +137,12 @@ class UserController extends Controller
         return redirect('/users/manage')->with('message', 'User deleted Successfully!');
     }
 
-    public function editAdmin($id)
-    {
+    public function editAdmin($id){
+
+        if (auth()->user()->role != 'Admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
         $user = User::find($id);
 
         return view('users.editAdmin', [
@@ -152,8 +171,12 @@ class UserController extends Controller
         ]);
     }
 
-    public function updateAdmin(Request $request, $id)
-    {
+    public function updateAdmin(Request $request, $id){
+
+        if (auth()->user()->role != 'Admin') {
+            abort(403, 'Unauthorized action.');
+        }
+
         //Fetch the user to be updated
         $user = User::find($id);      
 
@@ -191,8 +214,8 @@ class UserController extends Controller
     }     
 
     //update the user information
-    public function update(Request $request,$id)
-    {
+    public function update(Request $request,$id){
+
          //Fetch the user to be updated
         $user = User::find($id);
 

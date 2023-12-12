@@ -16,6 +16,16 @@
     </div>
     <div class="news-content news-div-date">
         <small>Created : {{ $post->created_at }}</small>
+
+        {{-- Check that the user is logged in and is either an admin or an event organiser who wrote the post originally --}}
+        @if(auth()->user() && (auth()->user()->role == 'Admin' || (auth()->user()->role == 'Organiser' && auth()->user() == $post->user)))
+            <a href="/news/{{ $post->id }}">Update</a>
+            <form action="{{route('posts.delete', $post)}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button>Delete</button>
+            </form>
+        @endif
     </div>
 </div>
 
@@ -28,12 +38,8 @@
         margin: 20px 20px 50px 20px;
         border-radius: 10px;
         padding: 10px 25px 25px 25px;
-        box-shadow: 0px 0px 20px -3px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.2);
         transition: transform .5s;
-    }
-
-    .news-content-container:hover {
-        transform: scale(1.1);
     }
 
     .news-content {

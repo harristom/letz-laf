@@ -12,8 +12,6 @@
                 {{$user->first_name}} {{$user->last_name}} <br>
                 <small>{{$user->role}}</small>
             </h3>
-            <div>
-
                 <a class="{{ request()->is('profile/'.$user->id) ? 'active' : '' }}" href="/profile/{{$user->id}}">Account Details</a>
 
                 <a class="{{ request()->is('profile/'.$user->id.'/edit') ? 'active' : '' }}" href="/profile/{{$user->id}}/edit">Account Settings</a>
@@ -27,7 +25,7 @@
                         </button>
                     </form>
                 </div>
-            </div>
+            @endif
         </div>
 
         <div class="profile-card__info">

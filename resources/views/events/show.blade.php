@@ -70,38 +70,59 @@
         bottom: 10px;
         right: 20px;
     }
-
 </style>
 
 @section('content')
     <div class="event-page">
         <div class="event-details__banner">
             <h2 class="event-details__title">{{ $event->name }}</h2>
-            <x-weather-card :event="$event"/>
+            <x-weather-card :event="$event" />
         </div>
         <div class="event-details__content">
             <div class="event-details__left">
                 <p class="event-details__description">{{ $event->description }}</p>
                 <div class="event-details__data">
-                    <div><i class="fa-regular fa-calendar"></i> {{ \Carbon\Carbon::parse($event->date)->format('d/m/Y') }}</div>
+                    <div><i class="fa-regular fa-calendar"></i> {{ \Carbon\Carbon::parse($event->date)->format('d/m/Y') }}
+                    </div>
                     <div><i class="fa-regular fa-clock"></i> {{ \Carbon\Carbon::parse($event->date)->format('H:i') }}</div>
                     <div><i class="fa-solid fa-person-running"></i> {{ count($event->participants) }} registered</div>
                 </div>
                 <div class="event-details__buttons">
-                    <form action="{{ route('events.register', $event) }}" method="POST" class="event-details__form">
-                        @csrf
-                        <button>Join</button>
-                    </form>
-                    <a href="{{ route('events.edit', $event) }}" class="button">Edit</a>
-                    <form action="{{ route('events.destroy', $event) }}" method="POST" class="event-details__form">
-                        @csrf
-                        @method('DELETE')
-                        <button>Delete</button>
-                    </form>
+
+                    @if(auth()->check() && (auth()->user()->id == $event->organiser_id || auth()->user()->role == 'Admin'))
+                        <a href="{{ route('events.edit', $event) }}" class="button">Edit</a>
+                        <form action="{{ route('events.destroy', $event) }}" method="POST" class="event-details__form">
+                            @csrf
+                            @method('DELETE')
+                            <button>Delete</button>
+                        </form>
+                    @endif
+
+                    @if (auth()->user() && !$event->participants->contains(auth()->user()) && $event->date >= now())
+                        <form action="{{ route('events.register', $event) }}" method="POST" class="event-details__form">
+                            @csrf
+                            <button>Join</button>
+                        </form>
+                    @endif
+
                 </div>
-                @if (count($event->results) > 0)
-                    <x-event-results-table :event="$event" />
+
+                {{-- Check if the current time is greater than the event date --}}
+                @if (now() > $event->date)
+                    {{-- Check if there are any results for the event --}}
+                    @if (count($event->results) > 0)
+                        {{-- Render the event results table component --}}
+                        <x-event-results-table :event="$event" />
+                    @endif  
+
+                    @if (count($event->participants) > 0 &&
+                            auth()->user() &&
+                            (auth()->user()->role == 'Admin' || auth()->user() == $event->organiser))
+                        <x-event-participants-table :event="$event" />
+                    @endif
                 @endif
+                
+
             </div>
             <div class="event-details__right">
                 <x-map-card :latitude="$event->latitude" :longitude="$event->longitude" />

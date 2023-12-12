@@ -8,8 +8,12 @@
         <div class="big-news__header">
             <h2>News</h2>
             <a href="/news/create">Create a news post</a>
+            @auth
+                @if(auth()->user()->role == 'Admin' || auth()->user()->role == 'Organiser')
+                    <a href="/news/create">Create a news post</a>
+                @endif
+            @endauth
         </div>
-
         <div class="big-news__div">
             {{--checks if the $posts variable is empty--}}
             @if (count($posts) == 0)
@@ -23,9 +27,7 @@
                     <x-big-news-card :post="$post" />
             @endforeach
         </div>
-        
     </div>
-
 @endSection
 
 <style>
@@ -38,7 +40,7 @@
         justify-content: space-around;
     }
 
-    .big-news__header{
+    .big-news__header {
         width: 95%;
         display: flex;
         flex-direction: row;
@@ -48,12 +50,20 @@
         color: var(--primary-color);
     }
 
-    .big-news__header h2{
+    .big-news__header h2 {
         font-size: 40px;
     }
 
-    .big-news__div{
+    .news-page__title--styling {
+        font-size: 40px;
+        color: var(--primary-color);
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+
+    .big-news {
         width: 100%;
+        margin: auto auto;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
