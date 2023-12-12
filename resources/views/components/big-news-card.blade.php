@@ -20,6 +20,11 @@
         {{-- Check that the user is logged in and is either an admin or an event organiser who wrote the post originally --}}
         @if(auth()->user() && (auth()->user()->role == 'Admin' || (auth()->user()->role == 'Organiser' && auth()->user() == $post->user)))
             <a href="/news/{{ $post->id }}">Update</a>
+            <form action="{{route('posts.delete', $post)}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button>Delete</button>
+            </form>
         @endif
     </div>
 </div>
