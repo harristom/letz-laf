@@ -40,7 +40,6 @@
         }
 
         body {
-            position: relative;
             font-family: 'Lato', sans-serif;
             background-color: var(--page-bg);
             /* TODO: Delete me if set in reset */
@@ -152,6 +151,7 @@
 
         /*-------select option------*/
         select {
+            border: 1px solid lightgray;
             padding: 10px;
             border-radius: 3px;
         }
@@ -176,7 +176,7 @@
         }
         
 
-        table thead tr:first-child {
+        table thead {
             background-color: #d3d3d347;
         }
 
@@ -195,7 +195,7 @@
 
         .main-nav {
             display: flex;
-            gap: 40px;
+            gap: 10px;
             align-items: center;
             background: var(--card-bg);
             padding: 5px 20px;

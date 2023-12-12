@@ -36,10 +36,9 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-around;
-        width: 100%;
-        padding: 40px 2%;
+        justify-content: center;
         align-items: center;
+        margin: 30px auto;
         gap: 40px;
       }
 
