@@ -44,7 +44,7 @@
     // const time = 1701889706;
     const KEY = 'FanFIXEd9GYfroPCKADlttIyYnZ1UMH3';
 
-    fetch(`https://api.pirateweather.net/forecast/${KEY}/${lat},${long}${time < Date.now() ? ',' + time : ''}?units=ca&exclude=flags,currently,minutely`)
+    fetch(`https://api.pirateweather.net/forecast/${KEY}/${lat},${long}${time < Date.now() / 1000 ? ',' + time : ''}?units=ca&exclude=flags,currently,minutely`)
         .then(res => res.json())
         .then(json => {
             for (const forecast of json.hourly.data) {
