@@ -24,6 +24,4 @@ class Result extends Model
     {
         return $this->belongsTo(Event::class);
     }
-
-
 }

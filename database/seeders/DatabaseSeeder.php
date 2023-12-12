@@ -76,29 +76,5 @@ class DatabaseSeeder extends Seeder
             EventSeeder::class,
             ResultSeeder::class
         ]);
-
-        /*---------------RESULTS---------------*/
-        Result::create([
-            'user_id' => 6,
-            'event_id' => 1,
-            'finish_time' => 2780
-        ]);
-        Result::create([
-            'user_id' => 6,
-            'event_id' => 2,
-            'finish_time' => 4780
-        ]);
-        Result::create([
-            'user_id' => 6,
-            'event_id' => 3,
-            'finish_time' => 3580
-        ]);
-        Result::create([
-            'user_id' => 2,
-            'event_id' => 3,
-            'finish_time' => 1134
-        ]);
-
-        
     }
 }

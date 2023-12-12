@@ -255,12 +255,4 @@ class UserController extends Controller
         //Redirect to the user detail page
         return redirect('profile/'. $user->id)->with('message', 'Profile updated Successfully!');
     }
-
-    public function attendedEvents(User $user){
-
-        $events = Auth::user()->events;
-
-        return view('users.show', compact('user', 'events'));
-    }
-
 }
