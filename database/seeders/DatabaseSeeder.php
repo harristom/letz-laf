@@ -98,5 +98,7 @@ class DatabaseSeeder extends Seeder
             'event_id' => 3,
             'finish_time' => 1134
         ]);
+
+        
     }
 }

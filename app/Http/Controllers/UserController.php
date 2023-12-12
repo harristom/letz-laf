@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Event;
+use App\Models\Result;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
@@ -253,28 +256,14 @@ class UserController extends Controller
         return redirect('profile/'. $user->id)->with('message', 'Profile updated Successfully!');
     }
 
-    public function attendedEvents(User $user)
-    {
-        // Get the attended results of the user
-        $attendedResults = $user->results;
+    public function attendedEvents(User $user){
 
-        dd($attendedResults);
-        // Sort the attended results by finish time
-        $sortedResults = $attendedResults->sortBy('finish_time');
+        $user = User::find($user);
 
-        // Initialize the rank variable
-        $rank = 1;
+        $eventsParticipated = $user->events;
 
-        // Assign the rank to each result
-        foreach ($sortedResults as $result) {
-            // Set the rank property of each result object
-            $result->rank = $rank;
-            // Increment the rank for the next result
-            $rank++;
-        }
+        return view('users.show', compact('user', 'eventsParticipated'));
 
-        // Return the view with the user and sorted results
-        return view('users.show', compact('user', 'sortedResults'));
     }
 
 }

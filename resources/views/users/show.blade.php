@@ -51,19 +51,19 @@
 --}}
 
 
-<h3>Eventos Participados</h3>
+<h3>Attended Events</h3>
 
 <div class="attended-events-container">
 
-    @if ($sortedResults->isNotEmpty())
-        @foreach ($sortedResults as $result)
+    @if ($$eventsParticipated->isNotEmpty())
+        @foreach ($$eventsParticipated as $event)
             <article class="article-results-container">
-                <a href="/events/{{ $result->event->id }}" class="event-link">
-                    <i class="fas fa-calendar-alt"></i> {{ $result->event->name }}
+                <a href="/events/{{ $event->id }}" class="event-link">
+                    <i class="fas fa-calendar-alt"></i> {{ $event->name }}
                 </a>
                 <div class="result-details">
                     <div class="rank">
-                        <i class="fas fa-trophy"></i> {{ $result->rank }}
+                        <i class="fas fa-trophy"></i> {{ $event->rank }}
                     </div>
                     <p class="finish-time">
                         <i class="fas fa-clock"></i> {{ sprintf('%02d:%02d:%02d', $result->finish_time / 3600, ($result->finish_time / 60) % 60, $result->finish_time % 60) }}

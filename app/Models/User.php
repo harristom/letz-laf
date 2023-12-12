@@ -77,4 +77,8 @@ class User extends Authenticatable
     public function results(){
         return $this->hasMany(Result::class);
     }
+    public function events(){
+        return $this->belongsToMany('App\Models\Event', 'results')->withPivot('finish_time');
+    }
+
 }

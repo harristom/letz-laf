@@ -35,4 +35,9 @@ class Event extends Model
     {
         return $this->hasMany(Result::class,'event_id')->orderBy('finish_time');
     }
+
+    public function users(){
+        return $this->belongsToMany('App\Models\User', 'results')->withPivot('finish_time');
+    }
+
 }
