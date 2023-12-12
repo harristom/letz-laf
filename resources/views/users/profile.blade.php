@@ -12,10 +12,11 @@
                 {{$user->first_name}} {{$user->last_name}} <br>
                 <small>{{$user->role}}</small>
             </h3>
+            @if(auth()->check() && (auth()->user()->id === $user->id || auth()->user()->role == 'Admin'))
                 <a class="{{ request()->is('profile/'.$user->id) ? 'active' : '' }}" href="/profile/{{$user->id}}">Account Details</a>
 
                 <a class="{{ request()->is('profile/'.$user->id.'/edit') ? 'active' : '' }}" href="/profile/{{$user->id}}/edit">Account Settings</a>
-
+                
                 <div class="profile-card__div-btn">
                     <form method="POST" action="/logout">
                         @csrf
