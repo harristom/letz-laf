@@ -27,9 +27,11 @@
     <style>
         /* Base styles */
         :root {
-            --page-bg: white;
+            --page-bg: rgb(255, 254, 252);
             --primary-color: #ee5c35;
             --card-bg: white;
+            --text-color: #444;
+            background-color: #EEEEEE;
         }
 
         *,
@@ -46,12 +48,12 @@
             box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
             display: grid;
             grid-template-rows: auto 1fr auto;
-        }
-        
-        main {
-           /* max-width: 1500px;*/
+            color: var(--text-color);
+            max-width: 1500px;
             margin: 0 auto;
         }
+
+        main {}
 
         a {
             text-decoration: none;
@@ -175,7 +177,7 @@
         table tr {
             background-color: transparent;
         }
-        
+
 
         table thead {
             background-color: #d3d3d347;
@@ -189,16 +191,17 @@
 
         .main-nav {
             display: flex;
+            flex-wrap: wrap;
             gap: 10px;
             align-items: center;
             background: var(--card-bg);
-            padding: 5px 20px;
-            box-shadow: 0px 10px 20px -3px rgba(0,0,0,0.1);
+            padding: 5px 15px;
+            box-shadow: 0px 10px 20px -3px rgba(0, 0, 0, 0.1);
         }
 
         .main-nav__logo {
-            width: 100px;
-            height: auto;
+            height: 100px;
+            width: auto;
         }
 
         .main-nav__link-list {
@@ -209,7 +212,7 @@
             margin-left: auto;
             padding: 0;
         }
-        
+
         .main-nav__button-list {
             margin-left: 20px;
             display: flex;
@@ -234,7 +237,7 @@
         }
 
         /*----------Errors---------*/
-        .errors{
+        .errors {
             color: red;
             padding: 0;
         }
@@ -255,7 +258,7 @@
     <header class="header">
         <nav class="main-nav">
             <a href="/">
-                <img class="main-nav__logo" src="{{ asset('images/Artboard 1.png') }}" alt="LetzLaf" height="100">
+                <h1><img class="main-nav__logo" src="{{ asset('images/logo.png') }}" alt="LetzLaf" height="100"></h1>
             </a>
             <ul class="main-nav__link-list">
                 <li>
@@ -267,7 +270,7 @@
                 <li>
                     <a href="{{ route('about') }}" class="main-nav__a">About Us</a>
                 </li>
-                @if(auth()->check() && auth()->user()->role == 'Admin')
+                @if (auth()->check() && auth()->user()->role == 'Admin')
                     <li>
                         <a href="/users/manage">Manage Users</a>
                     </li>
@@ -294,11 +297,9 @@
                 @endauth
             </ul>
             @auth
-            <a href="/profile/{{ auth()->user()->id }}" class="main-nav__a">
-                <img class="main-nav__avatar"
-                    src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : asset('images/profilePicturePlaceholder.jpeg') }}"
-                    alt="The user's profile picture" height="50">
-            </a>
+                <a href="/profile/{{ auth()->user()->id }}" class="main-nav__a">
+                    <img class="main-nav__avatar" src="{{ auth()->user()->profile_picture ? asset('storage/' . auth()->user()->profile_picture) : asset('images/profilePicturePlaceholder.jpeg') }}" alt="The user's profile picture" height="50">
+                </a>
             @endauth
         </nav>
     </header>
