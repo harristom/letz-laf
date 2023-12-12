@@ -69,9 +69,7 @@
                             $finishTime = $event->pivot->finish_time;
 
                             // Calculate the rank of the event based on the finish time
-                            $rank = $event->users->filter(function ($user) use ($finishTime) {
-                                return $user->pivot->finish_time < $finishTime;
-                            })->count() + 1;
+                            $rank = $event->users->where('pivot.finish_time', '<', $finishTime)->count() + 1;
                         @endphp
                         
                         {{ $rank }}
