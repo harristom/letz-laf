@@ -54,17 +54,16 @@
 <h3>Attended Events</h3>
 
 <div class="attended-events-container">
-
-    @if ($events->isNotEmpty())
-        @foreach ($events as $event)
+    @if ($user->results->isNotEmpty())
+        @foreach ($user->results as $result)
             <article class="article-results-container">
-                <a href="/events/{{ $event->id }}" class="event-link">
-                    <i class="fas fa-calendar-alt"></i> {{ $event->name }}
+                <a href="{{ route('events.show', $result->event) }}" class="event-link">
+                    <i class="fas fa-calendar-alt"></i> {{ $result->event->name }}
                 </a>
                 <div class="result-details">
                     <div class="rank">
                         <i class="fas fa-trophy"></i>  
-                        @php
+                        {{-- @php
                             // Retrieve the finish time from the pivot table of the event
                             $finishTime = $event->pivot->finish_time;
 
@@ -72,10 +71,15 @@
                             $rank = $event->users->where('pivot.finish_time', '<', $finishTime)->count() + 1;
                         @endphp
                         
-                        {{ $rank }}
+                        {{ $rank }} --}}
+
+                        {{-- This is the worst possible way of doing this, except for all the others I tried ;) --}}
+                        @foreach ($result->event->results as $rankedResult)
+                            @if ($rankedResult->user_id == $user->id) {{$loop->index + 1}} @endif
+                        @endforeach
                     </div>
                     <p class="finish-time">
-                        <i class="fas fa-clock"></i> {{ sprintf('%02d:%02d:%02d', $event->pivot->finish_time / 3600, ($event->pivot->finish_time / 60) % 60, $event->pivot->finish_time % 60) }}
+                        <i class="fas fa-clock"></i> {{ sprintf('%02d:%02d:%02d', $result->finish_time / 3600, ($result->finish_time / 60) % 60, $result->finish_time % 60) }}
                     </p>
                 </div>
             </article>

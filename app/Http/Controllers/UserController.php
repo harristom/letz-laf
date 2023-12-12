@@ -150,9 +150,9 @@ class UserController extends Controller
     }
 
     //Show only the specific user profile
-    public function show($id){
+    public function show(User $user){
         return view('users.show', [
-            'user' => User::find($id)
+            'user' => $user
         ]);
     }
 
