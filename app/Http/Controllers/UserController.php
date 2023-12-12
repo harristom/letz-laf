@@ -258,6 +258,7 @@ class UserController extends Controller
         // Get the attended results of the user
         $attendedResults = $user->results;
 
+        dd($attendedResults);
         // Sort the attended results by finish time
         $sortedResults = $attendedResults->sortBy('finish_time');
 

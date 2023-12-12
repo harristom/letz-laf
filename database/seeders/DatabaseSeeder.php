@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Result;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,7 +18,7 @@ class DatabaseSeeder extends Seeder
 
         /*---------------USER---------------*/
         //fake users
-        User::factory(2)->create();
+        User::factory(5)->create();
 
         //vania
         $user = User::factory()->create([
@@ -74,6 +75,28 @@ class DatabaseSeeder extends Seeder
         $this->call([
             EventSeeder::class,
             ResultSeeder::class
+        ]);
+
+        /*---------------RESULTS---------------*/
+        Result::create([
+            'user_id' => 6,
+            'event_id' => 1,
+            'finish_time' => 2780
+        ]);
+        Result::create([
+            'user_id' => 6,
+            'event_id' => 2,
+            'finish_time' => 4780
+        ]);
+        Result::create([
+            'user_id' => 6,
+            'event_id' => 3,
+            'finish_time' => 3580
+        ]);
+        Result::create([
+            'user_id' => 2,
+            'event_id' => 3,
+            'finish_time' => 1134
         ]);
     }
 }

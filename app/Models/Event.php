@@ -33,6 +33,6 @@ class Event extends Model
 
     public function results()
     {
-        return $this->hasMany(Result::class)->orderBy('finish_time');
+        return $this->hasMany(Result::class,'event_id')->orderBy('finish_time');
     }
 }
