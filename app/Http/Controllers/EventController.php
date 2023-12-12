@@ -75,8 +75,8 @@ class EventController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Event $event) {
-        // TODO: Check that the organiser matches, don't just allow any organiser to edit
-        if (auth()->user()->role != 'Admin' && auth()->user()->role != 'Organiser') {
+        //now only admin and the organiser from the event can edit
+        if (auth()->user()->role != 'Admin' && auth()->user()->id != $event->organiser_id) {
             abort(403, 'Unauthorized action.');
         }
 
