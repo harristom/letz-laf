@@ -11,7 +11,7 @@
         /* color: var(--primary-color); */
         /* color: var(--text-color); */
         font-size: 40px;
-        margin: 20px 75px;
+        margin: 50px 75px 20px 75px;
     }
 
     .events-page__list {
