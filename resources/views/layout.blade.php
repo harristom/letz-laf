@@ -206,7 +206,7 @@
 
         .main-nav__link-list {
             display: flex;
-            gap: 50px;
+            gap: 30px;
             font-size: 1.3rem;
             align-items: center;
             margin-left: auto;
@@ -272,7 +272,7 @@
                 </li>
                 @if (auth()->check() && auth()->user()->role == 'Admin')
                     <li>
-                        <a href="/users/manage">Manage Users</a>
+                        <a href="/users/manage" class="main-nav__a">Manage Users</a>
                     </li>
                 @endif
             </ul>

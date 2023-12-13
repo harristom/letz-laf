@@ -34,7 +34,6 @@
 <style>
     /*------------------- BIG NEWS PAGE -------------------*/
     .news-content-container {
-        width: 45%;
         display: flex;
         flex-direction: column;
         margin: 20px 20px 50px 20px;
@@ -67,9 +66,9 @@
     }
 
     .news-content img {
-        width: 400px;
+        width: auto;
         margin: auto;
-        height: auto;
+        height: 400px;
         border-radius: 5px;
         margin-right: 20px;
     }
