@@ -1,7 +1,8 @@
 <style>
     .small-news-card {
         background: var(--card-bg);
-        box-shadow: 0px 10px 20px -3px rgba(0, 0, 0, 0.1);
+        /* box-shadow: 0px 10px 20px -3px rgba(0, 0, 0, 0.1); */
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
         max-width: 600px;
         height: 500px;
         overflow: hidden;
