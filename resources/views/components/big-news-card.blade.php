@@ -4,10 +4,11 @@
     <div class="news-content">
         <h3 id="{{ $post->id }}">{{ $post->title }}</h3>
         {{-- Check if image file exists  --}}
-        @if (file_exists(public_path($post->image_path)))
+        {{-- @if (file_exists(public_path($post->image_path))) --}}
+        @if ($post->image_path)
             {{-- Image exists, show the div with the image --}}
             <div>
-                <img src="{{ asset('storage/' . $post->image_path) }}" alt="">
+                <img src="{{ 'storage/' .  $post->image_path }}" alt="">
             </div>
         @endif
         <div class="news-content__div">

@@ -46,7 +46,7 @@
 <div class="small-news-card">
     @if ($post->image_path)
     <div class="small-news-card__left">
-            <img src="{{ $post->image_path }}" alt="" class="small-news-card__img">
+            <img src="{{ 'storage/' . $post->image_path }}" alt="" class="small-news-card__img">
         </div>
     @endif
     <div class="small-news-card__right">

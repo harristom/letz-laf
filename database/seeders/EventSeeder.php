@@ -22,7 +22,7 @@ class EventSeeder extends Seeder
                 'distance' => 5.000,
                 'latitude' => 49.606302,
                 'longitude' => 6.136250,
-                'image_path' => 'samples/peitruss.jpg'
+                'image_path' => 'samples/events/peitruss.jpg'
             ],
             [
                 'name' => 'Evening Run in Parc Merl',
@@ -31,7 +31,7 @@ class EventSeeder extends Seeder
                 'distance' => 8.000,
                 'latitude' => 49.606267,
                 'longitude' => 6.112567,
-                'image_path' => 'samples/runners.jpg'
+                'image_path' => 'samples/events/runners.jpg'
             ],
             [
                 'name' => 'Trail Run in Mullerthal',
@@ -40,7 +40,7 @@ class EventSeeder extends Seeder
                 'distance' => 10.000,
                 'latitude' => 49.784918,
                 'longitude' => 6.299592,
-                'image_path' => 'samples/mullerthal.jpg'
+                'image_path' => 'samples/events/mullerthal.jpg'
             ],
             [
                 'name' => 'Belval Night Run',
@@ -49,7 +49,7 @@ class EventSeeder extends Seeder
                 'distance' => 7.000,
                 'latitude' => 49.500639,
                 'longitude' => 5.947101,
-                'image_path' => 'samples/belval.jpg'
+                'image_path' => 'samples/events/belval.jpg'
             ],
             [
                 'name' => 'Stauséi Sprint',
@@ -58,7 +58,7 @@ class EventSeeder extends Seeder
                 'distance' => 7.500,
                 'latitude' => 49.910445,
                 'longitude' => 5.921223,
-                'image_path' => 'samples/stausei.jpg'
+                'image_path' => 'samples/events/stausei.jpg'
             ],
             [
                 'name' => 'Gruelling Grund Hill Sprints',
@@ -67,7 +67,7 @@ class EventSeeder extends Seeder
                 'distance' => 9.000,
                 'latitude' => 49.608353,
                 'longitude' => 6.135140,
-                'image_path' => 'samples/grund.jpg'
+                'image_path' => 'samples/events/grund.jpg'
             ],
             [
                 'name' => 'Sunset Run in Mondorf-les-Bains',
