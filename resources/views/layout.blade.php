@@ -162,7 +162,6 @@
         /*-----------table-----------*/
 
         table {
-            width: 80%;
             margin: 0 auto;
             border-collapse: collapse;
             border: 1px solid #d3d3d347;
@@ -170,7 +169,7 @@
 
         table th,
         table td {
-            padding: 15px 0;
+            padding: 15px 5px;
             text-align: center;
         }
 
