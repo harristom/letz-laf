@@ -7,7 +7,6 @@
     <div class="big-news">
         <div class="big-news__header">
             <h2>News</h2>
-            <a href="/news/create">Create a news post</a>
             @auth
                 @if(auth()->user()->role == 'Admin' || auth()->user()->role == 'Organiser')
                     <a href="/news/create">Create a news post</a>
