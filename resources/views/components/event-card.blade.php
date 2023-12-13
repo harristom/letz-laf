@@ -62,12 +62,15 @@
         justify-content: space-between;
         gap: 10px;
         flex-grow: 1;
+        flex-shrink: 0;
+        min-height: 7.25em;
+        transition: min-height 300ms;
     }
 
     .event-card__title {
         margin-bottom: 10px;
         font-weight: 800;
-        font-size: 1.5rem;
+        font-size: 1.5em;
         /* Adds the ellipsis */
         -webkit-line-clamp: 2;
         display: -webkit-box;
@@ -130,6 +133,10 @@
 
     .event-card:hover .event-card__title-and-summary {
         grid-template-rows: auto 1fr;
+    }
+
+    .event-card:hover .event-card__details {
+        min-height: 11em;
     }
 
 </style>
