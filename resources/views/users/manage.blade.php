@@ -28,7 +28,9 @@
                             <img class="users-manage-container__table--img" src="{{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : asset('images/profilePicturePlaceholder.jpeg') }}">
                         </td>
                         <td>
-                            <p>{{$user->first_name}} {{$user->last_name}}</p>
+                            <a href="/profile/{{$user->id}}">
+                                {{$user->first_name}} {{$user->last_name}}
+                            </a>
                         </td>
                         <td>
                             <p>{{$user->email}}</p>
