@@ -192,10 +192,19 @@ class UserController extends Controller
             'role' => 'required',
             'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($user->id)],
             'password' => [
-                'required', Password::min(8),
-                'confirmed'
+                'nullable',
+                Password::min(8),
+                'confirmed',
             ],
         ]);
+
+        // Check if password is present in the request before updating
+        if ($request->filled('password')) {
+            $formFields['password'] = bcrypt($formFields['password']);
+        } else {
+            // Remove password from the formFields array if not present in the request
+            unset($formFields['password']);
+        }
 
         //upload the new picture
         if($request->hasFile('profile_picture'))
@@ -203,8 +212,6 @@ class UserController extends Controller
             //Replace the old picture with the new one. Delete the old picture from the storage.
             $formFields['profile_picture'] = $request->file('profile_picture')->store('photos', 'public');
         }
-
-        $formFields['password'] = bcrypt($formFields['password']);
 
         //remove _ from prefer not to say gender
         $formFields['gender'] = str_replace('_', ' ', $formFields['gender']);
