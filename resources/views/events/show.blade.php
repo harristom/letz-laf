@@ -78,6 +78,10 @@
         bottom: 10px;
         right: 20px;
     }
+
+    .event-results-table {
+        margin-bottom: 20px;
+    }
 </style>
 
 @section('content')
@@ -121,7 +125,9 @@
                     {{-- Check if there are any results for the event --}}
                     @if (count($event->results) > 0)
                         {{-- Render the event results table component --}}
-                        <x-event-results-table :event="$event" />
+                        <div class="event-results-table">
+                            <x-event-results-table :event="$event" />
+                        </div>
                     @endif  
 
                     @if (count($event->participants) > 0 &&

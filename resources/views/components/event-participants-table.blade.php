@@ -1,4 +1,9 @@
-<table>
+<style>
+    .event-participants-table {
+        width: 100%;
+    }
+</style>
+<table class="event-participants-table">
     <thead>
         <tr>
             <th>First Name</th>
