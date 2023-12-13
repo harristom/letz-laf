@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Result;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,7 +18,7 @@ class DatabaseSeeder extends Seeder
 
         /*---------------USER---------------*/
         //fake users
-        User::factory(2)->create();
+        User::factory(5)->create();
 
         //vania
         $user = User::factory()->create([
