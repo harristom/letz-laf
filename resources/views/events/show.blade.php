@@ -85,6 +85,7 @@
                     <div><i class="fa-regular fa-calendar"></i> {{ \Carbon\Carbon::parse($event->date)->format('d/m/Y') }}
                     </div>
                     <div><i class="fa-regular fa-clock"></i> {{ \Carbon\Carbon::parse($event->date)->format('H:i') }}</div>
+                    <div><i class="fa-solid fa-road"></i> {{ $event->distance }} km</div>
                     <div><i class="fa-solid fa-person-running"></i> {{ count($event->participants) }} registered</div>
                 </div>
                 <div class="event-details__buttons">
