@@ -3,7 +3,7 @@
 @section('content')
     <div class="edit-user">
         <header class="edit-user__header">
-            <h2 class="edit-user__header-h2">Edit User : {{$user->first_name}} {{$user->last_name}}</h2>
+            <h2 class="edit-user__header-h2">Edit User: {{$user->first_name}} {{$user->last_name}}</h2>
         </header>
         <form class="edit-user__form" action="/users/{{$user->id}}" method="post" enctype="multipart/form-data">
             @csrf
@@ -42,7 +42,7 @@
             </div>
             <div class="edit-user__form-div">
                 <label>Gender</label>
-                <div>
+                <div class="edit-user__gender">
                     <label>
                         <input type="radio" name="gender" value="male" {{ $user->gender === 'Male' ? 'checked' : '' }}>
                         Male
@@ -123,10 +123,8 @@
     }
 
     .edit-user__header-h2{
-        font-family: "Inter", sans-serif;
         font-size: 40px;
         font-weight: 700;
-        color: var(--primary-color);
     }
 
     .edit-user__form {
@@ -183,5 +181,9 @@
         padding-left: 40px; 
     }
 
+    .edit-user__gender {
+        display: flex;
+        gap: 10px;
+    }
 
 </style>

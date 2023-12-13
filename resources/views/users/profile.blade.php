@@ -13,9 +13,10 @@
                 <small>{{$user->role}}</small>
             </h3>
             @if(auth()->check() && (auth()->user()->id === $user->id || auth()->user()->role == 'Admin'))
-                <a class="{{ request()->is('profile/'.$user->id) ? 'active' : '' }}" href="/profile/{{$user->id}}">Account Details</a>
-
-                <a class="{{ request()->is('profile/'.$user->id.'/edit') ? 'active' : '' }}" href="/profile/{{$user->id}}/edit">Account Settings</a>
+                <div class="profile-card__toggle">
+                    <a class="button profile-card__button{{ request()->is('profile/'.$user->id) ? '--active' : '' }}" href="/profile/{{$user->id}}">Account Details</a>
+                    <a class="button profile-card__button{{ request()->is('profile/'.$user->id.'/edit') ? '--active' : '' }}" href="/profile/{{$user->id}}/edit">Account Settings</a>
+                </div>
                 
                 <div class="profile-card__div-btn">
                     <form method="POST" action="/logout">
@@ -40,8 +41,7 @@
 <style>
 
     .profile-card__header{
-        margin: 30px 0 50px 0;
-        color: var(--primary-color);
+        margin: 30px 0 30px 0;
         text-align: center;
         font-size: 30px;
     }
@@ -57,7 +57,13 @@
         font-weight: 300;
     }
 
-   .profile-card__picture a,.profile-card__picture div{
+    .profile-card__toggle {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+   /* .profile-card__picture a,.profile-card__picture div{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -67,24 +73,24 @@
         border-radius: 5px;
         text-decoration: none;
         color: black;
-    }
+    } */
 
-   .profile-card__picture div a,.profile-card__picture div div{
+   /* .profile-card__picture div a,.profile-card__picture div div{
         display: flex;
         flex-direction: row;
         align-items: center;
         padding: 15px 0;
         border: 1px solid var(--primary-color);
         cursor: pointer;
-    }
+    } */
 
-   .profile-card__picture div div form{
+   /* .profile-card__picture div div form{
         margin-bottom: 0;
-    }
+    } */
 
-   .profile-card__picture div a.active {
-        background-color: var(--primary-color);  
-        color: white;
+    .button.profile-card__button--active {
+        background-color: white;  
+        color: var(--primary-color);
     }
 
    .profile-card {
