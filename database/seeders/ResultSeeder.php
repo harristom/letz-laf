@@ -18,6 +18,7 @@ class ResultSeeder extends Seeder
             $events = $user->eventsRegistered()->get();
 
             foreach ($events as $event) {
+                if ($event->date > now()) continue;
                 // Create a Result instance using the factory
                 Result::factory()->create([
                     'user_id' => $user->id,

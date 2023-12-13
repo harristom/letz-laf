@@ -1,14 +1,25 @@
+<style>
+    .search-bar-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .search-bar-container input {
+        width: 380px;
+        margin-right: 62px; 
+    }
+
+</style>
+
 <form action="">
-    <div>
+    <div class="search-bar-container">
         <input type="text" name="search" id="search-input" placeholder="Search for a name...">
-        {{-- <button type="submit">
-            Search
-        </button> --}}
     </div>
 </form>
 
-
-    {{-- <script>
+{{-- <script>
     // Add script after the DOM has loaded
     document.addEventListener('DOMContentLoaded', function () {
         // Get the search input element

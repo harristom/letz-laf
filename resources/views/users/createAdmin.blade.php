@@ -104,6 +104,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin: 30px 0 20px 0;
     }
 
     .add-user__header-h2{
@@ -154,6 +155,10 @@
         flex-direction: column;
         gap: 20px;
         margin-bottom: 30px;
+    }
+
+    .add-user__form-div-btn{
+        margin-bottom: 20px; 
     }
 
     .add-user__form-div-btn a{

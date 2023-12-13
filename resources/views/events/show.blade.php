@@ -97,15 +97,32 @@
                             <button>Delete</button>
                         </form>
                     @endif
+
+                    @if (auth()->user() && !$event->participants->contains(auth()->user()) && $event->date >= now())
                         <form action="{{ route('events.register', $event) }}" method="POST" class="event-details__form">
                             @csrf
                             <button>Join</button>
                         </form>
+                    @endif
 
                 </div>
-                @if (count($event->results) > 0)
-                    <x-event-results-table :event="$event" />
+
+                {{-- Check if the current time is greater than the event date --}}
+                @if (now() > $event->date)
+                    {{-- Check if there are any results for the event --}}
+                    @if (count($event->results) > 0)
+                        {{-- Render the event results table component --}}
+                        <x-event-results-table :event="$event" />
+                    @endif  
+
+                    @if (count($event->participants) > 0 &&
+                            auth()->user() &&
+                            (auth()->user()->role == 'Admin' || auth()->user() == $event->organiser))
+                        <x-event-participants-table :event="$event" />
+                    @endif
                 @endif
+                
+
             </div>
             <div class="event-details__right">
                 <x-map-card :latitude="$event->latitude" :longitude="$event->longitude" />

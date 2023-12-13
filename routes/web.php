@@ -22,9 +22,15 @@ Route::view('/', 'index');
 /*----------------------POSTS----------------------*/
 
 //show all the news
-Route::get('/news', [PostController::class, 'index']);
+Route::get('/news', [PostController::class, 'index'])->name('posts.index');
 //create a new post
 Route::get('/news/create', [PostController::class, 'create'])->middleware('role:Admin,Organiser');
+//Update a post
+Route::get('/news/{id}', [PostController::class, 'edit'])->middleware('role:Admin,Organiser')->name('posts.edit');
+//update a post
+Route::put('/news/{post}', [PostController::class, 'update'])->middleware('role:Admin,Organiser')->name('posts.update');
+//delete post
+Route::delete('/news/{post}', [PostController::class, 'destroy'])->middleware('role:Admin,Organiser')->name('posts.delete');
 //store a new post
 Route::post('/news', [PostController::class, 'store'])->middleware('role:Admin,Organiser');
 
@@ -71,6 +77,11 @@ Route::resource('events', EventController::class)->only(['index', 'show']);
 
 // Register for an event
 Route::post('/events/{event}/register', [EventController::class, 'register'])->middleware('auth')->name('events.register');
+
+// Add results
+Route::post('/events/{event}/add-results', [EventController::class, 'addResults'])
+    ->middleware('auth')
+    ->name('events.addResults');
 
 /*-----------------------MISC-----------------------*/
 Route::view('/about-us', 'about-us')->name('about');

@@ -1,7 +1,13 @@
 @extends('users.profile')
 
 @section('information')
+
     {{--
+
+
+    <header class="profile-card__info__header">
+        <h3>Account Details</h3>
+    </header>
     <div class="profile-card__info__item">
         <div>
             <h3>First Name</h3>
@@ -23,7 +29,7 @@
             <p>{{$user->gender}}</p>
         </div>
     </div>
-    <div class="profile-card__info__item">
+    <div class="profile-card__info__item profile-card__info__item-password">
         <div>
             <h3>Email</h3>
             <p>{{$user->email}}</p>
@@ -93,6 +99,7 @@
 @endsection
 
 <style>
+
 /*
     .article-results-container{
         display: flex;

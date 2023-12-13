@@ -14,14 +14,14 @@
                     <label for="first_name">First Name</label>
                     <input type="text" name="first_name" id="first_name" value="{{ old('first_name') }}" />
                     @error('first_name')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
                 <div>
                     <label for="last_name">Last Name</label>
                     <input type="text" name="last_name" id="last_name" value="{{ old('last_name') }}" />
                     @error('last_name')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
@@ -30,20 +30,20 @@
                     <label for="birthdate">Date of birth</label>
                     <input type="date" name="birthdate" id="birthdate" value="{{ old('birthdate') }}" />
                     @error('birthdate')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
                 <div>
                     <label for="profile_picture">Profile picture</label>
                     <input type="file" id="profile_picture" name="profile_picture" />
                     @error('profile_picture')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
             <div class="register-container__form-div">
                 <label>Gender</label>
-                <div>
+                <div class="register-container__form-div-gender">
                     <label>
                         <input type="radio" name="gender" value="male" {{ old('gender') === 'male' ? 'checked' : '' }}>
                         Male
@@ -60,14 +60,14 @@
                     </label>
                 </div>
                 @error('gender')
-                    <p>{{ $message }}</p>
+                    <p class="errors">{{ $message }}</p>
                 @enderror
             </div>
             <div class="register-container__form-div">
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" value="{{ old('email') }}" />
                 @error('email')
-                    <p>{{ $message }}</p>
+                    <p class="errors">{{ $message }}</p>
                 @enderror
             </div>
             <div class="register-container__form-div-password">
@@ -75,14 +75,14 @@
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" value="{{ old('password') }}" />
                     @error('password')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
                 <div>
                     <label for="password_confirmation">Confirm Password</label>
                     <input type="password" id="password_confirmation" name="password_confirmation" />
                     @error('password')
-                        <p>{{ $message }}</p>
+                        <p class="errors">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
@@ -114,6 +114,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin: 30px;
     }
 
     .register-container__header-h2 {
@@ -125,15 +126,14 @@
 
     .register-container__header-p {
         font-size: 15px;
-        max-width: 85%;
         text-align: center;
         line-height: 1.1rem;
         padding: 10px 0 20px 0;
     }
 
     .register-container__form {
-        width: 70%;
-        margin: 20px auto;
+        width: 80%;
+        margin: 10px auto 50px auto;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -144,15 +144,16 @@
         flex-direction: column;
         gap: 20px;
         margin: 0 0 30px 0;
-        width: 500px;
+        width: 515px;
     }
 
     .register-container__form-div-name,
     .register-container__form-div-info,
     .register-container__form-div-password {
-        width: 500px;
+        width: 550px;
         display: flex;
         flex-direction: row;
+        justify-content: center;
         gap: 20px;
     }
 
@@ -173,9 +174,14 @@
     }
 
     .register-container__form-div-p {
-        width: 30%;
+        width: 50%;
         text-align: center;
-        margin: 0 auto -20px auto;
+        padding: 5px;
     }
+
+    .register-container__form-div-gender label{
+        padding: 0 25px 0 0; 
+    }
+
 </style>
 

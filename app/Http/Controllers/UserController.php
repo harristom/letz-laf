@@ -62,9 +62,13 @@ class UserController extends Controller
 
         $user = User::create($formFields);
 
-        auth()->login($user);
+        if (auth()->check() && auth()->user()->role === 'Admin') {
+            return redirect('/users/manage')->with('message', 'User created Successfully!');
+        } else {
+            auth()->login($user);
+            return redirect('/')->with('message', 'User created and logged in Successfully!');
+        }
 
-        return redirect('/')->with('message', 'User created and logged in Successfully!');
 
     }
 
@@ -115,7 +119,7 @@ class UserController extends Controller
 
         return view('users.manage',[
             //'users' => auth()->user()->users,
-            'users' => User::latest()->filter(request(['search']))->get(),
+            'users' => User::all(),
 
         ]);
     }

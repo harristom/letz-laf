@@ -5,6 +5,13 @@
     .events-page {
         margin-top: 30px;
     }
+    
+    .events-page__title{
+        text-align: left;
+        color: var(--primary-color);
+        font-size: 40px;
+        margin: 20px 75px;
+    }
 
     .events-page__list {
         display: flex;
@@ -67,6 +74,8 @@
 
 </style>
 
+<h2 class="events-page__title">Events</h2>
+
 <div class="events-page">
     <div class="events-page__btns">
         <button class="events-page__previous-btn" type="button">Older</button>
@@ -75,7 +84,9 @@
     <div class="events-page__list" id="list">
         <div class="events-page__add-btn-wrapper">
             {{-- TODO: Add scroll up button --}}
-            <a href="{{ route('events.create') }}" class="button events-page__add-btn"><i class="fa-solid fa-plus fa-xl" title="Add"></i></a>
+            @if (auth()->user() && in_array(auth()->user()->role, ['Organiser', 'Admin']))
+                <a href="{{ route('events.create') }}" class="button events-page__add-btn"><i class="fa-solid fa-plus fa-xl" title="Add"></i></a>
+            @endif
         </div>
 
         @if (count($events) == 0)
