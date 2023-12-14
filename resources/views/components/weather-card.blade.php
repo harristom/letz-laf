@@ -38,18 +38,22 @@
 </div>
 
 <script defer>
+    const KEY = 'FanFIXEd9GYfroPCKADlttIyYnZ1UMH3';
+
+    // Get place and time
     const lat = {{ $event->latitude }};
     const long = {{ $event->longitude }};
     const time = {{ \Carbon\Carbon::parse($event->date)->timestamp }};
-    // const time = 1701889706;
-    const KEY = 'FanFIXEd9GYfroPCKADlttIyYnZ1UMH3';
 
+    // Call API
     fetch(`https://api.pirateweather.net/forecast/${KEY}/${lat},${long}${time < Date.now() / 1000 ? ',' + time : ''}?units=ca&exclude=flags,currently,minutely`)
         .then(res => res.json())
         .then(json => {
+            // See if the hour we want is in the hourly data
             for (const forecast of json.hourly.data) {
                 if (time - forecast.time >= 0 && time - forecast.time < 60 * 60) return forecast;
             }
+            // If not, see if the day we want is in the daily data
             for (const forecast of json.daily.data) {
                 if (time - forecast.time >= 0 && time - forecast.time < 24 * 60 * 60) return forecast;
             }
@@ -61,7 +65,10 @@
                 return;
             }
             console.log('Found: ' + (new Date(forecast.time * 1000)).toLocaleString());
+
+            // Hourly forecasts have "tempersature", daily has "temperatureHigh"
             forecast.temperature ??= forecast.temperatureHigh;
+            
             document.querySelector('.weather-card__temperature').textContent = Math.round(forecast.temperature) + ' °C';
             document.querySelector('.weather-card__conditions').textContent = forecast.summary;
             document.querySelector('.weather-card__icon').src = '/images/weather-icons/' + forecast.icon + '.svg';
