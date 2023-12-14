@@ -66,7 +66,7 @@ class UserController extends Controller
             return redirect('/users/manage')->with('message', 'User created Successfully!');
         } else {
             auth()->login($user);
-            return redirect('/')->with('message', 'User created and logged in Successfully!');
+            return redirect(route('users.show', $user))->with('message', 'User created and logged in Successfully!');
         }
 
 
