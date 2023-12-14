@@ -127,6 +127,10 @@
 .attended-events-container {
     width: 40%;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
 }
 
 .article-results-container {
