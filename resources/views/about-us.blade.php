@@ -113,11 +113,8 @@
                             I look forward to continuing my journey in technology and am eager to seek creative ways to
                             contribute to the digital world.</p>
                         <div class="team-card__socials">
-                            <a class="team-card__linkedin-link" href="www.linkedin.com/in/vânia-daniela-silva-barbosa"><i
-                                    class="fa-brands fa-linkedin fa-2xl"></i></a>
-
-                            <a class="team-card__portfolio-link" href="#"> <i
-                                    class="fa-brands fa-github fa-2xl"></i></a>
+                            <a class="team-card__linkedin-link" href="https://www.linkedin.com/in/vânia-daniela-silva-barbosa"><i class="fa-brands fa-linkedin fa-2xl"></i></a>
+                            <a class="team-card__portfolio-link" href="https://github.com/VaniaSilvaBarbosa"> <i class="fa-brands fa-github fa-2xl"></i></a>
                         </div>
                     </div>
                 </div>
