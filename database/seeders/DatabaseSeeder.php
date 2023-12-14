@@ -20,6 +20,28 @@ class DatabaseSeeder extends Seeder
         //fake users
         User::factory(5)->create();
 
+        // Demo users
+        User::factory()->create([
+            'first_name' => 'Bob',
+            'last_name' => 'Parks',
+            'birthdate' => '1985-08-19',
+            'gender' => 'Male',
+            'role' => 'Organiser',
+            'email' => 'bob@example.com',
+            'password' => bcrypt('password'),
+        ]);
+
+        User::factory()->create([
+            'first_name' => 'Charlie',
+            'last_name' => 'Gomes',
+            'birthdate' => '1980-01-02',
+            'gender' => 'Female',
+            'role' => 'Admin',
+            'email' => 'bob@example.com',
+            'password' => bcrypt('password'),
+        ]);
+
+
         //vania
         $user = User::factory()->create([
             'first_name' => 'Vania',
