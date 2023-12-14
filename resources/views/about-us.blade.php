@@ -21,7 +21,7 @@
         <div class="team-cards">
 
             <div class="team-card">
-                <img class="team-card__picture" src="{{ asset('images/profilepicture.jpeg') }}" alt="">
+                <img class="team-card__picture" src="{{ asset('images/jaria.jpg') }}" alt="">
                 <div class="team-card__description">
                     <div class="team-card__text">
                         <h3 class="team-card__title">Jaria</h3>
@@ -42,7 +42,7 @@
 
 
             <div class="team-card">
-                <img class="team-card__picture" src="{{ asset('images/profilepicture.jpeg') }}" alt="">
+                <img class="team-card__picture" src="{{ asset('images/kameron.png') }}" alt="">
                 <div class="team-card__description">
                     <div class="team-card__text">
                         <h3 class="team-card__title">Kameron</h3>
@@ -64,7 +64,7 @@
             </div>
 
             <div class="team-card">
-                <img class="team-card__picture" src="{{ asset('images/profilepicture.jpeg') }}" alt="">
+                <img class="team-card__picture" src="{{ asset('images/marcia.png') }}" alt="">
                 <div class="team-card__description">
                     <div class="team-card__text">
                         <h3 class="team-card__title">Márcia</h3>
@@ -83,7 +83,7 @@
             </div>
 
             <div class="team-card">
-                <img class="team-card__picture" src="{{ asset('images/profilepicture.jpeg') }}" alt="">
+                <img class="team-card__picture" src="{{ asset('images/tom.jpg') }}" alt="">
                 <div class="team-card__description">
                     <div class="team-card__text">
                         <h3 class="team-card__title">Tom</h3>
@@ -102,7 +102,7 @@
             </div>
 
             <div class="team-card">
-                <img class="team-card__picture" src="{{ asset('images/profilepicture.jpeg') }}" alt="">
+                <img class="team-card__picture" src="{{ asset('images/vania.jpg') }}" alt="">
                 <div class="team-card__description">
                     <div class="team-card__text">
                         <h3 class="team-card__title">Vânia</h3>
