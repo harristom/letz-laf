@@ -31,7 +31,8 @@ class EventSeeder extends Seeder
                 'distance' => 8.000,
                 'latitude' => 49.606267,
                 'longitude' => 6.112567,
-                'image_path' => 'samples/events/runners.jpg'
+                'image_path' => 'samples/events/runners.jpg',
+                'organiser_id' => 6,
             ],
             [
                 'name' => 'Trail Run in Mullerthal',
@@ -178,7 +179,7 @@ class EventSeeder extends Seeder
 
 
         foreach ($runs as $run) {
-            $run['organiser_id'] = 1;
+            $run['organiser_id'] ??= 1;
             $event = Event::create($run);
             $event->participants()->attach(1);
         }
