@@ -183,5 +183,7 @@ class EventSeeder extends Seeder
             $event = Event::create($run);
             $event->participants()->attach(1);
         }
+
+        $event::find(2)->participants()->attach(2);
     }
 }
