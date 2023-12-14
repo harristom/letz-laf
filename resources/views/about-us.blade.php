@@ -25,7 +25,7 @@
                 <img class="team-card__picture" src="{{ asset('images/profilepicture.jpeg') }}" alt="">
                 <div class="team-card__description">
                     <div class="team-card__text">
-                        <h3 class="team-card__title">Name</h3>
+                        <h3 class="team-card__title">Tom</h3>
                         <p class="team-card__bio">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                             Magnam rerum itaque ad tempora reiciendis voluptatibus tempore sint totam debitis excepturi?</p>
                         <div class="team-card__socials">
@@ -41,9 +41,27 @@
                 <img class="team-card__picture" src="{{ asset('images/profilepicture.jpeg') }}" alt="">
                 <div class="team-card__description">
                     <div class="team-card__text">
-                        <h3 class="team-card__title">Name</h3>
-                        <p class="team-card__bio">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                            Magnam rerum itaque ad tempora reiciendis voluptatibus tempore sint totam debitis excepturi?</p>
+                        <h3 class="team-card__title">Vânia</h3>
+                        <p class="team-card__bio">With a four-year technical background in computer science,
+                            I embarked on this course to deepen my passion for programming.
+                            The solid foundation I gained in technical school equipped me with essential skills,
+                             and I am dedicated to exploring and applying this knowledge in more advanced ways.
+                            I look forward to continuing my journey in technology and am eager to seek creative ways to contribute to the digital world.</p>
+                        <div class="team-card__socials">
+                            <a class="team-card__linkedin-link" href="www.linkedin.com/in/vânia-daniela-silva-barbosa"><i class="fa-brands fa-linkedin fa-2xl"></i></a>
+                            
+                            <a class="team-card__portfolio-link" href="#"> <i class="fa-brands fa-github fa-2xl"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <img class="team-card__picture" src="{{ asset('images/profilepicture.jpeg') }}" alt="">
+                <div class="team-card__description">
+                    <div class="team-card__text">
+                        <h3 class="team-card__title">Márcia</h3>
+                        <p class="team-card__bio">Hello, I'm Márcia, a 29-year-old who recently took the plunge into the world of development just four months ago. Coding has quickly become my passion, and I'm excited about the journey ahead. When I'm not immersed in lines of code, you'll likely find me indulging in my love for movies, exploring captivating stories that transport me to different worlds. Outside of the digital realm, I enjoy the simple pleasure of taking walks in various locations, embracing the beauty of each moment. With a mix of technical curiosity and an appreciation for life's little joys, I'm navigating this new chapter with enthusiasm and a sense of adventure.</p>
                         <div class="team-card__socials">
                             <a class="team-card__linkedin-link" href="#"><i class="fa-brands fa-linkedin fa-2xl"></i></a>
                             
@@ -57,11 +75,10 @@
                 <img class="team-card__picture" src="{{ asset('images/profilepicture.jpeg') }}" alt="">
                 <div class="team-card__description">
                     <div class="team-card__text">
-                        <h3 class="team-card__title">Name</h3>
-                        <p class="team-card__bio">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                            Magnam rerum itaque ad tempora reiciendis voluptatibus tempore sint totam debitis excepturi?</p>
+                        <h3 class="team-card__title">Jaria</h3>
+                        <p class="team-card__bio">Having built a background in finance with years of experience, I've shifted my focus to coding, driven by a passion for technology and the dynamic opportunities it presents. This move represents a personal and strategic decision to diversify from finance, aiming to uniquely contribute to today's tech-centric landscape through coding skills.</p>
                         <div class="team-card__socials">
-                            <a class="team-card__linkedin-link" href="#"><i class="fa-brands fa-linkedin fa-2xl"></i></a>
+                            <a class="team-card__linkedin-link" href="www.linkedin.com/in/jariapoba"><i class="fa-brands fa-linkedin fa-2xl"></i></a>
                             
                             <a class="team-card__portfolio-link" href="#"> <i class="fa-brands fa-github fa-2xl"></i></a>
                         </div>
@@ -73,27 +90,11 @@
                 <img class="team-card__picture" src="{{ asset('images/profilepicture.jpeg') }}" alt="">
                 <div class="team-card__description">
                     <div class="team-card__text">
-                        <h3 class="team-card__title">Name</h3>
-                        <p class="team-card__bio">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                            Magnam rerum itaque ad tempora reiciendis voluptatibus tempore sint totam debitis excepturi?</p>
+                        <h3 class="team-card__title">Kameron</h3>
+                        <p class="team-card__bio">Kameron Amuda
+                            Hello, my name is Kameron, and I'm enthusiastically exploring the realm of full-stack web development. With a strong background in healthcare, I'm transitioning into software development, driven by my passion for leveraging technology to elevate wellness. I skillfully manage a nurturing role alongside a deep fascination for database intricacies, eagerly anticipating flourishing at the intersection of health and software development.</p>
                         <div class="team-card__socials">
-                            <a class="team-card__linkedin-link" href="#"><i class="fa-brands fa-linkedin fa-2xl"></i></a>
-                            
-                            <a class="team-card__portfolio-link" href="#"> <i class="fa-brands fa-github fa-2xl"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="team-card">
-                <img class="team-card__picture" src="{{ asset('images/profilepicture.jpeg') }}" alt="">
-                <div class="team-card__description">
-                    <div class="team-card__text">
-                        <h3 class="team-card__title">Name</h3>
-                        <p class="team-card__bio">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                            Magnam rerum itaque ad tempora reiciendis voluptatibus tempore sint totam debitis excepturi?</p>
-                        <div class="team-card__socials">
-                            <a class="team-card__linkedin-link" href="#"><i class="fa-brands fa-linkedin fa-2xl"></i></a>
+                            <a class="team-card__linkedin-link" href="https://www.linkedin.com/in/kamerona/"><i class="fa-brands fa-linkedin fa-2xl"></i></a>
                             
                             <a class="team-card__portfolio-link" href="#"> <i class="fa-brands fa-github fa-2xl"></i></a>
                         </div>
