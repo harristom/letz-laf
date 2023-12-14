@@ -13,9 +13,9 @@
                     <th>ID</th>
                     <th>Profile</th>
                     <th>Email</th>
-                    <th>Role</th>
-                    
                     <th>@include('partials._search')</th>
+                    <th>Role</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -39,22 +39,20 @@
                             <p>{{$user->role}}</p>
                         </td>
                         <td>
-                            <form action="/users/{{ $user->id }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="users-manage-container__table--btn">
-                                    <i class="fa-solid fa-trash"></i> 
-                                    Delete
-                                </button>
-                            </form>
-                        </td>
-                        <td>
-                            <a href="/users/{{ $user->id }}/edit">
-                                <button class="users-manage-container__table--btn">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                    Edit
-                                </button>
-                            </a>
+                            <div class="users-manage-container__table-btns">
+                                <a href="/users/{{ $user->id }}/edit">
+                                    <button class="users-manage-container__table--btn">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
+                                </a>
+                                <form action="/users/{{ $user->id }}" method="POST" class="users-manage-container__table-btns-form">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="users-manage-container__table--btn button--secondary">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @endforeach    
@@ -113,12 +111,11 @@
 
 <style>
     .users-manage-container{
-        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
     }
     
     .users-manage-container__header{
-        width: 80%;
-        margin: 0 auto;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -128,39 +125,18 @@
 
     .users-manage-container__header h2{
         font-size: 40px;
-        color: var(--primary-color);
     }
-    
+
     .users-manage-container__table {
-        width: 80%;
-        display: flex;
-        flex-direction: column;
+        width: 100%;
     }
 
-    .users-manage-container__table--title{
-        width: 100%;
+    .users-manage-container__table-btns {
         display: flex;
-        flex-direction: row;
+        gap: 10px;
         align-items: center;
-    }
-
-    .users-manage-container__table--title th{
-        width: 100%;
-    }
-
-    .users-manage-container__table--tr--two{
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .users-manage-container__table--tr--two td{
-        width: 100%;
-    }
-
-    .users-manage-container__table--tr--two td:nth-child(2){
-       width: 50px;
+        height: 100%;
+        flex-wrap: wrap;
     }
 
     .users-manage-container__table--img{

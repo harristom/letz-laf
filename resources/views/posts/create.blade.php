@@ -45,7 +45,6 @@
 
     .create-post-container__header{
         text-align: center;
-        color: var(--primary-color);
         padding: 50px 0 20px 0;
         font-size: 25px;
     }

@@ -1,14 +1,19 @@
-<?php
-$uniqueUsers = [];
-?>
+<style>
+    .event-results-table__search {
+        margin-bottom: 10px;
+    }
 
-@include('partials._search')
-<table id="table">
+    .event-results-table__table {
+        width: 100%;
+    }
+</style>
+
+<div class="event-results-table__search">@include('partials._search')</div>
+<table id="table" class="event-results-table__table">
     <thead>
-        <tr class="manage-users-title">
+        <tr>
             <th>Ranking</th>
-            <th> Name</th>
-            {{-- <th>Event Title</th> --}}
+            <th>Name</th>
             <th>Finish Time</th>
         </tr>
     </thead>

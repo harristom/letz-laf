@@ -8,9 +8,10 @@
     
     .events-page__title{
         text-align: left;
-        color: var(--primary-color);
+        /* color: var(--primary-color); */
+        /* color: var(--text-color); */
         font-size: 40px;
-        margin: 20px 75px;
+        margin: 50px 75px 20px 75px;
     }
 
     .events-page__list {
@@ -19,7 +20,7 @@
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-        margin: 30px auto;
+        margin: 50px 20px;
         gap: 30px;
         position: relative;
     }
@@ -27,6 +28,7 @@
     .events-page__previous-btn {
         margin: 0 auto;
         display: block;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 15px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     }
 
     .events-page__add-btn-wrapper {
@@ -50,7 +52,7 @@
         position: sticky;
         bottom: 20px;
         right: 20px;
-        box-shadow: 0px 0px 0px 1px var(--page-bg);
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     }
 
     .events-page__list-item {

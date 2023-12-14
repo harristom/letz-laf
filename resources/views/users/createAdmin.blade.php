@@ -4,7 +4,7 @@
    <div class="add-user">
         <header class="add-user__header">
             <h2 class="add-user__header-h2">Add a New User</h2>
-            <p class="add-user__header-p">Create an account for an User!</p>
+            <p class="add-user__header-p">Create an account for a user!</p>
         </header>
         <form class="add-user__form" action="/users" method="post" enctype="multipart/form-data">
             @csrf
@@ -42,7 +42,7 @@
             </div>
             <div class="add-user__form-div">
                 <label>Gender</label>
-                <div>
+                <div class="add-user__gender">
                     <label>
                         <input type="radio" name="gender" value="male" {{ old('gender') === 'male' ? 'checked' : '' }}>
                         Male
@@ -111,7 +111,6 @@
         margin: 0;
         font-size: 40px;
         font-weight: 700;
-        color: var(--primary-color);
     }
 
     .add-user__header-p{
@@ -163,6 +162,11 @@
 
     .add-user__form-div-btn a{
         margin-left: 30px; 
+    }
+
+    .add-user__gender {
+        display: flex;
+        gap: 10px;
     }
 
 </style>

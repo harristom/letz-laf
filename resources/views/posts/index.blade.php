@@ -7,7 +7,6 @@
     <div class="big-news">
         <div class="big-news__header">
             <h2>News</h2>
-            <a href="/news/create">Create a news post</a>
             @auth
                 @if(auth()->user()->role == 'Admin' || auth()->user()->role == 'Organiser')
                     <a href="/news/create">Create a news post</a>
@@ -32,22 +31,12 @@
 
 <style>
 
-    .big-news {
-        width: 80%;
-        margin: auto auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
-
     .big-news__header {
-        width: 95%;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        padding: 30px;
-        color: var(--primary-color);
+        margin: 50px 75px 40px 75px;
     }
 
     .big-news__header h2 {
@@ -61,12 +50,9 @@
         margin-bottom: 20px;
     }
 
-    .big-news {
-        width: 100%;
-        margin: auto auto;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+    .big-news__div {
+        max-width: 1000px;
+        margin: 0 auto;
     }
 
 </style>

@@ -2,12 +2,14 @@
 
 <div class="news-content-container">
     <div class="news-content">
-        <h3>{{ $post->title }}</h3>
+        <h3 id="{{ $post->id }}">{{ $post->title }}</h3>
+        <small class="news-content__date">Posted: {{ \Carbon\Carbon::parse($post->created_at)->format('d/m/Y') }}</small>
         {{-- Check if image file exists  --}}
-        @if (file_exists(public_path($post->image_path)))
+        {{-- @if (file_exists(public_path($post->image_path))) --}}
+        @if ($post->image_path)
             {{-- Image exists, show the div with the image --}}
             <div>
-                <img src="{{ asset('storage/' . $post->image_path) }}" alt="">
+                <img src="{{ 'storage/' .  $post->image_path }}" alt="">
             </div>
         @endif
         <div class="news-content__div">
@@ -15,16 +17,16 @@
         </div>
     </div>
     <div class="news-content news-div-date">
-        <small>Created : {{ $post->created_at }}</small>
-
         {{-- Check that the user is logged in and is either an admin or an event organiser who wrote the post originally --}}
         @if(auth()->user() && (auth()->user()->role == 'Admin' || (auth()->user()->role == 'Organiser' && auth()->user() == $post->user)))
-            <a href="/news/{{ $post->id }}">Update</a>
-            <form action="{{route('posts.delete', $post)}}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button>Delete</button>
-            </form>
+            <div class="news-content__buttons">
+                <a href="/news/{{ $post->id }}" class="button">Update</a>
+                <form action="{{route('posts.delete', $post)}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button class="button--secondary">Delete</button>
+                </form>
+            </div>
         @endif
     </div>
 </div>
@@ -32,14 +34,14 @@
 <style>
     /*------------------- BIG NEWS PAGE -------------------*/
     .news-content-container {
-        width: 45%;
         display: flex;
         flex-direction: column;
         margin: 20px 20px 50px 20px;
-        border-radius: 10px;
+        border-radius: 7px;
         padding: 10px 25px 25px 25px;
         box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.2);
         transition: transform .5s;
+        background-color: var(--card-bg);
     }
 
     .news-content {
@@ -64,9 +66,9 @@
     }
 
     .news-content img {
-        width: 400px;
+        width: auto;
         margin: auto;
-        height: auto;
+        height: 400px;
         border-radius: 5px;
         margin-right: 20px;
     }
@@ -94,5 +96,14 @@
         padding: 20px 0;
     }
 
+    .news-content__buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .news-content__date {
+        margin-bottom: 20px;
+        opacity: 0.8;
+    }
 
 </style>

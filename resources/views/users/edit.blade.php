@@ -117,7 +117,6 @@
         font-size: 30px;
         padding-bottom: 20px;
         font-weight: 700;
-        color: var(--primary-color);
     }
 
     .user-edit-container__form {
@@ -139,7 +138,7 @@
     .user-edit-container__form-div-gender {
         display: flex;
         flex-direction: row;
-        gap: 40px;
+        gap: 10px;
     }
 
     .user-edit-container__form-div-name, 

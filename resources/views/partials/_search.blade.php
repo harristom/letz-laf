@@ -7,8 +7,8 @@
     }
 
     .search-bar-container input {
-        width: 380px;
-        margin-right: 62px; 
+        min-width: 300px;
+        width: 100%;
     }
 
 </style>

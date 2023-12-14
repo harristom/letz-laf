@@ -1,10 +1,18 @@
 @extends('layout')
 
 <style>
+    .event-page {
+        /* max-width: 1200px; */
+        margin: 20px 20px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+        border-radius: 7px;
+        overflow: hidden;
+    }
+
     .event-details__content {
         display: flex;
         gap: 20px;
-        margin-left: 20px;
+        padding: 20px;
     }
 
     .event-details__title {
@@ -50,7 +58,6 @@
         background-repeat: no-repeat;
         height: 400px;
         width: 100%;
-        margin-bottom: 20px;
         position: relative;
     }
 
@@ -63,12 +70,17 @@
 
     .event-details__description {
         margin-top: 0px;
+        margin-bottom: 30px;
     }
 
     .weather-card {
         position: absolute;
         bottom: 10px;
         right: 20px;
+    }
+
+    .event-results-table {
+        margin-bottom: 20px;
     }
 </style>
 
@@ -113,7 +125,9 @@
                     {{-- Check if there are any results for the event --}}
                     @if (count($event->results) > 0)
                         {{-- Render the event results table component --}}
-                        <x-event-results-table :event="$event" />
+                        <div class="event-results-table">
+                            <x-event-results-table :event="$event" />
+                        </div>
                     @endif  
 
                     @if (count($event->participants) > 0 &&

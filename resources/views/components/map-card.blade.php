@@ -2,6 +2,7 @@
     .map-card {
         aspect-ratio:  3 / 2;
         width: 100%;
+        border-radius: 3px;
     }
 </style>
 <div id="map" class="map-card"></div>
